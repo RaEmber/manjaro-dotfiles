@@ -1,0 +1,19 @@
+reminder_cd() {
+    builtin cd "$@" && { [ ! -f .cd-reminder ] || cat .cd-reminder 1>&2; }
+}
+
+alias cd=reminder_cd
+alias sudo="sudo "
+alias ls='ls --color=auto -A'
+alias lsl='ls --color=auto -lAh'
+alias sprunge="curl -F 'sprunge=<-' http://sprunge.us/"
+alias scrot="scrot '%Y.%m.%d_%H-%M-%S_\$w_\$h.png' -e 'mv \$f ~/Bilder/Screenshots/\$f'"
+alias ipaddr="wget http://ipinfo.io/ip -qO -"
+alias grep="grep --color=auto"
+alias fgrep="fgrep --color=auto"
+alias egrep="egrep --color=auto"
+alias xpid="xprop | grep PID | cut -d' '  -f3"
+alias tree='tree -a -C'
+alias pacman='pacman --color=auto'
+alias xclass=$'xprop | grep WM_CLASS | cut -d\'"\'  -f2'
+
