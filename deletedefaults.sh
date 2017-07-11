@@ -14,8 +14,10 @@ rm .Xclients
 rm .xinitrc
 rm .xprofile
 rm .Xresources
+rm .xsession
 rm .yaourtrc
 rm .zprofile
 rm .zshrc
-rm -r .config/bspwm
+rm -r .config/bspwm/*
+rm -r .config/sxhkd/*
 echo "Done deleting defaults"
