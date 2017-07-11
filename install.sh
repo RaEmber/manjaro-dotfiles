@@ -1,3 +1,4 @@
+echo "Symlinking stows..."
 stow config
 mkdir -p ~/scripts
 stow scripts -t ~/scripts
