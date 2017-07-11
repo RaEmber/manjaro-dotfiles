@@ -10,7 +10,6 @@ rm .limepanelrc
 rm .nanorc
 rm .profile
 rm .tmux.conf
-rm .vimrc
 rm .Xclients
 rm .xinitrc
 rm .xprofile
