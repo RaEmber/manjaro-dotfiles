@@ -98,4 +98,4 @@ fi
 
 ttyctl -f
 
-source ~/sh/aliases
+source ~/scripts/aliases
