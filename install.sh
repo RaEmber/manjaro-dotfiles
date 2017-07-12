@@ -2,6 +2,7 @@ echo "Symlinking packages..."
 stow bspwm
 stow dmenu
 stow feh
+stow GTKmenu
 stow limepanel
 stow ls_colors
 stow nano
