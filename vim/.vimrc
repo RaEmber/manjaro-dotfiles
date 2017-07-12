@@ -1,6 +1,6 @@
 set nu
 syntax enable
 set ts=4
-colorscheme vimcol
+colorscheme vs
 
 set mouse=a
