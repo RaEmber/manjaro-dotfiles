@@ -1,15 +1,10 @@
 #! /bin/sh
-gap=15
-PANEL_HEIGHT=25
-export gap
-export PANEL_HEIGHT
-
 #This creates negative padding equal to window gap so that gaps are shown only between windows and not on desktop edges.
-bspc config window_gap $gap;
-bspc config top_padding $(($PANEL_HEIGHT-$gap))
-bspc config left_padding -$gap
-bspc config right_padding -$gap
-bspc config bottom_padding -$gap
+bspc config window_gap 40;
+bspc config top_padding 5;
+bspc config left_padding 8;
+bspc config right_padding 8;
+bspc config bottom_padding 5;
 
 #Various settings
 bspc config gapless_monocle     false #Default setup uses negative padding, and gapless monocle looks really weird like that
@@ -37,7 +32,7 @@ bspc config focus_follows_pointer true
 #Settings for manual splitting
 bspc config split_ratio         0.52
 
-bspc monitor -d 一 二 三 四 五 六 七 八 九 十
+#bspc monitor -d 一 二 三 四 五 六 七 八 九 十
 #bspc monitor -d i ii iii iv v vi vii viii ix x
 #bspc monitor -d One Two Three Four Five Six Seven Eight Nine Ten
 #bspc monitor -d I II III IV V VI VII VIII IX X

@@ -9,6 +9,6 @@ alias ipaddr="wget http://ipinfo.io/ip -q0 -"
 alias grep="grep --color=auto"
 alias egrep="egrep --color=auto"
 alias fgrep="fgrep --color=auto"
-alias xpid="xprop | grep PID | cu -d' ' -f3"
+alias xpid="xprop | grep PID | cut -d' ' -f3"
 alias pacman="pacman --color=auto"
 alias xclass=$'xprop | grep WM_CLASS | cut -d\'"\' -f2'

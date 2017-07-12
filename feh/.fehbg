@@ -1,2 +1,2 @@
 #!/bin/sh
-feh  --bg-scale '/usr/share/backgrounds/bspwm-help.jpg' 
+feh  --bg-fill '/home/manjaro/Bilder/wallpaper/402912485386088624landscape.jpg' 

@@ -99,5 +99,5 @@ cmd = roxterm -e bspwm-ruler
 icon = /usr/share/icons/Adwaita/scalable/apps/preferences-desktop-keyboard-shortcuts-symbolic.svg
 
 item = Choose wallpaper
-cmd = wallpaper
+cmd = nitrogen
 icon = /usr/share/icons/Adwaita/scalable/apps/preferences-desktop-wallpaper-symbolic.svg
