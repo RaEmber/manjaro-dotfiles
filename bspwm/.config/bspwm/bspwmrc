@@ -1,5 +1,5 @@
 #! /bin/sh
-#This creates negative padding equal to window gap so that gaps are shown only between windows and not on desktop edges.
+
 bspc config window_gap 40;
 bspc config top_padding 5;
 bspc config left_padding 8;

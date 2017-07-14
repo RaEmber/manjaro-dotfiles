@@ -1,6 +1,7 @@
 echo "Symlinking packages..."
 stow bspwm
 ~/.config/bspwm/bspwmrc
+stow compton
 stow dmenu
 stow feh
 stow GTKmenu

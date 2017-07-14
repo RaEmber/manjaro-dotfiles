@@ -1,6 +1,7 @@
 echo "Deleting defaults..."
 cd ~
 rm -r .config/bspwm/*
+rm .config/compton.conf
 rm .dmenurc
 rm .fehbg
 rm .config/GTKmenu/*
@@ -13,6 +14,7 @@ rm .bashrc
 rm .zshrc
 rm .config/sxhkd/sxhkdrc
 rm .tmux.conf
+rm .profile
 rm .Xresources
 rm .yaourtrc
 sudo rm /etc/slim*
