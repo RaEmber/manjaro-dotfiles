@@ -1,0 +1,4 @@
+#!/bin/bash
+
+source ~/.cache/wal/colors.sh
+echo $color1

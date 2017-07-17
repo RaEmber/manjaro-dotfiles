@@ -1,6 +1,7 @@
 echo "Symlinking packages..."
 stow bspwm
 ~/.config/bspwm/bspwmrc
+stow color
 stow compton
 stow dmenu
 stow feh
