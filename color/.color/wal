@@ -2,3 +2,9 @@
 
 source ~/.cache/wal/colors.sh
 echo $color1
+
+set_Xresources() {
+	ln -sf ../../../.cache/wal/colors.Xresources .Xresources
+}
+
+set_Xresources
