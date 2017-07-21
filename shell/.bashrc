@@ -35,4 +35,4 @@ colors() {
 
 [ -r /usr/share/bash-completion/bash_completion   ] && . /usr/share/bash-completion/bash_completion
 
-source ./.aliases
+source ~/.bin/load_aliases

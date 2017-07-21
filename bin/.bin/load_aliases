@@ -1,3 +1,5 @@
+#!/usr/bin/bash
+
 alias cp="cp -i"
 alias lsl="ls -lAh --color=auto"
 alias ls="ls -Ah --color=auto"

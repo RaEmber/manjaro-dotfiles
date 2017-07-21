@@ -1,0 +1,5 @@
+#!/bin/bash
+
+source ~/.cache/wal/colors.sh
+
+ln -sf ../.cache/wal/colors.Xresources ../.color/.Xresources

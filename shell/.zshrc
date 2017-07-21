@@ -54,7 +54,7 @@ bindkey '^H' backward-kill-word                                 # delete previou
 bindkey '^[[Z' undo                                             # Shift+tab undo last action
 
 ## Alias section 
-source ./.aliases
+source ~/.bin/load_aliases
 
 # Theming section  
 autoload -U compinit colors zcalc

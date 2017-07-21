@@ -1,4 +1,5 @@
 echo "Symlinking packages..."
+stow bin
 stow bspwm
 ~/.config/bspwm/bspwmrc
 stow color

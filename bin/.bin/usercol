@@ -1,0 +1,10 @@
+#!/bin/bash
+
+if [ $# -eq 1 ]
+then
+	echo -e "Chose \e[1;34;40m$1\e[m as new color source"
+	source ~/.color/$1.sh
+else
+	echo -e "Applicable colors:\e[1;34;40m"
+	ls ~/.color | sed "s/\.sh//g"
+fi
