@@ -1,5 +1,5 @@
 item = Terminal
-cmd = termite
+cmd = urxvt
 icon = NULL
 
 item = Browser

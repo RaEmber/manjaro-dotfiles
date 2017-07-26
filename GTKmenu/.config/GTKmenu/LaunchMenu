@@ -11,7 +11,7 @@ cmd = finder
 icon = /usr/share/icons/Adwaita/scalable/apps/preferences-system-search-symbolic.svg
 
 item = Terminal
-cmd = xterm
+cmd = urxvt
 icon = /usr/share/icons/Adwaita/scalable/apps/utilities-terminal-symbolic.svg
 
 item = Browser
@@ -27,11 +27,11 @@ cmd = default-editor
 icon = /usr/share/icons/Adwaita/scalable/apps/text-editor-symbolic.svg
 
 item = Package Manager
-cmd = xterm -e pacli
+cmd = urxvt -e pacli
 icon = /usr/share/icons/Adwaita/scalable/apps/system-software-install-symbolic.svg
 
 item = Main menu
-cmd = xterm -e bmenu
+cmd = urxvt -e bmenu
 icon = /usr/share/icons/Adwaita/scalable/apps/utilities-system-monitor-symbolic.svg
 
 separator
