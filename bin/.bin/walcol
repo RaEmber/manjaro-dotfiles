@@ -2,4 +2,4 @@
 
 source ~/.cache/wal/colors.sh
 
-ln -sf ../../../.cache/wal/colors.Xresources ../.color/.Xresources
+ln -sf ../../.cache/wal/colors.Xresources ../.color/.Xresources
