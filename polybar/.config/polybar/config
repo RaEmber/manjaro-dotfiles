@@ -1,63 +1,80 @@
-;=====================================================
-;
-;   To learn more about how to configure Polybar
-;   go to https://github.com/jaagr/polybar
-;
-;   The README contains alot of information
-;
-;=====================================================
-
 [colors]
-background = #ffffffff
-background-alt = #fff
-foreground = #72bca3
-foreground-alt = #73c3e4
-primary = #fff
-secondary = #e60053
-alert = #bd2c40
+foreground  = #beb4b4
+background  = #1c1a1a
+cursorColor = #beb4b4
+black1      = #262424
+black2      = #444040
+red1        = #c0392b
+red2        = #e74c3c
+green1      = #27ae39
+green2      = #2ecc55
+yellow1     = #eca30f
+yellow2     = #ffc30c
+blue1       = #295dc1
+blue2       = #2e7ef2
+magenta1    = #8a37ad
+magenta2    = #a156d7
+cyan1       = #169e9e
+cyan2       = #1bbbc4
+white1      = #867c7c
+white2      = #aca2a2
+
 
 [global/wm]
-; margin-top = 5
-; margin-bottom = 5
+margin-bottom = 2
+margin-top = 2
 
-[bar/lainbar]
-width = 100%
-; height = 20
 
-; background = ${colors.background}
-background = #00ffffff
+[bar/main]
+width = 80%
+height =30
+offset-y = 5
+
+background = ${colors.background}
 foreground = ${colors.foreground}
-; overline-size = 2
-; overline-color = #f00
-underline-size = 2
-underline-color = #ff69b4
-; border-bottom-size = 2
-; border-bottom-color = #333
 
-padding-left = 0
-padding-right = 2
-module-margin-left= 1
-module-margin-right = 2
-
-font-0 = Inconsolata g Powerline:pixelsize=8;0
-font-1 = Inconsolata g Powerline:size=6;-2
-font-2 = Font Awesome:pixelsize=10;0
+padding = 0
+module-margin = 0
 
 modules-left = bspwm xwindow
-modules-center = date 
-modules-right =  quodlibet 
+modules-center = 
+modules-right = backlight volume date battery
 
-tray-position = right
-tray-padding = 2
-tray-transparent = true
-; tray-background = #ccffffff
+tray-position = center
+tray-padding = 3
 
 wm-restack = bspwm
 
-;override-redirect = true
-
 scroll-up = bspwm-desknext
 scroll-down = bspwm-deskprev
+
+font-0 = Inconsolata g for Powerline:size=10;10
+font-1 = FontAwesome:size=10;-2
+
+
+[module/bspwm]
+type = internal/bpswm
+
+ws-icon-0     = 1;一
+ws-icon-1     = 2;二
+ws-icon-2     = 3;三
+ws-icon-3     = 4;四
+ws-icon-4     = 5;五
+ws-icon-5     = 6;六
+ws-icon-6     = 7;七
+ws-icon-7     = 8;八
+ws-icon-8     = 9;九
+ws-icon-9    = 10;十
+ws-icon-default = 空
+
+label-dimmed-foreground = ${colors.white1}
+label-dimmed-background = ${colors.black1}
+label-dimmed-underline = ${bar/top.background}
+
+label-focused            = %icon%
+label-focused-foreground = ${colors.white2}
+label-focused-background = ${colors.black2}
+label-focused-underline  = ${colors.blue2}
 
 
 [module/xwindow]
@@ -65,303 +82,94 @@ type = internal/xwindow
 label = %title:0:80:...%
 label-foreground = #fff
 
-[module/xkeyboard]
-type = internal/xkeyboatwmn-gitrd
-blacklist-0 = num lock
-label-layout = %{F#55}%{F-} %layout%
-label-layout-underline = ${colors.secondary}
-label-indicator-padding = 2
-label-indicator-margin = 1
-label-indicator-background = ${colors.secondary}
-label-indicator-underline = ${colors.secondary}
-
-[module/filesystem]
-type = internal/fs
-interval = 25
-
-mount-0 = /
-mount-1 = /home
-mount-2 = /invalid/mountpoint
-
-label-mounted = %mountpoint%: %percentage_free%
-
-label-unmounted = %mountpoint%: not mounted
-label-unmounted-foreground = ${colors.foreground-alt}
-
-[module/bspwm]
-type = internal/bspwm
-
-format = <label-state> <label-mode>
-
-
-label-focused = %name%
-label-focused-background = ${colors.background-alt}
-label-focused-underline= ${colors.foreground-alt}
-label-focused-padding = 2
-
-label-occupied = %name%
-label-occupied-padding = 2
-
-label-urgent = %name%!
-label-urgent-background = ${colors.alert}
-label-urgent-padding = 2
-
-label-empty = %name%
-label-empty-foreground = ${colors.primary}
-label-empty-padding = 2
-
-label-monocle = M
-label-tiled = T
-label-fullscreen = F
-label-floating = S
-label-pseudotiled = P
-label-locked = L
-label-locked-foreground = #73c3e4
-label-sticky = *
-label-sticky-foreground = #73c3e4
-label-private = P
-label-private-foreground = #73c3e4
-[module/i3]
-type = internal/i3
-format = <label-state> <label-mode>
-index-sort = true
-wrapping-scroll = false
-
-label-mode-padding = 2
-label-mode-foreground = #fff
-label-mode-background = ${colors.primary}
-
-label-focused = %index%
-label-focused-background = ${module/bspwm.label-focused-background}
-label-focused-underline = ${module/bspwm.label-focused-underline}
-label-focused-padding = ${module/bspwm.label-focused-padding}
-
-label-unfocused = %index%
-label-unfocused-padding = ${module/bspwm.label-occupied-padding}
-
-label-urgent = %index%!
-label-urgent-background = ${module/bspwm.label-urgent-background}
-label-urgent-padding = ${module/bspwm.label-urgent-padding}
-
-label-visible = %index%
-label-visible-background = ${self.label-focused-background}
-label-visible-underline = ${self.label-focused-underline}
-label-visible-padding = ${self.label-focused-padding}
-
-
-[module/mpd]
-type = internal/mpd
-
-format-online = <label-song>  <icon-prev> <icon-seekb> <icon-stop> <toggle> <icon-seekf> <icon-next>  <icon-repeat> <icon-random>
-
-label-song-maxlen = 25
-label-song-ellipsis = true
-
-icon-prev = 
-icon-seekb = 
-icon-stop =pasystray 
-icon-play = 
-icon-pause = 
-icon-next = 
-icon-seekf = 
-
-icon-random = 
-icon-repeat = 
-
-toggWhich ones le-on-foreground = ${colors.primary}
-toggle-off-foreground = #66
 
 [module/backlight]
-type = internal/xbacklight
+type = internal/backlight
 
-format = <label> <bar>
-label = BL
+card = intel_backlight
+enable-scroll = true
 
-bar-width = 10
-bar-indicator = │
-bar-indicator-foreground = #ff
-bar-indicator-font = 2
-bar-fill = ─
-bar-fill-font = 2
-bar-fill-foreground = #9f78e1
-bar-empty = ─
-bar-empty-font = 2
-bar-empty-foreground = ${colors.foreground-alt}
-
-[module/cpu]
-type = internal/cpu
-interval = 2
-format-prefix = " "
-format-prefix-foreground = ${colors.foreground-alt}
+format = <ramp> <label>
 label = %percentage%
 
-[module/memory]
-type = internal/memory
-interval = 2
-format-prefix = " "
-format-prefix-foreground = ${colors.foreground-alt}
-format-underline = #4bffdc
-label = %percentage_used%
+ramp-0 = 🌕
+ramp-1 = 🌔
+ramp-2 = 🌓
+ramp-3 = 🌒
+ramp-4 = 🌑
 
-[module/wlan]
-type = internal/network
-interface = wlp13s0 
-interval = 3.0
 
-format-connected =   <label-connected>
-
-label-connected = %essid%
-label-connected-alt = %essid%    %downspeed:9%   %upspeed:9%
-label-disconnected = %ifname% disconnected
-label-disconnected-foreground = ${colors.foreground-alt}
-
-ramp-signal-0 = 
-ramp-signal-1 = 
-ramp-signal-2 = 
-ramp-signal-3 = 
-ramp-signal-4 = 
-ramp-signal-foreground = ${colors.foreground-alt}
-
-[module/eth]
-type = internal/network
-interface = 
-interval = 3.0
-
-format-connected-underline = #55aa55
-format-connected-prefix = " "
-format-connected-foreground-foreground = ${colors.foreground-alt}
-label-connected = %local_ip%
-
-format-disconnected-underline = ${self.format-connected-underline}
-label-disconnected = %ifname% disconnected
-label-disconnected-foreground = ${colors.foreground-alt}
-
-[module/date]
-type = internal/date
-interval = 5
-
-date = %A
-date-alt = " %d/%m/%Y"
-
-time = %H:%M
-time-alt = 
-
-; format-prefix = 
-format-prefix-foreground = ${colors.foreground-alt}
-
-label = %date% %time%
-label-foreground = #fff
 [module/volume]
 type = internal/volume
 
-format-volume = <label-volume> <bar-volume>
-label-volume = 
-label-volume-foreground = ${root.foreground}
+format-volume = <ramp-volume>  <label-volume>
+format-muted = <label-muted>
+label-volume = %percentage%
+label-muted =   muted
+label-muted-foreground = #aaa
+format-volume-padding = 3
+format-muted-padding = 3
 
-format-muted-prefix = " "
-format-muted-foreground = ${colors.foreground-alt}
-label-muted = SOUND MUTED
+ramp-volume-0 = 
+ramp-volume-1 = 
+ramp-volume-2 = 
+ramp-headphones-0 = 
 
-bar-volume-width = 10
-bar-volume-foreground-0 = #55aa55
-bar-volume-foreground-1 = #55aa55
-bar-volume-foreground-2 = #55aa55
-bar-volume-foreground-3 = #55aa55
-bar-volume-foreground-4 = #55aa55
-bar-volume-foreground-5 = #f5a70a
-bar-volume-foreground-6 = #ff5555
-bar-volume-gradient = false
-bar-volume-indicator = │
-bar-volume-indicator-font = 2
-bar-volume-indicator-foreground = #ff
-bar-volume-fill = ─
-bar-volume-fill-font = 2
-bar-volume-empty = ─
-bar-volume-empty-font = 2
-bar-volume-empty-foreground = ${colors.foreground-alt}
+
+[module/date]
+type = internal/date
+
+; Seconds to sleep between updates
+interval = 1.0
+
+; See "man date" for details on how to format the date string
+; NOTE: if you want to use syntax tags here you need to use %%{...}
+date = %a %b %d, 
+
+; Optional time format
+time = %H:%M
+
+; if `date-alt` or `time-alt` is defined, clicking
+; the module will toggle between formats
+date-alt = %A, %d %B %Y
+time-alt = %H:%M:%S
+
+label = %date% %time%
+format =    <label>
+;format-background = #ddffffff
+format-background = #88000000
+;format-foreground = #333
+format-padding = 3
 
 [module/battery]
 type = internal/battery
+
+full-at = 99
+
 battery = BAT0
 adapter = AC0
-full-at = 98
 
-format-charging = <animation-charging> <label-charging>
-; format-charging-underline = #ffb52a
+poll-interval = 5
 
-format-discharging = <ramp-capacity> <label-discharging>
-; format-discharging-underline = ${self.format-charging-underline}
-
-format-full-prefix = " "
-format-full-prefix-foreground = ${colors.foreground}
-; format-full-underline = ${self.format-charging-underline}
+format-charging = <animation-charging>  <label-charging>
+format-discharging = <ramp-capacity>  <label-discharging>
+format-full = <ramp-capacity>  <label-full>
+label-charging = %percentage%
+label-discharging = %percentage%
+label-full = %percentage%
+format-charging-padding = 3
+format-discharging-padding = 3
+format-full-padding = 3
 
 ramp-capacity-0 = 
-ramp-capacity-1 = 
-ramp-capacity-2 = 
-ramp-capacity-foreground = ${colors.foreground-alt}
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
 
 animation-charging-0 = 
-animation-charging-1 = 
-animation-charging-2 = 
-animation-charging-foreground = ${colors.foreground-alt}
+animation-charging-1 = 
+animation-charging-2 = 
+animation-charging-3 = 
+animation-charging-4 = 
 animation-charging-framerate = 750
-
-[module/temperature]
-type = internal/temperature
-thermal-zone = 0
-warn-temperature = 80
-
-format = <ramp> <label>
-format-warn = <ramp> <label-warn>
-
-label = %temperature%
-label-warn = %temperature%
-label-warn-foreground = ${colors.secondary}
-label-warn-background = ${colors.background-alt}
-
-ramp-0 = 
-ramp-1 = 
-ramp-2 = 
-; ramp-foreground = ${colors.foreground-alt}
-
-[module/powermenu]
-type = custom/menu
-
-format-spacing = 1
-
-label-open =  power
-label-open-foreground = ${colors.secondary}
-label-close =  cancel
-label-close-foreground = ${colors.secondary}
-label-separator = |
-label-separator-foreground = ${colors.foreground-alt}
-
-menu-0-0 = reboot
-menu-0-0-exec = menu-open-1
-menu-0-1 = power off
-menu-0-1-exec = menu-open-2
-
-menu-1-0 = cancel
-menu-1-0-exec = menu-open-0
-menu-1-1 = reboot
-menu-1-1-exec = sudo reboot
-
-menu-2-0 = power off
-menu-2-0-exec = sudo poweroff
-menu-2-1 = cancel
-menu-2-1-exec = menu-open-0
-
-[module/quodlibet]
-type = custom/script
-exec = python ~/scripts/get_quodlibet_song_data.py
-exec-if = pgrep quodlibet || pgrep spotify
-format = <label> 
-interval = 0.2
-label = %output%
-; label-foreground = ${colors.foreground-alt}
-label-foreground = #fff
-
-click-left = quodlibet --play-pause || dbus-send --type=method_call --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause
-
-; vim:ft=dosini
