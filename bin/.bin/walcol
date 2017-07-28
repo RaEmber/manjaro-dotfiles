@@ -1,8 +1,13 @@
 #!/bin/bash
 
 cd ~/Bilder/wallpaper
+if [ $(ls -l | wc -l) == 2 ]; then
+	echo "" > ~/.cache/wal/wal
+fi
 wal -i .
 file=$(cat ~/.cache/wal/wal)
-echo "I chose the following file: $file"
+mkdir -p ~/.color/wal/schemes
 cd ~/.color/wal/schemes
-ln -s ../../../Bilder/wallpaper/$file $file
+if [ ! -L $file ]; then
+	ln -s ../../../Bilder/wallpaper/$file $file
+fi
