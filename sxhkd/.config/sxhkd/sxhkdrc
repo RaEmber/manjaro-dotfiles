@@ -262,9 +262,9 @@ super + p
 	dmenu_recent -h $PANEL_HEIGHT -fn 'xos4 Terminus:size=15' -i
 
 super + shift + Return
-	xterm
+	urxvt
 super + z
-	xterm
+	urxvt
 
 super + shift + z
 	open-terminal-here
