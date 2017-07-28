@@ -20,18 +20,20 @@ white1      = #867c7c
 white2      = #aca2a2
 
 
-
+;==============================================
 [global/wm]
 margin-bottom = 0
 margin-top = 0
 
 
-
+;==============================================
 [bar/main]
 width    = 90%
 height   = 30
 offset-y = 10
 offset-x = 5%
+
+underline-size = 2
 
 background = ${colors.background}
 foreground = ${colors.foreground}
@@ -55,10 +57,10 @@ font-1 = M+ 1c:pixelsize=12;2
 font-2 = FontAwesome:size=10;-2
 
 
-
+;==============================================
 [module/bspwm]
 type = internal/bspwm
-label-format     = <label-state> <label-mode>
+label-format     = <label-state> _<label-mode>_
 
 label-focused            = %name%
 label-focused-foreground = ${colors.white2}
@@ -68,6 +70,7 @@ label-focused-padding    = 2
 
 label-occupied           = %name%
 label-occupied-padding   = 2
+label-occupied-underline = ${colors.white2}
 
 label-urgent             = %name%
 label-urgent-background  = ${colors.red2}
@@ -78,6 +81,9 @@ label-empty-foreground   = ${colors.white1}
 label-empty-padding      = 2
 ;label-empty              = 
 ;label-empty-padding      = 0
+
+label-mode-foreground    = ${colors.foreground}
+label-mode-padding       = 2
 
 label-monocle     = M
 label-tiled       = T
@@ -94,24 +100,24 @@ label = %title%
 label-foreground = ${colors.foreground}
 
 
+;==============================================
+[module/backlight]
+type = internal/backlight
 
-;[module/backlight]
-;type = internal/backlight
-;
-;card = intel_backlight
-;enable-scroll = true
-;
-;format = <ramp> <label>
-;label = %percentage%
-;
-;ramp-0 = 🌕
-;ramp-1 = 🌔
-;ramp-2 = 🌓
-;ramp-3 = 🌒
-;ramp-4 = 🌑
+card = intel_backlight
+enable-scroll = true
+
+format = <ramp> <label>
+label = %percentage%
+
+ramp-0 = 🌕
+ramp-1 = 🌔
+ramp-2 = 🌓
+ramp-3 = 🌒
+ramp-4 = 🌑
 
 
-
+;==============================================
 [module/volume]
 type = internal/volume
 
@@ -142,7 +148,7 @@ bar-volume-empty-font = 2
 bar-volume-empty-foreground = ${colors.foreground}
 
 
-
+;==============================================
 [module/date]
 type = internal/date
 interval = 1.0
@@ -156,7 +162,7 @@ format-foreground = ${colors.foreground}
 format-padding = 3
 
 
-
+;==============================================
 [module/battery]
 type = internal/battery
 
@@ -191,18 +197,18 @@ animation-charging-4 = 
 animation-charging-framerate = 750
 
 
-
+;==============================================
 [module/powermenu]
 type = custom/menu
  
 format-spacing = 1
  
 label-open = ? power
-label-open-foreground = ${colors.secondary}
+label-open-foreground = ${colors.foreground}
 label-close = ? cancel
-label-close-foreground = ${colors.secondary}
+label-close-foreground = ${colors.foreground}
 label-separator = |
-label-separator-foreground = ${colors.foreground-alt}
+label-separator-foreground = ${colors.foreground}
  
 menu-0-0 = reboot
 menu-0-0-exec = menu-open-1
