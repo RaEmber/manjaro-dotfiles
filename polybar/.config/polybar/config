@@ -39,8 +39,8 @@ padding-right = 2
 module-margin-left= 1
 module-margin-right = 2
 
-font-0 = M+ 1c:pixelsize=8;0
-font-1 = unifont:size=6:heavy:fontformat=truetype;-2
+font-0 = Inconsolata g Powerline:pixelsize=8;0
+font-1 = Inconsolata g Powerline:size=6;-2
 font-2 = Font Awesome:pixelsize=10;0
 
 modules-left = bspwm xwindow
