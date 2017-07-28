@@ -42,7 +42,7 @@ module-padding = 1
 
 modules-left = bspwm xwindow
 modules-center = 
-modules-right = backlight volume date battery
+modules-right = backlight volume date battery powermenu
 tray-position = center
 tray-padding = 3
 
@@ -111,6 +111,7 @@ ramp-3 = 🌒
 ramp-4 = 🌑
 
 
+
 [module/volume]
 type = internal/volume
 
@@ -141,6 +142,7 @@ bar-volume-empty-font = 2
 bar-volume-empty-foreground = ${colors.foreground}
 
 
+
 [module/date]
 type = internal/date
 interval = 1.0
@@ -153,6 +155,7 @@ label = %date% %time%
 format =    <label>
 format-background = #88000000
 format-padding = 3
+
 
 
 [module/battery]
@@ -187,3 +190,32 @@ animation-charging-2 = 
 animation-charging-3 = 
 animation-charging-4 = 
 animation-charging-framerate = 750
+
+
+
+[module/powermenu]
+type = custom/menu
+ 
+format-spacing = 1
+ 
+label-open = ? power
+label-open-foreground = ${colors.secondary}
+label-close = ? cancel
+label-close-foreground = ${colors.secondary}
+label-separator = |
+label-separator-foreground = ${colors.foreground-alt}
+ 
+menu-0-0 = reboot
+menu-0-0-exec = menu-open-1
+menu-0-1 = power off
+menu-0-1-exec = menu-open-2
+ 
+menu-1-0 = cancel
+menu-1-0-exec = menu-open-0
+menu-1-1 = reboot
+menu-1-1-exec = sudo reboot
+ 
+menu-2-0 = power off
+menu-2-0-exec = sudo poweroff
+menu-2-1 = cancel
+menu-2-1-exec = menu-open-0
