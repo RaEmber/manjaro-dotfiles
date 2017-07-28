@@ -20,67 +20,79 @@ white1      = #867c7c
 white2      = #aca2a2
 
 
+
 [global/wm]
-margin-bottom = 2
-margin-top = 2
+margin-bottom = 0
+margin-top = 0
+
 
 
 [bar/main]
-width = 80%
-height =30
-offset-y = 5
+width  = 90%
+height = 30
+offset-y = 10
+offset-x = 5%
 
 background = ${colors.background}
 foreground = ${colors.foreground}
 
 padding = 0
-module-margin = 0
+module-margin = 1
+module-padding = 1
 
 modules-left = bspwm xwindow
 modules-center = 
 modules-right = backlight volume date battery
-
 tray-position = center
 tray-padding = 3
 
 wm-restack = bspwm
-
 scroll-up = bspwm-desknext
 scroll-down = bspwm-deskprev
 
-font-0 = Inconsolata g for Powerline:size=10;10
-font-1 = FontAwesome:size=10;-2
+font-0 = Inconsolata for Powerline:style=Medium:size=12;2
+font-1 = M+ 1c:pixelsize=12;2
+font-2 = FontAwesome:size=10;-2
+
 
 
 [module/bspwm]
-type = internal/bpswm
+type = internal/bspwm
+label-format     = <label-state> <label-mode>
 
-ws-icon-0     = 1;一
-ws-icon-1     = 2;二
-ws-icon-2     = 3;三
-ws-icon-3     = 4;四
-ws-icon-4     = 5;五
-ws-icon-5     = 6;六
-ws-icon-6     = 7;七
-ws-icon-7     = 8;八
-ws-icon-8     = 9;九
-ws-icon-9    = 10;十
-ws-icon-default = 空
-
-label-dimmed-foreground = ${colors.white1}
-label-dimmed-background = ${colors.black1}
-label-dimmed-underline = ${bar/top.background}
-
-label-focused            = %icon%
+label-focused            = %name%
 label-focused-foreground = ${colors.white2}
 label-focused-background = ${colors.black2}
 label-focused-underline  = ${colors.blue2}
+label-focused-padding    = 2
+
+label-occupied           = %name%
+label-occupied-padding   = 2
+
+label-urgent             = %name%
+label-urgent-background  = ${colors.red2}
+label-urgent-padding     = 2
+
+label-empty              = %name%
+label-empty-foreground   = ${colors.white1}
+label-empty-padding      = 2
+;label-empty              = 
+;label-empty-padding      = 0
+
+label-monocle     = M
+label-tiled       = T
+label-fullscreen  = F
+label-floating    = S
+label-pseudotiled = P
+label-locked      = L
+
 
 
 [module/xwindow]
 type = internal/xwindow
 label = %title:0:80:...%
 label-foreground = #fff
+
 
 
 [module/backlight]
@@ -118,28 +130,17 @@ ramp-headphones-0 = 
 
 [module/date]
 type = internal/date
-
-; Seconds to sleep between updates
 interval = 1.0
-
-; See "man date" for details on how to format the date string
-; NOTE: if you want to use syntax tags here you need to use %%{...}
 date = %a %b %d, 
-
-; Optional time format
 time = %H:%M
-
-; if `date-alt` or `time-alt` is defined, clicking
-; the module will toggle between formats
 date-alt = %A, %d %B %Y
 time-alt = %H:%M:%S
 
 label = %date% %time%
 format =    <label>
-;format-background = #ddffffff
 format-background = #88000000
-;format-foreground = #333
 format-padding = 3
+
 
 [module/battery]
 type = internal/battery
