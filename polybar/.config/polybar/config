@@ -1,4 +1,5 @@
-﻿[colors]
+﻿
+[colors]
 foreground  = #beb4b4
 background  = #1c1a1a
 cursorColor = #beb4b4
@@ -18,7 +19,6 @@ cyan1       = #169e9e
 cyan2       = #1bbbc4
 white1      = #867c7c
 white2      = #aca2a2
-
 
 ;==============================================
 [global/wm]
@@ -54,7 +54,7 @@ scroll-down = bspwm-deskprev
 
 font-0 = Inconsolata for Powerline:style=Medium:size=12;2
 font-1 = M+ 1c:pixelsize=12;2
-font-2 = FontAwesome:style=Regular:size=10;-2
+font-2 = FontAwesome:style=Regular:size=10;2
 
 
 ;==============================================
