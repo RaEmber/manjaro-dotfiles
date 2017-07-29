@@ -42,9 +42,9 @@ padding        = 0
 module-margin  = 1
 module-padding = 1
 
-modules-left = bspwm
-modules-center = xwindow
-modules-right = backlight eth volume date battery powermenu
+modules-left = bspwm xwindow
+modules-center = mpd
+modules-right = cpu backlight eth volume date battery powermenu
 tray-position = center
 tray-padding = 3
 
@@ -93,7 +93,7 @@ label-pseudotiled = P
 label-locked      = L
 
 
-
+;==============================================
 [module/xwindow]
 type = internal/xwindow
 label = %title%
@@ -250,4 +250,32 @@ menu-2-0-exec = sudo poweroff
 menu-2-1 = cancel
 menu-2-1-exec = menu-open-0
 
+
+;==============================================
+[module/mpd]
+type = internal/mpd
+format-online = <icon-prev> <icon-stop> <toggle> <icon-next>  <icon-repeat> <icon-random>  <bar-progress> <label-time>  <label-song>
+
+icon-play = 
+icon-pause = 
+icon-stop = 
+icon-prev = 
+icon-next = 
+icon-random = 
+icon-repeat = 
+
+toggle-on-foreground =
+toggle-off-foreground = #55
+
+bar-progress-width = 45
+bar-progress-format = %{A4:mpdseek+2: A5:mpdseek-2:}%fill%%indicator%%empty%%{A A}
+bar-progress-indicator = |
+bar-progress-indicator-foreground = #ff
+bar-progress-indicator-font = 3
+bar-progress-fill = ─
+bar-progress-fill-foreground = #bb
+bar-progress-fill-font = 3
+bar-progress-empty = ─
+bar-progress-empty-font = 3
+bar-progress-empty-foreground = #44
 ; vim:ft=dosini
