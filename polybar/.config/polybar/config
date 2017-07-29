@@ -1,4 +1,4 @@
-[colors]
+﻿[colors]
 foreground  = #beb4b4
 background  = #1c1a1a
 cursorColor = #beb4b4
@@ -42,9 +42,9 @@ padding        = 0
 module-margin  = 1
 module-padding = 1
 
-modules-left = bspwm xwindow
-modules-center = 
-modules-right = backlight volume date battery powermenu
+modules-left = bspwm
+modules-center = xwindow
+modules-right = backlight eth volume date battery powermenu
 tray-position = center
 tray-padding = 3
 
@@ -54,7 +54,7 @@ scroll-down = bspwm-deskprev
 
 font-0 = Inconsolata for Powerline:style=Medium:size=12;2
 font-1 = M+ 1c:pixelsize=12;2
-font-2 = FontAwesome:size=10;-2
+font-2 = FontAwesome:style=Regular:size=10;-2
 
 
 ;==============================================
@@ -118,17 +118,42 @@ ramp-4 = 🌑
 
 
 ;==============================================
+[module/eth]
+type = internal/network
+interface =
+interval = 3.0
+ 
+format-connected-underline = #55aa55
+format-connected-prefix = " "
+format-connected-foreground-foreground = ${colors.foreground-alt}
+label-connected = %local_ip%
+ 
+format-disconnected-underline = ${self.format-connected-underline}
+label-disconnected = %ifname% disconnected
+label-disconnected-foreground = ${colors.foreground-alt}
+
+
+;==============================================
+[module/cpu]
+type = internal/cpu
+interval = 2
+format-prefix = " "
+format-prefix-foreground = ${colors.foreground-alt}
+label = %percentage%
+
+
+;==============================================
 [module/volume]
 type = internal/volume
-
+ 
 format-volume = <label-volume> <bar-volume>
-label-volume = ?
-label-volume-foreground = ${root.foreground}
-
-format-muted-prefix = "? "
+label-volume = 
+label-volume-foreground = ${colors.foreground}
+ 
+format-muted-prefix = " "
 format-muted-foreground = ${colors.foreground}
 label-muted = SOUND MUTED
-
+ 
 bar-volume-width = 10
 bar-volume-foreground-0 = #55aa55
 bar-volume-foreground-1 = #55aa55
@@ -138,12 +163,12 @@ bar-volume-foreground-4 = #55aa55
 bar-volume-foreground-5 = #f5a70a
 bar-volume-foreground-6 = #ff5555
 bar-volume-gradient = false
-bar-volume-indicator = �
+bar-volume-indicator = │
 bar-volume-indicator-font = 2
 bar-volume-indicator-foreground = #ff
-bar-volume-fill = -
+bar-volume-fill = ─
 bar-volume-fill-font = 2
-bar-volume-empty = -
+bar-volume-empty = ─
 bar-volume-empty-font = 2
 bar-volume-empty-foreground = ${colors.foreground}
 
@@ -203,9 +228,9 @@ type = custom/menu
  
 format-spacing = 1
  
-label-open = ? power
+label-open =  power
 label-open-foreground = ${colors.foreground}
-label-close = ? cancel
+label-close =  cancel
 label-close-foreground = ${colors.foreground}
 label-separator = |
 label-separator-foreground = ${colors.foreground}

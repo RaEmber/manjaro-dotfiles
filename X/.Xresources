@@ -6,10 +6,10 @@ Xft.autohint: false
 Xft.hintstyle: hintslight
 Xft.lcdfilter: lcddefault
 
-#define normal     xft:Inconsolata for Powerline:style=Medium:size=12
-#define bold       xft:Inconsolata for Powerline:style=BoldForPowerline:size=12
-#define italic     xft:Inconsolata for Powerline:style=Medium:size=12
-#define bolditalic xft:Inconsolata for Powerline:style=BoldForPowerline:size=12
+#define normal     xft:Inconsolata for Powerline:style=Medium:size=12,xft:Font Awesome:style=Regular:size=12
+#define bold       xft:Inconsolata for Powerline:style=BoldForPowerline:size=12,xft:Font Awesome:style=Regular:size=12
+#define italic     xft:Inconsolata for Powerline:style=Medium:size=12,xft:Font Awesome:style=Regular:size=12
+#define bolditalic xft:Inconsolata for Powerline:style=BoldForPowerline:size=12,xft:Font Awesome:style=Regular:size=12
 
 #include ".color/colors.Xresources"
 
