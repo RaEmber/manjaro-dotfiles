@@ -14,24 +14,18 @@ Xft.lcdfilter: lcddefault
 #include ".color/colors.Xresources"
 
 
-URxvt*termName:                         screen-256color
+URxvt*termName:                         rxvt-256color
 URxvt*loginShell:                       true
-URxvt*scrollColor:                      #777777
-URxvt*scrollstyle:                      plain
-URxvt*scrollTtyKeypress:                true
-URxvt*scrollTtyOutput:                  false
-URxvt*scrollWithBuffer:                 false
+!URxvt*scrollWithBuffer:                 false
 URxvt*secondaryScreen:                  true
 URxvt*secondaryScroll:                  true
-URxvt*skipScroll:                       true
+!URxvt*skipScroll:                       true
 URxvt*scrollBar:                        false
-URxvt*scrollBar_right:                  false
-URxvt*scrollBar_floating:               false
 URxvt*utmpInhibit:                      false
 URxvt*urgentOnBell:                     false
 URxvt*visualBell:                       true
 URxvt*mapAlert:                         true
-URxvt*mouseWheelScrollPage:             false
+URxvt*mouseWheelScrollPage:             true
 URxvt*colorUL:                          yellow
 URxvt*underlineColor:                   yellow
 
@@ -42,8 +36,11 @@ URxvt*boldItalicFont:                   bolditalic
 
 URxvt*saveLines:                        8192
 URxvt*buffered:                         true
-URxvt*hold:                             false
-URxvt*internalBorder:
+URxvt*hold:                             true
+URxvt*internalBorder:                   0
 URxvt*print-pipe:                       cat > $HOME/$(echo urxvt.dump.$(date +'%Y%M%d%H%m%S'))
-URxvt*perl-ext-common:
-URxvt*perl-ext:
+URxvt.perl-ext:
+URxvt.perl-ext-common:                  default,clipboard
+URxvt.keysym.Shift-Control-C:           perl:clipboard:copy
+URxvt.keysym.Shift-Control-V:           perl:clipboard:paste
+URxvt.clipboard.autocopy:               true
