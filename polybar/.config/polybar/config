@@ -1,4 +1,8 @@
 ﻿
+[settings]
+wlaniface = wlan0
+ethiface = ens33
+
 [colors]
 foreground  = ${xrdb:foreground}
 background  = ${xrdb:background}
@@ -51,7 +55,7 @@ module-padding = 1
 
 modules-left = bspwm xwindow
 modules-center = mpd
-modules-right = cpu temperature memory filesystem redshift backlight wlan eth volume date battery powermenu
+modules-right = cpu temperature memory filesystem backlight wlan eth volume date battery powermenu
 tray-position = center
 tray-padding = 3
 
@@ -128,32 +132,24 @@ label-foreground = ${colors.foreground}
 
 ;==============================================
 [module/backlight]
-type = internal/backlight
+type = internal/xbacklight
 
-card = intel_backlight
-enable-scroll = true
-
-format = <ramp> <label>
-label = %percentage%
-
-ramp-0 = 🌕
-ramp-1 = 🌔
-ramp-2 = 🌓
-ramp-3 = 🌒
-ramp-4 = 🌑
+format = <label>
+label = " %percentage%"
 
 
 ;==============================================
 [module/wlan]
 type = internal/network
-interface = wlan0
+interface = ${settings.wlaniface}
 interval = 3.0
 
 format-connected-padding = 1
 format-disconnected-padding = 1
 
-format-connected = <animation-packetloss><label-connected>
+format-connected = <label-connected>
 format-connected-underline = ${colors.green1}
+format-packetloss = <animation-packetloss>
 format-disconnected-underline = ${colors.red1}
 
 label-connected = "%{A1:urxvt:} %essid% %signal% %downspeed%%upspeed%%{A}"
@@ -171,9 +167,9 @@ animation-packetloss-framerate = 500
 [module/eth]
 type = internal/network
 inherit = module/wlan
-interface = ens33
+interface = ${settings.ethiface}
 
-label-connected = "%{A1:urxvt:} %downspeed%%upspeed% %linkspeed%%{A}"
+label-connected = "%{A1:urxvt:} %downspeed%%upspeed%%{A}"
 label-disconnected = ""
 
 
@@ -212,40 +208,21 @@ label = %percentage%
 ;==============================================
 [module/volume]
 type = internal/volume
- 
-format-volume = <label-volume> <bar-volume>
-label-volume = ""
+
+format-volume = <label-volume>
+label-volume = " %percentage%"
 label-volume-foreground = ${colors.foreground}
- 
-format-muted-prefix = " "
+
+label-muted = " "
 format-muted-foreground = ${colors.foreground}
-label-muted = M
- 
-bar-volume-width = 10
-bar-volume-foreground-0 = ${colors.blue1}
-bar-volume-foreground-1 = ${colors.blue2}
-bar-volume-foreground-2 = ${colors.green1}
-bar-volume-foreground-3 = ${colors.green2}
-bar-volume-foreground-4 = ${colors.yellow1}
-bar-volume-foreground-5 = ${colors.red1}
-bar-volume-foreground-6 = ${colors.red2}
-bar-volume-gradient = false
-bar-volume-indicator = │
-bar-volume-indicator-font = 2
-bar-volume-indicator-foreground = #ff
-bar-volume-fill = ─
-bar-volume-fill-font = 2
-bar-volume-empty = ─
-bar-volume-empty-font = 2
-bar-volume-empty-foreground = ${colors.foreground}
 
 
 ;==============================================
 [module/date]
 type = internal/date
-date-alt =  " %A %H:%M"
-date =  " %b/%d/%y %H:%M"
-interval = 5
+date =  " %H:%M"
+date-alt =  " %H:%M:%S %A %d-%m-%y"
+interval = 1
 
 format-underline = ${colors.white1}
 format-foreground = ${colors.foreground}
@@ -311,6 +288,7 @@ menu-0-5 =  ""
 
 label-open = ""
 label-close =
+label-seperator = "│"
 
 
 ;==============================================
@@ -332,14 +310,14 @@ toggle-off-foreground = #55
 bar-progress-width = 45
 bar-progress-format = %{A4:mpdseek+2: A5:mpdseek-2:}%fill%%indicator%%empty%%{A A}
 bar-progress-indicator = |
-bar-progress-indicator-foreground = #ff
+bar-progress-indicator-foreground = ${colors.foreground}
 bar-progress-indicator-font = 3
 bar-progress-fill = ─
-bar-progress-fill-foreground = #bb
+bar-progress-fill-foreground = ${colors.foreground}
 bar-progress-fill-font = 3
 bar-progress-empty = ─
 bar-progress-empty-font = 3
-bar-progress-empty-foreground = #44
+bar-progress-empty-foreground = ${colors.white1}
 
 
 ;==============================================
@@ -365,14 +343,6 @@ interval = 2
 label = "%{F${colors.foreground}  %percentage_used% %{F-}"
 label-foreground = ${colors.foreground}
 label-background = ${colors.background}
-
-
-;==============================================
-[module/redshift]
-type = custom/script
-interval = 5
-
-exec = ~/.config/polybar/redshift.sh
 
 
 ; vim:ft=dosini
