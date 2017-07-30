@@ -26,12 +26,6 @@ white2      = ${xrdb:color15}
 
 
 ;==============================================
-[settings]
-wlaniface = wlan0
-ethiface = ens33
-
-
-;==============================================
 [global/wm]
 margin-bottom = 0
 margin-top = 0
@@ -87,15 +81,10 @@ label-urgent             = %name%
 label-urgent-background  = ${colors.red2}
 label-urgent-padding     = 1
 
-label-empty              = %name%
-label-empty-foreground   = ${colors.white1}
-label-empty-padding      = 1
-;label-empty              = 
-;label-empty-padding      = 0
-
-;label-mode-foreground    = ${colors.green0}
-;label-mode-background    = ${colors.red1}
-;label-mode-padding       = 20
+;label-empty              = %name%
+;label-empty-padding      = 1
+label-empty              = 
+label-empty-padding      = 0
 
 label-monocle     = M
 label-tiled       = T
