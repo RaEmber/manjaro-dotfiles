@@ -60,30 +60,31 @@ font-2 = FontAwesome:style=Regular:size=10;2
 ;==============================================
 [module/bspwm]
 type = internal/bspwm
-label-format     = <label-state> _<label-mode>_
+format     = <label-state><label-mode>
 
 label-focused            = %name%
 label-focused-foreground = ${colors.white2}
 label-focused-background = ${colors.black2}
 label-focused-underline  = ${colors.blue2}
-label-focused-padding    = 2
+label-focused-padding    = 1
 
 label-occupied           = %name%
-label-occupied-padding   = 2
+label-occupied-padding   = 1
 label-occupied-underline = ${colors.white2}
 
 label-urgent             = %name%
 label-urgent-background  = ${colors.red2}
-label-urgent-padding     = 2
+label-urgent-padding     = 1
 
 label-empty              = %name%
 label-empty-foreground   = ${colors.white1}
-label-empty-padding      = 2
+label-empty-padding      = 1
 ;label-empty              = 
 ;label-empty-padding      = 0
 
-label-mode-foreground    = ${colors.foreground}
-label-mode-padding       = 2
+;label-mode-foreground    = ${colors.green0}
+;label-mode-background    = ${colors.red1}
+;label-mode-padding       = 20
 
 label-monocle     = M
 label-tiled       = T
@@ -91,12 +92,30 @@ label-fullscreen  = F
 label-floating    = S
 label-pseudotiled = P
 label-locked      = L
+label-sticky      = *
+lable-private     = p
+label-monocle-background     = ${colors.black1}
+label-tiled-background       = ${colors.black1}
+label-fullscreen-background  = ${colors.black1}
+label-floating-background    = ${colors.black1}
+label-pseudotiled-background = ${colors.black1}
+label-locked-background      = ${colors.black1}
+label-sticky-background      = ${colors.black1}
+lable-private-background     = ${colors.black1}
+label-monocle-padding     = 2
+label-tiled-padding       = 2
+label-fullscreen-padding  = 2
+label-floating-padding    = 2
+label-pseudotiled-padding = 2
+label-locked-padding      = 2
+label-sticky-padding      = 2
+lable-private-padding     = 2
 
 
 ;==============================================
 [module/xwindow]
 type = internal/xwindow
-label = %title%
+label = %title:0:80:...%
 label-foreground = ${colors.foreground}
 
 
@@ -120,7 +139,7 @@ ramp-4 = 🌑
 ;==============================================
 [module/wlan]
 type = internal/network
-interface = ens33
+interface = wlan0
 interval = 3.0
 
 format-connected-padding = 1
@@ -139,9 +158,9 @@ label-disconnected-foreground = ${colors.foreground}
 [module/eth]
 type = internal/network
 inherit = module/wlan
-interface = wlan0
+interface = ens33
 
-label-connected =  %local_ip%
+label-connected = %{A1:urxvt:} %local_ip%%{A}
 label-disconnected = 
 
 
@@ -216,6 +235,7 @@ date =   %b/%d/%y %H:%M
 interval = 5
 
 format-underline = ${colors.white1}
+format-foreground = ${colors.foreground}
 format-background = ${colors.background}
 format-padding = 2
 
@@ -260,6 +280,7 @@ animation-charging-framerate = 750
 type = custom/menu
 
 format = <label-toggle> <menu>
+format-foreground = ${colors.foreground}
 format-underline = ${colors.white1}
 format-padding = 1
 
