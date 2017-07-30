@@ -20,6 +20,13 @@ cyan2       = ${xrdb:color14}
 white1      = ${xrdb:color7}
 white2      = ${xrdb:color15}
 
+
+;==============================================
+[settings]
+wlaniface = wlan0
+ethiface = ens33
+
+
 ;==============================================
 [global/wm]
 margin-bottom = 0
@@ -44,7 +51,7 @@ module-padding = 1
 
 modules-left = bspwm xwindow
 modules-center = mpd
-modules-right = cpu temperature memory filesystem backlight wlan eth volume date battery powermenu
+modules-right = cpu temperature memory filesystem redshift backlight wlan eth volume date battery powermenu
 tray-position = center
 tray-padding = 3
 
@@ -145,13 +152,19 @@ interval = 3.0
 format-connected-padding = 1
 format-disconnected-padding = 1
 
-format-connected = <label-connected>
+format-connected = <animation-packetloss><label-connected>
 format-connected-underline = ${colors.green1}
 format-disconnected-underline = ${colors.red1}
 
-label-connected = %essid%
-label-disconnected = 
+label-connected = "%{A1:urxvt:} %essid% %signal% %downspeed%%upspeed%%{A}"
+label-disconnected = ""
 label-disconnected-foreground = ${colors.foreground}
+
+animation-packetloss-0 = "⚠"
+animation-packetloss-0-foreground = ${colors.red1}
+animation-packetloss-1 = "📶"
+animation-packetloss-1-foreground = ${colors.foreground}
+animation-packetloss-framerate = 500
 
 
 ;==============================================
@@ -160,8 +173,8 @@ type = internal/network
 inherit = module/wlan
 interface = ens33
 
-label-connected = %{A1:urxvt:} %local_ip%%{A}
-label-disconnected = 
+label-connected = "%{A1:urxvt:} %downspeed%%upspeed% %linkspeed%%{A}"
+label-disconnected = ""
 
 
 ;==============================================
@@ -178,13 +191,13 @@ format-warn-underline = ${colors.red}
 format-padding = 1
 format-warn-padidng = 1
 
-label =  %temperature%
-label-warn =  %temperature%
+label = " %temperature%"
+label-warn = " %temperature%"
 
-ramp-0 = 
-ramp-1 = 
-ramp-2 = 
-ramp-foreground = #55
+ramp-0 = ""
+ramp-1 = ""
+ramp-2 = ""
+ramp-foreground = ${colors.yellow1}
 
 
 ;==============================================
@@ -201,21 +214,21 @@ label = %percentage%
 type = internal/volume
  
 format-volume = <label-volume> <bar-volume>
-label-volume = 
+label-volume = ""
 label-volume-foreground = ${colors.foreground}
  
 format-muted-prefix = " "
 format-muted-foreground = ${colors.foreground}
-label-muted = SOUND MUTED
+label-muted = M
  
 bar-volume-width = 10
-bar-volume-foreground-0 = #55aa55
-bar-volume-foreground-1 = #55aa55
-bar-volume-foreground-2 = #55aa55
-bar-volume-foreground-3 = #55aa55
-bar-volume-foreground-4 = #55aa55
-bar-volume-foreground-5 = #f5a70a
-bar-volume-foreground-6 = #ff5555
+bar-volume-foreground-0 = ${colors.blue1}
+bar-volume-foreground-1 = ${colors.blue2}
+bar-volume-foreground-2 = ${colors.green1}
+bar-volume-foreground-3 = ${colors.green2}
+bar-volume-foreground-4 = ${colors.yellow1}
+bar-volume-foreground-5 = ${colors.red1}
+bar-volume-foreground-6 = ${colors.red2}
 bar-volume-gradient = false
 bar-volume-indicator = │
 bar-volume-indicator-font = 2
@@ -230,8 +243,8 @@ bar-volume-empty-foreground = ${colors.foreground}
 ;==============================================
 [module/date]
 type = internal/date
-date-alt =   %A %H:%M 
-date =   %b/%d/%y %H:%M 
+date-alt =  " %A %H:%M"
+date =  " %b/%d/%y %H:%M"
 interval = 5
 
 format-underline = ${colors.white1}
@@ -261,17 +274,17 @@ format-charging-padding = 3
 format-discharging-padding = 3
 format-full-padding = 3
 
-ramp-capacity-0 = 
-ramp-capacity-1 = 
-ramp-capacity-2 = 
-ramp-capacity-3 = 
-ramp-capacity-4 = 
+ramp-capacity-0 = ""
+ramp-capacity-1 = ""
+ramp-capacity-2 = ""
+ramp-capacity-3 = ""
+ramp-capacity-4 = ""
 
-animation-charging-0 = 
-animation-charging-1 = 
-animation-charging-2 = 
-animation-charging-3 = 
-animation-charging-4 = 
+animation-charging-0 = ""
+animation-charging-1 = ""
+animation-charging-2 = ""
+animation-charging-3 = ""
+animation-charging-4 = ""
 animation-charging-framerate = 750
 
 
@@ -284,13 +297,19 @@ format-foreground = ${colors.foreground}
 format-underline = ${colors.white1}
 format-padding = 1
 
-menu-0-0 =  shutdown
+menu-0-0 = ""
 menu-0-0-exec = shutdown now
-menu-0-1 =  restart
+menu-0-1 = ""
 menu-0-1-exec = shutdown -r now
-menu-0-2 =   cancel
+menu-0-2 = " hibernate"
+menu-0-2-exec = systemctl hibernate
+menu-0-3 = " suspend"
+menu-0-3-exec = systemctl suspend
+menu-0-4 = " hybrid-sleep"
+menu-0-4-exec = systemctl hybrid-sleep
+menu-0-5 =  ""
 
-label-open = 
+label-open = ""
 label-close =
 
 
@@ -330,7 +349,7 @@ interval = 25
 
 mount-0 = /
 
-label-mounted =  %free%
+label-mounted = " %used%/%total%"
 label-mounted-padding = 1
 label-mounted-background = ${colors.background}
 
@@ -343,9 +362,17 @@ label-unmounted-foreground = ${colors.foreground}
 type = internal/memory
 interval = 2
 
-label = %{F${colors.foreground}  %percentage_used% %{F-}
+label = "%{F${colors.foreground}  %percentage_used% %{F-}"
 label-foreground = ${colors.foreground}
 label-background = ${colors.background}
+
+
+;==============================================
+[module/redshift]
+type = custom/script
+interval = 5
+
+exec = ~/.config/polybar/redshift.sh
 
 
 ; vim:ft=dosini
