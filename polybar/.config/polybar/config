@@ -75,7 +75,6 @@ label-focused-padding    = 1
 
 label-occupied           = %name%
 label-occupied-padding   = 1
-label-occupied-underline = ${colors.white2}
 
 label-urgent             = %name%
 label-urgent-background  = ${colors.red2}
@@ -141,7 +140,7 @@ format-connected-underline = ${colors.green1}
 format-packetloss = <animation-packetloss>
 format-disconnected-underline = ${colors.red1}
 
-label-connected = "%{A1:urxvt:} %essid% %signal% %downspeed%%upspeed%%{A}"
+label-connected = "%{A1:urxvt:} %essid% %signal% %downspeed% %upspeed%%{A}"
 label-disconnected = ""
 label-disconnected-foreground = ${colors.foreground}
 
@@ -158,7 +157,7 @@ type = internal/network
 inherit = module/wlan
 interface = ${settings.ethiface}
 
-label-connected = "%{A1:urxvt:} %downspeed%%upspeed%%{A}"
+label-connected = "%{A1:urxvt:} %downspeed% %upspeed%%{A}"
 label-disconnected = ""
 
 
