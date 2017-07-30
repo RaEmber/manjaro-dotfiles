@@ -55,4 +55,4 @@ srandrd atorandr.sh --change
 update-checker 7200 &
 
 nm-applet &
-redshift-gtk -l 47:8
+redshift-gtk -l 47:8 &
