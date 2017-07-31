@@ -231,7 +231,7 @@ user_pref("javascript.use_us_english_locale",			true);
 
 // PREF: Do not submit invalid URIs entered in the address bar to the default search engine
 // http://kb.mozillazine.org/Keyword.enabled
-user_pref("keyword.enabled",					false);
+user_pref("keyword.enabled",					true);
 
 // PREF: Don't trim HTTP off of URLs in the address bar.
 // https://bugzilla.mozilla.org/show_bug.cgi?id=665580
@@ -508,7 +508,7 @@ user_pref("privacy.resistFingerprinting",			true);
 // https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-2743
 // https://blog.mozilla.org/security/2015/08/06/firefox-exploit-found-in-the-wild/
 // https://www.mozilla.org/en-US/security/advisories/mfsa2015-69/
-user_pref("pdfjs.disabled",					true);
+user_pref("pdfjs.disabled",					false);
 
 // PREF: Disable collection/sending of the health report (healthreport.sqlite*)
 // https://support.mozilla.org/en-US/kb/firefox-health-report-understand-your-browser-perf
@@ -597,8 +597,8 @@ user_pref("browser.search.suggest.enabled",			false);
 
 // PREF: Disable "Show search suggestions in location bar results"
 user_pref("browser.urlbar.suggest.searches",			false);
-// PREF: When using the location bar, don't suggest URLs from browsing history
-user_pref("browser.urlbar.suggest.history",			false);
+//PREF: When using the location bar, don't suggest URLs from browsing history
+///user_pref("browser.urlbar.suggest.history",			false);
 
 // PREF: Disable SSDP
 // https://bugzilla.mozilla.org/show_bug.cgi?id=1111967
@@ -699,31 +699,31 @@ user_pref("network.cookie.thirdparty.sessionOnly",		true);
 // NOTICE: When Javascript is enabled, Websites can detect use of Private Browsing mode
 // NOTICE: Private browsing breaks Kerberos authentication
 // NOTICE: Disables "Containers" functionality (see below)
-user_pref("browser.privatebrowsing.autostart",			true);
+user_pref("browser.privatebrowsing.autostart",			false);
 
 // PREF: Do not download URLs for the offline cache
 // http://kb.mozillazine.org/Browser.cache.offline.enable
-user_pref("browser.cache.offline.enable",			false);
+user_pref("browser.cache.offline.enable",				false);
 
 // PREF: Clear history when Firefox closes
 // https://support.mozilla.org/en-US/kb/Clear%20Recent%20History#w_how-do-i-make-firefox-clear-my-history-automatically
 // NOTICE: Installing user.js will **remove your saved passwords** (https://github.com/pyllyukko/user.js/issues/27)
 // NOTICE: Clearing open windows on Firefox exit causes 2 windows to open when Firefox starts https://bugzilla.mozilla.org/show_bug.cgi?id=1334945
 user_pref("privacy.sanitize.sanitizeOnShutdown",		true);
-user_pref("privacy.clearOnShutdown.cache",			true);
-user_pref("privacy.clearOnShutdown.cookies",			true);
-user_pref("privacy.clearOnShutdown.downloads",			true);
+user_pref("privacy.clearOnShutdown.cache",				true);
+//user_pref("privacy.clearOnShutdown.cookies",			true);
+//user_pref("privacy.clearOnShutdown.downloads",			true);
 user_pref("privacy.clearOnShutdown.formdata",			true);
-user_pref("privacy.clearOnShutdown.history",			true);
+//user_pref("privacy.clearOnShutdown.history",			true);
 user_pref("privacy.clearOnShutdown.offlineApps",		true);
 user_pref("privacy.clearOnShutdown.sessions",			true);
-user_pref("privacy.clearOnShutdown.openWindows",		true);
+//user_pref("privacy.clearOnShutdown.openWindows",		true);
 
 // PREF: Set time range to "Everything" as default in "Clear Recent History"
 user_pref("privacy.sanitize.timeSpan",				0);
 
 // PREF: Clear everything but "Site Preferences" in "Clear Recent History"
-user_pref("privacy.cpd.offlineApps",				true);
+user_pref("privacy.cpd.offlineApps",			true);
 user_pref("privacy.cpd.cache",					true);
 user_pref("privacy.cpd.cookies",				true);
 user_pref("privacy.cpd.downloads",				true);
@@ -732,7 +732,7 @@ user_pref("privacy.cpd.history",				true);
 user_pref("privacy.cpd.sessions",				true);
 
 // PREF: Don't remember browsing history
-user_pref("places.history.enabled",				false);
+//user_pref("places.history.enabled",				false);
 
 // PREF: Disable disk cache
 // http://kb.mozillazine.org/Browser.cache.disk.enable
@@ -835,7 +835,7 @@ user_pref("browser.download.folderList",			2);
 
 // PREF: Always ask the user where to download
 // https://developer.mozilla.org/en/Download_Manager_preferences (obsolete)
-user_pref("browser.download.useDownloadDir",			false);
+//user_pref("browser.download.useDownloadDir",			false);
 
 // PREF: Disable the "new tab page" feature and show a blank tab instead
 // https://wiki.mozilla.org/Privacy/Reviews/New_Tab
@@ -879,7 +879,7 @@ user_pref("browser.urlbar.autoFill.typed",			false);
 // PREF: Disable CSS :visited selectors
 // https://blog.mozilla.org/security/2010/03/31/plugging-the-css-history-leak/
 // https://dbaron.org/mozilla/visited-privacy
-user_pref("layout.css.visited_links_enabled",			false);
+//user_pref("layout.css.visited_links_enabled",			false);
 
 // PREF: Disable URL bar autocomplete and history/bookmarks suggestions dropdown
 // http://kb.mozillazine.org/Disabling_autocomplete_-_Firefox#Firefox_3.5
