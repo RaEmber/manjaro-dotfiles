@@ -5,6 +5,7 @@ stow bspwm
 stow color
 stow dmenu
 stow feh
+stow firefox -t ~/.mozilla/firefox/*.*/
 stow GTKmenu
 stow gtk
 stow ls_colors
