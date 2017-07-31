@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+﻿#!/usr/bin/env bash
 # pipes.sh: Animated pipes terminal screensaver.
 #
 # This modified version is maintained at:
@@ -22,12 +22,12 @@ w=$(tput cols) h=$(tput lines)
 # 00 means going up   , then going up   -> ?
 # 12 means going right, then going down -> ?
 sets=(
-    "?? ????  ???? ??"
-    "�? ??-?  ?�?? ?-"
-    "�+ ++-+  +�++ +-"
-    "�+ ++-+  +�++ +-"
-    "|+ ++-+  +|++ +-"
-    "|/ \/-\  \|/\ /-"
+	"┃┏ ┓┛━┓  ┗┃┛┗ ┏━"
+	"│╭ ╮╯─╮  ╰│╯╰ ╭─"
+	"│┌ ┐┘─┐  └│┘└ ┌─"
+	"║╔ ╗╝═╗  ╚║╝╚ ╔═"
+	"|+ ++-+  +|++ +-"
+	"|/ \/-\  \|/\ /-"
 )
 v=()
 RNDSTART=0
