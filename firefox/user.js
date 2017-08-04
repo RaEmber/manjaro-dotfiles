@@ -19,7 +19,7 @@ user_pref("dom.serviceWorkers.enabled",				false);
 // PREF: Disable Web Workers
 // https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Using_web_workers
 // https://www.w3schools.com/html/html5_webworkers.asp
-user_pref("dom.workers.enabled",					false);
+user_pref("dom.workers.enabled",				false);
 
 // PREF: Disable web notifications
 // https://support.mozilla.org/t5/Firefox/I-can-t-find-Firefox-menu-I-m-trying-to-opt-out-of-Web-Push-and/m-p/1317495#M1006501
@@ -45,10 +45,10 @@ user_pref("geo.enabled",					false);
 
 // PREF: When geolocation is enabled, use Mozilla geolocation service instead of Google
 // https://bugzilla.mozilla.org/show_bug.cgi?id=689252
-user_pref("geo.wifi.uri", "https://location.services.mozilla.com/v1/geolocate?key=%MOZILLA_API_KEY%");
+user_pref("geo.wifi.uri",					"https://location.services.mozilla.com/v1/geolocate?key=%MOZILLA_API_KEY%");
 
 // PREF: When geolocation is enabled, don't log geolocation requests to the console
-user_pref("geo.wifi.logging.enabled", false);
+user_pref("geo.wifi.logging.enabled",				false);
 
 // PREF: Disable raw TCP socket support (mozTCPSocket)
 // https://trac.torproject.org/projects/tor/ticket/18863
@@ -155,7 +155,7 @@ user_pref("dom.gamepad.enabled",				false);
 user_pref("dom.vr.enabled",					false);
 
 // PREF: Disable vibrator API
-user_pref("dom.vibrator.enabled",           false);
+user_pref("dom.vibrator.enabled",				false);
 
 // PREF: Disable resource timing API
 // https://www.w3.org/TR/resource-timing/#privacy-security
@@ -194,24 +194,24 @@ user_pref("camera.control.face_detection.enabled",		false);
 
 // PREF: Set the default search engine to DuckDuckGo (disabled)
 // https://support.mozilla.org/en-US/questions/948134
-user_pref("browser.search.defaultenginename",		"DuckDuckGo");
+user_pref("browser.search.defaultenginename",			"DuckDuckGo");
 user_pref("browser.search.order.1",				"DuckDuckGo");
-user_pref("keyword.URL", 							"https://duckduckgo.com/html/?q=!+");  
+user_pref("keyword.URL", 					"https://duckduckgo.com/html/?q=!+");  
 
 // PREF: Disable GeoIP lookup on your address to set default search engine region
 // https://trac.torproject.org/projects/tor/ticket/16254
 // https://support.mozilla.org/en-US/kb/how-stop-firefox-making-automatic-connections#w_geolocation-for-default-search-engine
-user_pref("browser.search.countryCode",				"US");
-user_pref("browser.search.region",				"US");
+user_pref("browser.search.countryCode",				"GB");
+user_pref("browser.search.region",				"GB");
 user_pref("browser.search.geoip.url",				"");
 
 // PREF: Set Accept-Language HTTP header to en-US regardless of Firefox localization
 // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Accept-Language
-user_pref("intl.accept_languages",				"en-us, en");
+user_pref("intl.accept_languages",				"en-GB, en");
 
 // PREF: Set Firefox locale to en-US
 // http://kb.mozillazine.org/General.useragent.locale
-user_pref("general.useragent.locale",				"en-US");
+user_pref("general.useragent.locale",				"en-GB");
 
 // PREF: Don't use OS values to determine locale, force using Firefox locale setting
 // http://kb.mozillazine.org/Intl.locale.matchOS
@@ -243,7 +243,7 @@ user_pref("browser.fixup.alternate.enabled",			false);
 
 // PREF: When browser.fixup.alternate.enabled is enabled, strip password from 'user:password@...' URLs
 // https://github.com/pyllyukko/user.js/issues/290#issuecomment-303560851
-user_pref("browser.fixup.hide_user_pass", true);
+user_pref("browser.fixup.hide_user_pass",			true);
 
 // PREF: Send DNS request through SOCKS when SOCKS proxying is in use
 // https://trac.torproject.org/projects/tor/wiki/doc/TorifyHOWTO/WebBrowsers
@@ -292,13 +292,13 @@ user_pref("javascript.options.asmjs",				false);
 // PREF: Disable SVG in OpenType fonts
 // https://wiki.mozilla.org/SVGOpenTypeFonts
 // https://github.com/iSECPartners/publications/tree/master/reports/Tor%20Browser%20Bundle
-user_pref("gfx.font_rendering.opentype_svg.enabled",		false);
+user_pref("gfx.font_rendering.opentype_svg.enabled",false);
 
 // PREF: Disable in-content SVG rendering (Firefox >= 53)
 // NOTICE: Disabling SVG support breaks many UI elements on many sites
 // https://bugzilla.mozilla.org/show_bug.cgi?id=1216893
 // https://github.com/iSECPartners/publications/raw/master/reports/Tor%20Browser%20Bundle/Tor%20Browser%20Bundle%20-%20iSEC%20Deliverable%201.3.pdf#16
-user_pref("svg.disabled", true);
+user_pref("svg.disabled",					false); // true causes Youtube playback controls to disappear
 
 
 // PREF: Disable video stats to reduce fingerprinting threat
@@ -380,7 +380,7 @@ user_pref("plugin.state.flash",					0);
 user_pref("plugin.state.java",					0);
 
 // PREF: Disable sending Flash Player crash reports
-user_pref("dom.ipc.plugins.flash.subprocess.crashreporter.enabled",	false);
+user_pref("dom.ipc.plugins.flash.subprocess.crashreporter.enabled", false);
 
 // PREF: When Flash crash reports are enabled, don't send the visited URL in the crash report
 user_pref("dom.ipc.plugins.reportCrashURL",			false);
@@ -388,7 +388,7 @@ user_pref("dom.ipc.plugins.reportCrashURL",			false);
 // PREF: When Flash is enabled, download and use Mozilla SWF URIs blocklist
 // https://bugzilla.mozilla.org/show_bug.cgi?id=1237198
 // https://github.com/mozilla-services/shavar-plugin-blocklist
-user_pref("browser.safebrowsing.blockedURIs.enabled", true);
+user_pref("browser.safebrowsing.blockedURIs.enabled",		true);
 
 // PREF: Disable Shumway (Mozilla Flash renderer)
 // https://developer.mozilla.org/en-US/docs/Mozilla/Projects/Shumway
@@ -540,7 +540,7 @@ user_pref("loop.logDomains",					false);
 // PREF: Enforce checking for Firefox updates
 // http://kb.mozillazine.org/App.update.enabled
 // NOTICE: Update check page might incorrectly report Firefox ESR as out-of-date
-user_pref("app.update.enabled",                 true);
+user_pref("app.update.enabled",                 		true);
 
 // PREF: Enable blocking reported web forgeries
 // https://wiki.mozilla.org/Security/Safe_Browsing
@@ -596,7 +596,7 @@ user_pref("network.dns.blockDotOnion",				true);
 user_pref("browser.search.suggest.enabled",			false);
 
 // PREF: Disable "Show search suggestions in location bar results"
-user_pref("browser.urlbar.suggest.searches",		true);
+user_pref("browser.urlbar.suggest.searches",			true);
 //PREF: When using the location bar, don't suggest URLs from browsing history
 user_pref("browser.urlbar.suggest.history",			true);
 
@@ -703,14 +703,14 @@ user_pref("network.cookie.thirdparty.sessionOnly",		true);
 
 // PREF: Do not download URLs for the offline cache
 // http://kb.mozillazine.org/Browser.cache.offline.enable
-user_pref("browser.cache.offline.enable",				false);
+user_pref("browser.cache.offline.enable",			false);
 
 // PREF: Clear history when Firefox closes
 // https://support.mozilla.org/en-US/kb/Clear%20Recent%20History#w_how-do-i-make-firefox-clear-my-history-automatically
 // NOTICE: Installing user.js will **remove your saved passwords** (https://github.com/pyllyukko/user.js/issues/27)
 // NOTICE: Clearing open windows on Firefox exit causes 2 windows to open when Firefox starts https://bugzilla.mozilla.org/show_bug.cgi?id=1334945
 user_pref("privacy.sanitize.sanitizeOnShutdown",		true);
-user_pref("privacy.clearOnShutdown.cache",				true);
+user_pref("privacy.clearOnShutdown.cache",			true);
 user_pref("privacy.clearOnShutdown.cookies",			false);
 user_pref("privacy.clearOnShutdown.downloads",			false);
 user_pref("privacy.clearOnShutdown.formdata",			true);
@@ -720,10 +720,10 @@ user_pref("privacy.clearOnShutdown.sessions",			true);
 user_pref("privacy.clearOnShutdown.openWindows",		false);
 
 // PREF: Set time range to "Everything" as default in "Clear Recent History"
-user_pref("privacy.sanitize.timeSpan",				0);
+user_pref("privacy.sanitize.timeSpan",					0);
 
 // PREF: Clear everything but "Site Preferences" in "Clear Recent History"
-user_pref("privacy.cpd.offlineApps",			true);
+user_pref("privacy.cpd.offlineApps",				true);
 user_pref("privacy.cpd.cache",					true);
 user_pref("privacy.cpd.cookies",				true);
 user_pref("privacy.cpd.downloads",				true);
@@ -804,11 +804,11 @@ user_pref("browser.pagethumbnails.capturing_disabled",		true);
 // PREF: Don't fetch and permanently store favicons for Windows .URL shortcuts created by drag and drop
 // NOTICE: .URL shortcut files will be created with a generic icon
 // Favicons are stored as .ico files in $profile_dir\shortcutCache
-user_pref("browser.shell.shortcutFavicons",					false);
+user_pref("browser.shell.shortcutFavicons",			false);
 
 // PREF: Disable bookmarks backups (default: 15)
 // http://kb.mozillazine.org/Browser.bookmarks.max_backups
-user_pref("browser.bookmarks.max_backups", 0);
+user_pref("browser.bookmarks.max_backups", 			0);
 
 /*******************************************************************************
  * SECTION: UI related                                                         *
@@ -969,7 +969,7 @@ user_pref("security.tls.version.fallback-limit",		3);
 // https://en.wikipedia.org/wiki/HTTP_Public_Key_Pinning
 // https://wiki.mozilla.org/SecurityEngineering/Public_Key_Pinning
 // "2. Strict. Pinning is always enforced."
-user_pref("security.cert_pinning.enforcement_level",		2);
+user_pref("security.cert_pinning.enforcement_level",		1); // 2 causes Youtube certificate not to be trusted
 
 // PREF: Disallow SHA-1
 // https://bugzilla.mozilla.org/show_bug.cgi?id=1302140
