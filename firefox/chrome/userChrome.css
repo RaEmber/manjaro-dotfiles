@@ -41,6 +41,9 @@
 	font-family: "Segoe UI",Helvetica,Arial,sans-serif;
 	font-size: 12px;
 }
+#TabsToolbar .tabbrowser-tab:hover {
+	background: #302e2e !important;
+}
 
 /*===============================================
   ACTIVE TABS  
