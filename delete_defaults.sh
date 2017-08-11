@@ -13,6 +13,8 @@ rm .zshrc
 rm .config/sxhkd/sxhkdrc
 rm .profile
 rm .Xresources
+rm .xinitrc
 rm .yaourtrc
 sudo rm /etc/slim*
+sudo rm -r /usr/share/slim/themes/*
 echo "Done deleting defaults"
