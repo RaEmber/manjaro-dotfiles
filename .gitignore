@@ -1,2 +1,16 @@
 color/.color/wal/colors*
 color/.color.wal/sequences
+
+# GTK
+node_modules
+Makefile
+Makefile.in
+aclocal.m4
+autom4te.cache
+build-aux
+compile
+config.*
+configure
+install-sh
+missing
+.idea/
