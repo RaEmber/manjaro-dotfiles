@@ -263,10 +263,10 @@ super + p
 
 super + shift + Return
 	urxvt
-super + y
+super + z
 	urxvt
 
-super + shift + y
+super + shift + z
 	open-terminal-here
 	
 super + r
