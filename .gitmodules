@@ -1,0 +1,3 @@
+[submodule "Archie"]
+	path = gtk/.themes/Archie
+	url = https://github.com/raember/Archie.git
