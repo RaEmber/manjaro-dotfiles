@@ -4,25 +4,25 @@ wlaniface = wlan0
 ethiface = ens33
 
 [colors]
-foreground  = ${xrdb:foreground}
-background  = ${xrdb:background}
-cursorColor = ${xrdb:cursor}
-black1      = ${xrdb:color0}
-black2      = ${xrdb:color8}
-red1        = ${xrdb:color1}
-red2        = ${xrdb:color9}
-green1      = ${xrdb:color2}
-green2      = ${xrdb:color10}
-yellow1     = ${xrdb:color3}
-yellow2     = ${xrdb:color11}
-blue1       = ${xrdb:color4}
-blue2       = ${xrdb:color12}
-magenta1    = ${xrdb:color5}
-magenta2    = ${xrdb:color13}
-cyan1       = ${xrdb:color6}
-cyan2       = ${xrdb:color14}
-white1      = ${xrdb:color7}
-white2      = ${xrdb:color15}
+foreground  = ${xrdb:URxvt*foreground}
+background  = ${xrdb:URxvt*background}
+cursorColor = ${xrdb:URxvt*cursor}
+black1      = ${xrdb:URxvt*color0}
+black2      = ${xrdb:URxvt*color8}
+red1        = ${xrdb:URxvt*color1}
+red2        = ${xrdb:URxvt*color9}
+green1      = ${xrdb:URxvt*color2}
+green2      = ${xrdb:URxvt*color10}
+yellow1     = ${xrdb:URxvt*color3}
+yellow2     = ${xrdb:URxvt*color11}
+blue1       = ${xrdb:URxvt*color4}
+blue2       = ${xrdb:URxvt*color12}
+magenta1    = ${xrdb:URxvt*color5}
+magenta2    = ${xrdb:URxvt*color13}
+cyan1       = ${xrdb:URxvt*color6}
+cyan2       = ${xrdb:URxvt*color14}
+white1      = ${xrdb:URxvt*color7}
+white2      = ${xrdb:URxvt*color15}
 
 
 ;==============================================
