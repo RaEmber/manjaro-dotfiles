@@ -1,14 +1,12 @@
 #!/bin/bash
 
-cd ~/Bilder/wallpaper
 #if [ $(ls -l | wc -l) == 2 ]; then
 echo "" > ~/.cache/wal/wal
 #fi
-wal -i .
+wal -i ~/Bilder/wallpaper
 file=$(cat ~/.cache/wal/wal)
 mkdir -p ~/.color/wal/schemes
-cd ~/.color/wal/schemes
-ln -sf ../../../Bilder/wallpaper/$file ../../currentwallpaper
-if [ ! -L $file ]; then
-	ln -s ../../../Bilder/wallpaper/$file $file
-fi
+cd ~/.color
+#if [ ! -L $file ]; then
+ln -sf $file currentwallpaper
+#fi

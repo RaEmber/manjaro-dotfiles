@@ -52,7 +52,9 @@ modules-center = mpd
 modules-right = cpu temperature memory filesystem backlight wlan eth volume date battery powermenu
 tray-position = center
 tray-padding = 3
-tray-background = ${colors.background}
+;tray-background = ${colors.background}
+tray-background = #000
+tray-transparent = false
 
 wm-restack = bspwm
 scroll-up = bspwm-desknext
