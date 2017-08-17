@@ -1,1 +1,1 @@
-../../../.cache/wal/colors.sh
+wal/colors.sh

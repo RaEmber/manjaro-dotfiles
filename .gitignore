@@ -1,5 +1,4 @@
-color/.color/wal/colors*
-color/.color.wal/sequences
+color/.color/wal/*
 
 # GTK
 node_modules
