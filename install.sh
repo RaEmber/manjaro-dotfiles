@@ -32,4 +32,7 @@ xrdb -load ~/.Xresources
 pkill -USR1 -x sxhkd
 ~/.config/polybar/launch.sh &
 	disown
+cd ~/.themes/Archie
+./parse-sass.sh
+sudo ./install.sh
 echo "Done"
