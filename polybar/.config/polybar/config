@@ -1,7 +1,7 @@
 ﻿
 [settings]
-wlaniface = wlan0
-ethiface = ens33
+wlaniface = wlp3s0
+ethiface = enp2s0f0
 
 [colors]
 foreground  = ${xrdb:URxvt*foreground}
@@ -143,7 +143,8 @@ format-connected-underline = ${colors.green1}
 format-packetloss = <animation-packetloss>
 format-disconnected-underline = ${colors.red1}
 
-label-connected = "%{A1:urxvt:} %essid% %signal% %downspeed% %upspeed%%{A}"
+;label-connected = "%{A1:urxvt:} %essid% %signal% %downspeed% %upspeed%%{A}"
+label-connected = "%{A1:urxvt:} %essid%%{A}"
 label-disconnected = ""
 label-disconnected-foreground = ${colors.foreground}
 
@@ -160,7 +161,8 @@ type = internal/network
 inherit = module/wlan
 interface = ${settings.ethiface}
 
-label-connected = "%{A1:urxvt:} %downspeed% %upspeed%%{A}"
+;label-connected = "%{A1:urxvt:} %downspeed% %upspeed%%{A}"
+label-connected = "%{A1:urxvt:}%{A}"
 label-disconnected = ""
 
 
