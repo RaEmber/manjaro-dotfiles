@@ -15,3 +15,6 @@ alias xpid="xprop | grep PID | cut -d' ' -f3"
 alias pacman="pacman --color=auto"
 alias xclass=$'xprop | grep WM_CLASS | cut -d\'"\' -f2'
 alias pacman='pacman --color=auto'
+alias matrix='cmatrix -abu 3 -C green'
+alias redtrix='cmatrix -abu 3 -C red'
+alias bluetrix='cmatrix -abu 3 -C blue'
