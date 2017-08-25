@@ -6,7 +6,6 @@ echo "" > ~/.cache/wal/wal
 wal -i ~/Bilder/wallpaper
 file=$(cat ~/.cache/wal/wal)
 mkdir -p ~/.color/wal/schemes
-cd ~/.color
 #if [ ! -L $file ]; then
-ln -sf $file currentwallpaper
+ln -sf $file ~/.color/currentwallpaper
 #fi

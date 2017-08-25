@@ -56,3 +56,4 @@ update-checker 7200 &
 
 nm-applet &
 redshift-gtk -l 47:8 &
+~/.config/bspwm/bspwmrc &

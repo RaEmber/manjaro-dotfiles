@@ -48,8 +48,8 @@ module-margin  = 1
 module-padding = 1
 
 modules-left = bspwm xwindow
-modules-center = mpd
-modules-right = cpu temperature memory filesystem backlight wlan eth volume date battery powermenu
+modules-center =
+modules-right = backlight volume wlan eth date powermenu
 tray-position = center
 tray-padding = 3
 ;tray-background = ${colors.background}
@@ -144,7 +144,7 @@ format-packetloss = <animation-packetloss>
 format-disconnected-underline = ${colors.red1}
 
 ;label-connected = "%{A1:urxvt:} %essid% %signal% %downspeed% %upspeed%%{A}"
-label-connected = "%{A1:urxvt:} %essid%%{A}"
+label-connected = ""
 label-disconnected = ""
 label-disconnected-foreground = ${colors.foreground}
 
@@ -162,7 +162,7 @@ inherit = module/wlan
 interface = ${settings.ethiface}
 
 ;label-connected = "%{A1:urxvt:} %downspeed% %upspeed%%{A}"
-label-connected = "%{A1:urxvt:}%{A}"
+label-connected = ""
 label-disconnected = ""
 
 
