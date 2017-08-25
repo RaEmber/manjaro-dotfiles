@@ -1,4 +1,7 @@
+color/.color/c*
 color/.color/wal/*
+ranger/.config/ranger/*
+feh/.fehbg
 
 # GTK
 node_modules
