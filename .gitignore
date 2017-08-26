@@ -1,4 +1,4 @@
-color/.color/c*
+color/.color/*
 color/.color/wal/*
 ranger/.config/ranger/*
 feh/.fehbg
