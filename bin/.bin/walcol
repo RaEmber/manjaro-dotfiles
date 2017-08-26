@@ -7,7 +7,7 @@ wal -i ~/Bilder/wallpaper
 file=$(cat ~/.cache/wal/wal)
 mkdir -p ~/.color/wal/schemes
 #if [ ! -L $file ]; then
-ln -sf "$file" currentwallpaper
+ln -sf "$file" ~/.color/currentwallpaper
 #fi
 source ~/.color/colors.sh
 bspc config focused_border_color $color4
