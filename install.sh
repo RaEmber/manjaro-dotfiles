@@ -8,7 +8,6 @@ stow bin
 stow bspwm
 stow color
 stow dmenu
-stow feh
 stow firefox -t $profilepath
 stow GTKmenu
 stow gtk

@@ -2,7 +2,6 @@ echo "Deleting defaults..."
 cd ~
 rm -r .config/bspwm/*
 rm .dmenurc
-rm .fehbg
 rm .config/GTKmenu/*
 rm .config/gtk-2.0/*
 rm .config/gtk-3.0/*

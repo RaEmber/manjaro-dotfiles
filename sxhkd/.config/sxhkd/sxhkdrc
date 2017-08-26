@@ -11,7 +11,7 @@ super + shift + space
 
 # Show keybindings
 super + F1
-	$TERMINAL -e keybindings.sh
+	urxvt -e keybindings.sh
 #
 # Window manipulation
 # ______________
@@ -279,10 +279,10 @@ super + e
 	spacefm -n
 
 super + shift + e
-	$TERMINAL -e ranger
+	urxvt -e ranger
 
 Print
-	scrot -q 100
+	scrot '%Y.%m.%d_%H-%M-%S_%w_%h.png' -e 'mv $f ~/Bilder/screenshots/$f'
 
 	
 #
