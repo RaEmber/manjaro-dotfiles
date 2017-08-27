@@ -9,10 +9,10 @@ mkdir -p $usercols
 
 print_help() {
 	echo -e "Usage:"
-	echo -e "\e[34;1m\$\e[0;34m $(basename $0) -n [-w file, -m, -g, -q, -x name, -d name]...\e[m\tGenerate colorscheme out of wallpaper"
-	echo -e "\e[34;1m\$\e[0;34m $(basename $0) -s [-m, -g, -q, -x name, -d name]...\e[m\t\tGenerate colorscheme out of special wallpaper"
-	echo -e "\e[34;1m\$\e[0;34m $(basename $0) -u name [-m, -g, -q, -x name, -d name]...\e[m\tLoad user specified colorscheme"
-	echo -e "\e[34;1m\$\e[0;34m $(basename $0) [-l, -c, -m, -g, -q, -x name, -d name]...\e[m\tStatic"
+	echo -e "\e[34;1m\$\e[0;34m $(basename $0) -n [-w file, -m, -g, -q, -x name, -d name, -c]...\e[m\tGenerate colorscheme out of wallpaper"
+	echo -e "\e[34;1m\$\e[0;34m $(basename $0) -s [-m, -g, -q, -x name, -d name, -c]...\e[m\t\tGenerate colorscheme out of special wallpaper"
+	echo -e "\e[34;1m\$\e[0;34m $(basename $0) -u name [-m, -g, -q, -x name, -d name, -c]...\e[m\tLoad user specified colorscheme"
+	echo -e "\e[34;1m\$\e[0;34m $(basename $0) [-l, -m, -g, -q, -x name, -d name, -c]...\e[m\tStatic"
 	echo -e "Colorscheme generating script based on pywal.\n"
 	echo -e " -l \t\tList the user specified colorschemes"
 	echo -e " -u name\tLoad user specified colorscheme"
@@ -82,7 +82,11 @@ while getopts "w:mgqhsu:nlx:d:c" arg; do
 done
 
 wal_execute() { # 1: folder/file
-	wal -i "$1"
+	if [[ $q ]] ; then
+		wal -i "$1" 1>&/dev/null
+	else
+		wal -i "$1"
+	fi
 	file=$(cat ~/.cache/wal/wal)
 	mkdir -p ~/.cache/wal/schemes
 	ln -sf "$file" ~/.color/currentwallpaper
@@ -132,6 +136,22 @@ if [[ $d ]] ; then
 	fi
 fi
 
+if [[ $c ]] ; then
+	[[ $q ]] || echo " black   red   green yellow  blue  magenta cyan   white "
+	for (( i=0;i<8;i++ )) ; do
+		tput setab $i
+		printf "       "
+	done
+	tput sgr0
+	echo
+	for (( i=8;i<16;i++ )) ; do
+		tput setab $i
+		printf "       "
+	done
+	tput sgr0
+	echo
+fi
+
 if [[ $n ]] ; then
 	if [[ $w ]] ; then
 		[[ -a $wfile ]] || wfile=$(echo "$(pwd)/$wfile")
@@ -167,20 +187,5 @@ if [[ $l ]] ; then
 		tput sgr0
 		echo
 	done
-fi
-if [[ $c ]] ; then
-	[[ $q ]] || echo " black   red   green yellow  blue  magenta cyan   white "
-	for (( i=0;i<8;i++ )) ; do
-		tput setab $i
-		printf "       "
-	done
-	tput sgr0
-	echo
-	for (( i=8;i<16;i++ )) ; do
-		tput setab $i
-		printf "       "
-	done
-	tput sgr0
-	echo
 fi
 exit 0
