@@ -3,8 +3,8 @@ cd ~
 rm -r .config/bspwm/*
 rm .dmenurc
 rm .config/GTKmenu/*
-rm .config/gtk-2.0/*
-rm .config/gtk-3.0/*
+rm .config/gtk-2.0/gtkfilechooser.ini
+rm .config/gtk-3.0/settings.ini
 rm .dir_colors
 rm .nanorc
 rm .bashrc

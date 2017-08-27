@@ -40,7 +40,6 @@ xbacklight -set 15 &
 #run_once xfce4-panel -d
 #lemonpanel &
 #limepanel &
-~/.config/polybar/launch.sh &
 #mylime &
 ## Light system tray to use with lemonbar. Disable if you dont need it. 
 ## Edit ~/.stalonetrayrc if it is in wrong place.
@@ -56,4 +55,11 @@ update-checker 7200 &
 
 nm-applet &
 redshift-gtk -l 47:8 &
-~/.config/bspwm/bspwmrc &
+bspc monitor -d 一 二 三 四 五 六 七 八 九 十
+~/.config/polybar/launch.sh &
+#sleep 
+reactivate() {
+	sleep 3
+	bspc monitor -d 一 二 三 四 五 六 七 八 九 十
+}
+reactivate &
