@@ -3,6 +3,8 @@
 wallpapers=~/Bilder/wallpaper
 specials=$wallpapers/special
 usercols=~/.color/user
+gtktheme=~/Dokumente/temp/Archie
+gtkinstall=$gtktheme/install.sh
 mkdir -p $wallpapers
 mkdir -p $specials
 mkdir -p $usercols
@@ -51,7 +53,7 @@ while getopts "w:mgqhsu:nlx:d:c" arg; do
 			wfile=$OPTARG;;
 		m) # Toggle current wallpaper as special
 			m=1;;
-		g) # TODO: Generate GTK theme
+		g) # Generate GTK theme
 			g=1;;
 		q) # Quiet mode
 			q=1;;
@@ -109,9 +111,23 @@ if [[ $m ]] ; then
 	fi
 fi
 
-if [[ $g ]] ; then
+gtk_install() {
 	[[ $q ]] || echo "Generating gtk theme..."
-fi
+	if [[ ! -a $gtkinstall ]] ; then
+		echo "There is no installation script"
+		exit 1
+	fi
+	ln -sf ~/.cache/wal/colors.scss $gtktheme/colors.scss
+	ln -sf ~/.cache/wal/colors.css $gtktheme/colors.css
+	ln -sf ~/.cache/wal/colors-gtk2.rc $gtktheme/colors-gtk2.rc
+	ln -sf ~/.cache/wal/colors.sh $gtktheme/colors.sh
+	if [[ $q ]] ; then
+		$gtkinstall 1>&/dev/null
+	else
+		$gtkinstall
+	fi
+	exit
+}
 
 
 if [[ $x ]] ; then
@@ -161,18 +177,21 @@ if [[ $n ]] ; then
 		[[ $q ]] || echo -e "Loading from \e[35mrandom\e[m wallpaper"
 		wal_execute $wallpapers
 	fi
+	[[ $g ]] && gtk_install
 	exit 0
 fi
 
 if [[ $s ]] ; then
 	[[ $q ]] || echo -e "Loading \e[33mspecial\e[m wallpaper"
 	wal_execute $specials
+	[[ $g ]] && gtk_install
 	exit 0
 fi
 
 if [[ $u ]] ; then
 	[[ $q ]] || echo -e "Loading user colorscheme \"\e[1;34;40m$uname\e[m\""
 	wal -f ~/.color/user/$uname.json
+	[[ $g ]] && gtk_install
 	exit 0
 fi
 
@@ -188,4 +207,5 @@ if [[ $l ]] ; then
 		echo
 	done
 fi
+[[ $g ]] && gtk_install
 exit 0
