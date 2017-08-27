@@ -13,6 +13,7 @@ rm .config/sxhkd/sxhkdrc
 rm .profile
 rm .Xresources
 rm .xinitrc
+rm .xprofile
 rm .yaourtrc
 sudo rm /etc/slim*
 sudo rm -r /usr/share/slim/themes/*
