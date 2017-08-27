@@ -2,22 +2,22 @@
 
 wallpapers=~/Bilder/wallpaper
 specials=$wallpapers/special
-usercols=~/.colors/user
+usercols=~/.color/user
 mkdir -p $wallpapers
 mkdir -p $specials
 mkdir -p $usercols
 
 print_help() {
 	echo -e "Usage:"
-	echo -e "\e[34;1m\$\e[0;34m $(basename $0) [-w file, -m, -g, -q, -x name, -d name]...\e[m\tGenerate colorscheme out of wallpaper"
+	echo -e "\e[34;1m\$\e[0;34m $(basename $0) -n [-w file, -m, -g, -q, -x name, -d name]...\e[m\tGenerate colorscheme out of wallpaper"
 	echo -e "\e[34;1m\$\e[0;34m $(basename $0) -s [-m, -g, -q, -x name, -d name]...\e[m\t\tGenerate colorscheme out of special wallpaper"
 	echo -e "\e[34;1m\$\e[0;34m $(basename $0) -u name [-m, -g, -q, -x name, -d name]...\e[m\tLoad user specified colorscheme"
-	echo -e "\e[34;1m\$\e[0;34m $(basename $0) -n [-l, -m, -r, -q, -x name, -d name, -c]...\e[m\t\tstatic"
+	echo -e "\e[34;1m\$\e[0;34m $(basename $0) [-l, -c, -m, -g, -q, -x name, -d name]...\e[m\tStatic"
 	echo -e "Colorscheme generating script based on pywal.\n"
 	echo -e " -l \t\tList the user specified colorschemes"
 	echo -e " -u name\tLoad user specified colorscheme"
 	echo -e " -n \t\tDon't choose new wallpaper or colorscheme"
-	echo -e " -m \t\tMove current wallpaper to specials/move out of specials to wallpapers"
+	echo -e " -m \t\tToggle current wallpaper as special"
 	echo -e " -s \t\tChoose wallpaper out of the ones marked as special"
 	echo -e " -g \t\tGenerate GTK theme"
 	echo -e " -w file\tGenerate colorscheme out of specific wallpaper"
@@ -49,7 +49,7 @@ while getopts "w:mgqhsu:nlx:d:c" arg; do
 		w) # Load specific wallpaper
 			w=1
 			wfile=$OPTARG;;
-		m) # TODO: Move current wallpaper to specials/move out of specials to wallpapers
+		m) # Toggle current wallpaper as special
 			m=1;;
 		g) # TODO: Generate GTK theme
 			g=1;;
@@ -93,7 +93,6 @@ wal_execute() { # 1: folder/file
 	bspc config normal_border_color $color7
 	bspc config presel_feedback_color $color0
 }
-
 if [[ $m ]] ; then
 	file=$(cat ~/.cache/wal/wal)
 	base=$(basename "$file")
@@ -107,19 +106,24 @@ if [[ $m ]] ; then
 	fi
 fi
 
+if [[ $g ]] ; then
+	[[ $q ]] || echo "Generating gtk theme..."
+fi
+
+
 if [[ $x ]] ; then
-	if [[ -a ~/.color/user/$xname.json ]] ; then
+	if [[ -a $usercols/$xname.json ]] ; then
 		[[ $q ]] || echo "A colorscheme with this name already exists"
 		exit 1;
 	fi
 	[[ $q ]] || echo -e "Saving current colorscheme as \"\e[1;34;40m$xname\e[m\""
 	filename=$(cat ~/.cache/wal/wal | sed -E "s/\.|\//_/g")
 	file=~/.cache/wal/schemes/$filename.json
-	cp -T $file ~/.color/user/$xname.json
+	cp -T "$file" $usercols/$xname.json
 fi
 
 if [[ $d ]] ; then
-	file=~/.color/user/$dname.json
+	file=$usercols/$dname.json
 	if [[ -a $file ]] ; then
 		[[ $q ]] || echo -e "Deleting colorscheme \"\e[1;34;40m$dname\e[m\""
 		rm $file
@@ -127,6 +131,18 @@ if [[ $d ]] ; then
 		[[ $q ]] || echo -e "No user colorscheme \"\e[1;34;40m$dname\e[m\" found"
 		exit 1
 	fi
+fi
+
+if [[ $n ]] ; then
+	if [[ $w ]] ; then
+		[[ -a $wfile ]] || wfile=$(echo "$(pwd)/$wfile")
+		[[ $q ]] || echo "Loading from specific wallpaper '$wfile'"
+		wal_execute "$wfile"
+	else
+		[[ $q ]] || echo "Loading from random wallpaper"
+		wal_execute $wallpapers
+	fi
+	exit 0
 fi
 
 if [[ $s ]] ; then
@@ -141,42 +157,31 @@ if [[ $u ]] ; then
 	exit 0
 fi
 
-if [[ $n ]] ; then
-	if [[ $l ]] ; then
-		echo -e "Applicable colorschemes:"
-		cd ~/.color/user
-		for line in $(ls *.json | sed "s/\.json//g") ; do
-			tput setab 0
-			tput setaf 4
-			tput bold
-			printf $line
-			tput sgr0
-			echo
-		done
-	fi
-	if [[ $c ]] ; then
-		[[ $q ]] || echo -e "Printing color table\n black   red   green yellow  blue  magenta cyan   white "
-		for (( i=0;i<8;i++ )) ; do
-			tput setab $i
-			printf "       "
-		done
+if [[ $l ]] ; then
+	echo -e "Applicable colorschemes:"
+	cd $usercols
+	for line in $(ls *.json | sed "s/\.json//g") ; do
+		tput setab 0
+		tput setaf 4
+		tput bold
+		printf $line
 		tput sgr0
 		echo
-		for (( i=8;i<16;i++ )) ; do
-			tput setab $i
-			printf "       "
-		done
-		tput sgr0
-		echo
-	fi
-	exit 0
+	done
 fi
-
-if [[ $w ]] ; then
-	[[ -a $wfile ]] || wfile=$(echo "$(pwd)/$wfile")
-	[[ $q ]] || echo "Loading from specific wallpaper '$wfile'"
-	wal_execute "$wfile"
-else
-	[[ $q ]] || echo "Loading from random wallpaper"
-	wal_execute $wallpapers
+if [[ $c ]] ; then
+	[[ $q ]] || echo -e "Printing color table\n black   red   green yellow  blue  magenta cyan   white "
+	for (( i=0;i<8;i++ )) ; do
+		tput setab $i
+		printf "       "
+	done
+	tput sgr0
+	echo
+	for (( i=8;i<16;i++ )) ; do
+		tput setab $i
+		printf "       "
+	done
+	tput sgr0
+	echo
 fi
+exit 0
