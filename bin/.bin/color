@@ -83,12 +83,7 @@ while getopts "w:mgqhsu:nlx:d:c" arg; do
 	esac
 done
 
-wal_execute() { # 1: folder/file
-	if [[ $q ]] ; then
-		wal -i "$1" 1>&/dev/null
-	else
-		wal -i "$1"
-	fi
+reload_env() {
 	file=$(cat ~/.cache/wal/wal)
 	mkdir -p ~/.cache/wal/schemes
 	ln -sf "$file" ~/.color/currentwallpaper
@@ -96,6 +91,15 @@ wal_execute() { # 1: folder/file
 	bspc config focused_border_color $color4
 	bspc config normal_border_color $color7
 	bspc config presel_feedback_color $color0
+}
+
+wal_execute() { # 1: folder/file
+	if [[ $q ]] ; then
+		wal -i "$1" 1>&/dev/null
+	else
+		wal -i "$1"
+	fi
+	reload_env
 }
 
 if [[ $m ]] ; then
@@ -189,8 +193,13 @@ if [[ $s ]] ; then
 fi
 
 if [[ $u ]] ; then
-	[[ $q ]] || echo -e "Loading user colorscheme \"\e[1;34;40m$uname\e[m\""
-	wal -f ~/.color/user/$uname.json
+	if [[ ! $q ]] ; then
+		echo -e "Loading user colorscheme \"\e[1;34;40m$uname\e[m\""
+		wal -f ~/.color/user/$uname.json
+	else
+		wal -f ~/.color/user/$uname.json 1>&/dev/null
+	fi
+	reload_env
 	[[ $g ]] && gtk_install
 	exit 0
 fi
