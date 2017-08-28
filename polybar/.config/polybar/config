@@ -212,8 +212,8 @@ format-muted-foreground = ${colors.foreground}
 ;==============================================
 [module/date]
 type = internal/date
-date =  " %H:%M"
-date-alt =  " %H:%M:%S %A %d-%m-%y"
+date =  "%H:%M"
+date-alt =  "%H:%M:%S %A %d-%m-%y"
 interval = 1
 
 format-underline = ${colors.white1}
