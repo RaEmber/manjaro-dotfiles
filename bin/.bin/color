@@ -3,8 +3,8 @@
 wallpapers=~/Bilder/wallpaper
 specials=$wallpapers/special
 usercols=~/.color/user
-gtktheme=~/Dokumente/temp/Archie
-gtkinstall=$gtktheme/install.sh
+gtktheme=~/.themes/Archie
+gtkinstall=regenerate.sh
 mkdir -p $wallpapers
 mkdir -p $specials
 mkdir -p $usercols
@@ -45,6 +45,12 @@ xname=
 d=
 dname=
 c=
+
+if (( $#==0 )) ; then
+	echo "No arguments means no action..."
+	print_help
+	exit 0
+fi
 
 while getopts "w:mgqhsu:nlx:d:c" arg; do
 	case $arg in
@@ -117,7 +123,7 @@ fi
 
 gtk_install() {
 	[[ $q ]] || echo "Generating gtk theme..."
-	if [[ ! -a $gtkinstall ]] ; then
+	if [[ ! -a $gtktheme/$gtkinstall ]] ; then
 		echo "There is no installation script"
 		exit 1
 	fi
@@ -125,10 +131,11 @@ gtk_install() {
 	ln -sf ~/.cache/wal/colors.css $gtktheme/colors.css
 	ln -sf ~/.cache/wal/colors-gtk2.rc $gtktheme/colors-gtk2.rc
 	ln -sf ~/.cache/wal/colors.sh $gtktheme/colors.sh
+	cd $gtktheme
 	if [[ $q ]] ; then
-		$gtkinstall 1>&/dev/null
+		./$gtkinstall 1>&/dev/null
 	else
-		$gtkinstall
+		./$gtkinstall
 	fi
 	exit
 }
