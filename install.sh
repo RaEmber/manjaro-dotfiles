@@ -32,6 +32,5 @@ pkill -USR1 -x sxhkd
 ~/.config/polybar/launch.sh &
 	disown
 cd ~/.themes/Archie
-./parse-sass.sh
-sudo ./install.sh
+sudo ./regenerate.sh
 echo "Done"

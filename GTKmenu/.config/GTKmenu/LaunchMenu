@@ -52,7 +52,7 @@ submenu = Exit
 	cmd = systemctl suspend
 	icon = /usr/share/icons/Adwaita/scalable/apps/utilities-system-monitor-symbolic.svg
 	
-	item = Hibenate
+	item = Hibernate
 	cmd = systemctl hibernate
 	icon = /usr/share/icons/Adwaita/scalable/actions/document-save-symbolic.svg
 	
