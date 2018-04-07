@@ -80,8 +80,8 @@ alt + ctrl + {a,s,w,d}
 alt + ctrl + {h,j,k,l}
 	bspc node -p \~{west,south,north,east}
 
-alt + ctrl + {Left,Down,Up,Right}
-	bspc node -p \~{west,south,north,east}
+#alt + ctrl + {Left,Down,Up,Right}
+#	bspc node -p \~{west,south,north,east}
 
 # Presel the desktop for splitting in certain direction
 alt + shift + {a,s,w,d}
