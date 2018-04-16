@@ -4,25 +4,30 @@ wlaniface = wlp3s0
 ethiface = enp2s0f0
 
 [colors]
-foreground  = ${xrdb:URxvt*foreground}
-background  = ${xrdb:XTerm*background}
-cursorColor = ${xrdb:URxvt*cursor}
-black1      = ${xrdb:*color0}
-black2      = ${xrdb:*color8}
-red1        = ${xrdb:*color1}
-red2        = ${xrdb:*color9}
-green1      = ${xrdb:*color2}
-green2      = ${xrdb:*color10}
-yellow1     = ${xrdb:*color3}
-yellow2     = ${xrdb:*color11}
-blue1       = ${xrdb:*color4}
-blue2       = ${xrdb:*color12}
-magenta1    = ${xrdb:*color5}
-magenta2    = ${xrdb:*color13}
-cyan1       = ${xrdb:*color6}
-cyan2       = ${xrdb:*color14}
-white1      = ${xrdb:*color7}
-white2      = ${xrdb:*color15}
+foreground    = ${xrdb:URxvt*foreground}
+background    = ${xrdb:URxvt*background}
+cursorColor   = ${xrdb:URxvt*cursor}
+black         = ${xrdb:*color0}
+red           = ${xrdb:*color1}
+green         = ${xrdb:*color2}
+yellow        = ${xrdb:*color3}
+blue          = ${xrdb:*color4}
+magenta       = ${xrdb:*color5}
+cyan          = ${xrdb:*color6}
+light_gray    = ${xrdb:*color7}
+dark_gray     = ${xrdb:*color8}
+light_red     = ${xrdb:*color9}
+light_green   = ${xrdb:*color10}
+light_yellow  = ${xrdb:*color11}
+light_blue    = ${xrdb:*color12}
+light_magenta = ${xrdb:*color13}
+light_cyan    = ${xrdb:*color14}
+white         = ${xrdb:*color15}
+
+bg            = ${self.background}
+fg            = ${self.foreground}
+primary       = ${self.light_gray}
+secondary     = ${self.white}
 
 
 ;==============================================
@@ -40,19 +45,21 @@ offset-x = 5%
 
 underline-size = 2
 
-background = ${colors.background}
-foreground = ${colors.foreground}
+background = ${colors.bg}
+;background = #00888282
+;background = #7f7077
+foreground = ${colors.fg}
 
 padding        = 0
 module-margin  = 1
 module-padding = 1
 
-modules-left = bspwm xwindow
+modules-left = bspwm
 modules-center =
-modules-right = backlight volume wlan eth date powermenu
+modules-right = backlight volume wlan eth battery date powermenu
 tray-position = center
-tray-padding = 3
-tray-background = ${colors.background}
+tray-padding = 1
+tray-background = ${colors.bg}
 tray-transparent = false
 
 wm-restack = bspwm
@@ -63,23 +70,26 @@ font-0 = Inconsolata for Powerline:style=Medium:size=12;2
 font-1 = M+ 1c:pixelsize=12;2
 font-2 = FontAwesome:style=Regular:size=10;2
 
+[template/module]
+background = ${colors.bg}
 
 ;==============================================
 [module/bspwm]
 type = internal/bspwm
-format     = <label-state><label-mode>
+inherit = template/module
+format     = <label-state>
 
 label-focused            = %name%
-label-focused-foreground = ${colors.white2}
-label-focused-background = ${colors.black2}
-label-focused-underline  = ${colors.blue2}
+label-focused-foreground = ${colors.secondary}
+label-focused-background = ${colors.dark_gray}
+label-focused-underline  = ${colors.light_blue}
 label-focused-padding    = 1
 
 label-occupied           = %name%
 label-occupied-padding   = 1
 
 label-urgent             = %name%
-label-urgent-background  = ${colors.red2}
+label-urgent-background  = ${colors.light_red}
 label-urgent-padding     = 1
 
 ;label-empty              = %name%
@@ -87,42 +97,19 @@ label-urgent-padding     = 1
 label-empty              = 
 label-empty-padding      = 0
 
-label-monocle     = M
-label-tiled       = T
-label-fullscreen  = F
-label-floating    = S
-label-pseudotiled = P
-label-locked      = L
-label-sticky      = *
-lable-private     = p
-label-monocle-background     = ${colors.black1}
-label-tiled-background       = ${colors.black1}
-label-fullscreen-background  = ${colors.black1}
-label-floating-background    = ${colors.black1}
-label-pseudotiled-background = ${colors.black1}
-label-locked-background      = ${colors.black1}
-label-sticky-background      = ${colors.black1}
-lable-private-background     = ${colors.black1}
-label-monocle-padding     = 2
-label-tiled-padding       = 2
-label-fullscreen-padding  = 2
-label-floating-padding    = 2
-label-pseudotiled-padding = 2
-label-locked-padding      = 2
-label-sticky-padding      = 2
-lable-private-padding     = 2
-
 
 ;==============================================
 [module/xwindow]
 type = internal/xwindow
+inherit = template/module
 label = %title:0:80:...%
-label-foreground = ${colors.foreground}
+label-foreground = ${colors.fg}
 
 
 ;==============================================
 [module/backlight]
 type = internal/xbacklight
+inherit = template/module
 
 format = <label>
 label = " %percentage%"
@@ -131,6 +118,7 @@ label = " %percentage%"
 ;==============================================
 [module/wlan]
 type = internal/network
+inherit = template/module
 interface = ${settings.wlaniface}
 interval = 3.0
 
@@ -138,19 +126,19 @@ format-connected-padding = 1
 format-disconnected-padding = 1
 
 format-connected = <label-connected>
-format-connected-underline = ${colors.green1}
+format-connected-underline = ${colors.green}
 format-packetloss = <animation-packetloss>
-format-disconnected-underline = ${colors.red1}
+format-disconnected-underline = ${colors.red}
 
 ;label-connected = "%{A1:urxvt:} %essid% %signal% %downspeed% %upspeed%%{A}"
 label-connected = ""
 label-disconnected = ""
-label-disconnected-foreground = ${colors.foreground}
+label-disconnected-foreground = ${colors.fg}
 
 animation-packetloss-0 = "⚠"
-animation-packetloss-0-foreground = ${colors.red1}
+animation-packetloss-0-foreground = ${colors.red}
 animation-packetloss-1 = "📶"
-animation-packetloss-1-foreground = ${colors.foreground}
+animation-packetloss-1-foreground = ${colors.fg}
 animation-packetloss-framerate = 500
 
 
@@ -168,11 +156,12 @@ label-disconnected = ""
 ;==============================================
 [module/temperature]
 type = internal/temperature
+inherit = template/module
 thermal-zone = 0
 warn-temperature = 65
 
 format = <label>
-format-underline = ${colors.white}
+format-underline = ${colors.secondary}
 format-warn = <label-warn>
 format-warn-underline = ${colors.red}
 
@@ -185,57 +174,61 @@ label-warn = " %temperature%"
 ramp-0 = ""
 ramp-1 = ""
 ramp-2 = ""
-ramp-foreground = ${colors.yellow1}
+ramp-foreground = ${colors.yellow}
 
 
 ;==============================================
 [module/cpu]
 type = internal/cpu
+inherit = template/module
 interval = 2
 format-prefix = " "
-format-prefix-foreground = ${colors.foreground}
+format-prefix-foreground = ${colors.fg}
 label = %percentage%
 
 
 ;==============================================
 [module/volume]
 type = internal/volume
+inherit = template/module
 
 format-volume = <label-volume>
 label-volume = " %percentage%"
-label-volume-foreground = ${colors.foreground}
+label-volume-foreground = ${colors.fg}
 
 label-muted = " "
-format-muted-foreground = ${colors.foreground}
+format-muted-foreground = ${colors.fg}
 
 
 ;==============================================
 [module/date]
 type = internal/date
+inherit = template/module
 date =  "%H:%M"
 date-alt =  "%H:%M:%S %A %d-%m-%y"
 interval = 1
 
-format-underline = ${colors.white1}
-format-foreground = ${colors.foreground}
-format-background = ${colors.background}
+format-underline = ${colors.primary}
+format-foreground = ${colors.fg}
+format-background = ${colors.bg}
 format-padding = 2
 
 
 ;==============================================
 [module/battery]
 type = internal/battery
+inherit = template/module
 
 full-at = 99
 
-battery = BAT0
-adapter = AC0
+battery = BAT1
+adapter = ACAD
 
 poll-interval = 5
 
-format-charging = <animation-charging>  <label-charging>
-format-discharging = <ramp-capacity>  <label-discharging>
-format-full = <ramp-capacity>  <label-full>
+format-charging = <animation-charging> <label-charging>
+format-discharging = <ramp-capacity> <label-discharging>
+format-full = <ramp-capacity> <label-full>
 label-charging = %percentage%
 label-discharging = %percentage%
 label-full = %percentage%
@@ -260,10 +253,11 @@ animation-charging-framerate = 750
 ;==============================================
 [module/powermenu]
 type = custom/menu
+inherit = template/module
 
 format = <label-toggle> <menu>
-format-foreground = ${colors.foreground}
-format-underline = ${colors.white1}
+format-foreground = ${colors.fg}
+format-underline = ${colors.primary}
 format-padding = 1
 
 menu-0-0 = " "
@@ -286,6 +280,7 @@ label-seperator = "│"
 ;==============================================
 [module/mpd]
 type = internal/mpd
+inherit = template/module
 format-online = <icon-prev> <icon-stop> <toggle> <icon-next>  <icon-repeat> <icon-random>  <bar-progress> <label-time>  <label-song>
 
 icon-play = 
@@ -302,39 +297,41 @@ toggle-off-foreground = #55
 bar-progress-width = 45
 bar-progress-format = %{A4:mpdseek+2: A5:mpdseek-2:}%fill%%indicator%%empty%%{A A}
 bar-progress-indicator = |
-bar-progress-indicator-foreground = ${colors.foreground}
+bar-progress-indicator-foreground = ${colors.fg}
 bar-progress-indicator-font = 3
 bar-progress-fill = ─
-bar-progress-fill-foreground = ${colors.foreground}
+bar-progress-fill-foreground = ${colors.fg}
 bar-progress-fill-font = 3
 bar-progress-empty = ─
 bar-progress-empty-font = 3
-bar-progress-empty-foreground = ${colors.white1}
+bar-progress-empty-foreground = ${colors.primary}
 
 
 ;==============================================
 [module/filesystem]
 type = internal/fs
+inherit = template/module
 interval = 25
 
 mount-0 = /
 
 label-mounted = " %used%/%total%"
 label-mounted-padding = 1
-label-mounted-background = ${colors.background}
+label-mounted-background = ${colors.bg}
 
 label-unmounted =
-label-unmounted-foreground = ${colors.foreground}
+label-unmounted-foreground = ${colors.fg}
 
 
 ;==============================================
 [module/memory]
 type = internal/memory
+inherit = template/module
 interval = 2
 
-label = "%{F${colors.foreground}  %percentage_used% %{F-}"
-label-foreground = ${colors.foreground}
-label-background = ${colors.background}
+label = "%{F${colors.fg}  %percentage_used% %{F-}"
+label-foreground = ${colors.fg}
+label-background = ${colors.bg}
 
 
 ; vim:ft=dosini
