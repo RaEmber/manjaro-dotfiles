@@ -1,0 +1,124 @@
+#!/bin/bash
+
+print_help() {
+	echo -e "Usage:"
+	echo -e "\$ $(basename $0) [-r] [-a] [-q] [-h] {program1 ... programN}\tStart programs"
+	echo -e " -q\tQuiet mode"
+	echo -e " -h\tShow this help text"
+}
+
+[ $# -eq 0 ] && { print_help; exit 1; }
+
+while getopts "qh" arg; do
+	case $arg in
+		q) # Quiet program starts
+			quiet=1;;
+		h) # Show help text and exit
+			print_help
+			exit 0;;
+		?) # Invalid option
+			print_help
+			exit 1;;
+	esac
+done
+
+for arg in "$@" ; do
+case $arg in
+	xrdb)
+		xrdb -merge ~/.Xresources
+		;;
+	compton)
+		killall compton 2&> /dev/null
+		compton -b
+		;;
+	bspwm)
+		if [ $quiet ] ; then
+			$HOME/.config/bspwm/bspwmrc no_autostart &> /dev/null &
+		else
+			$HOME/.config/bspwm/bspwmrc no_autostart &
+		fi
+		;;
+	sxhkd)
+		proc_exists="$(ps aux | grep '[0-9]\ssxhkd')"
+		if [ "$proc_exists" ] ; then
+			pkill -USR1 -x sxhkd
+		else
+			sxhkd &
+			disown
+		fi
+		;;
+	polybar)
+		if [ $quiet ] ; then
+			$HOME/.config/polybar/launch.sh &> /dev/null &
+		else
+			$HOME/.config/polybar/launch.sh &
+		fi
+		disown
+		;;
+	enpass)
+		killall Enpass 2&> /dev/null
+		if [ $quiet ] ; then
+			/opt/Enpass/bin/runenpass.sh &> /dev/null &
+		else
+			/opt/Enpass/bin/runenpass.sh &
+		fi
+		disown
+		if [ $quiet ] ; then
+			res="$(wmctrl -l | grep 'N/A Enpass' | cut -d' ' -f1)"
+			while [ -z $res ] ; do
+				sleep 0.1
+				res="$(wmctrl -l | grep 'N/A Enpass' | cut -d' ' -f1)"
+			done
+			wmctrl -ic $res
+		fi
+		;;
+	udiskie)
+		killall udiskie &> /dev/null
+		udiskie --tray &
+		disown
+		;;
+	color)
+		if [ $quiet ] ; then
+			wal -R > /dev/null &
+		else
+			wal -R &
+		fi
+		feh --bg-fill "$(cat .cache/wal/wal)"
+		;;
+	redshift)
+		killall redshift-gtk;
+		if [ $quiet ] ; then
+			redshift-gtk -l 47:8 > /dev/null &
+		else
+			redshift-gtk -l 47:8 &
+		fi
+		;;
+	ibus)
+		ibus-daemon -drx
+		;;
+	whatsapp)
+		killall WhatsApp &> /dev/null
+		if [ $quiet ] ; then
+			Whatsapp > /dev/null &
+		else
+			Whatsapp &
+		fi
+		;;
+#	hidebar)
+#		killall $(ps -aux | egrep -e "bash\ .bin/hideIt\.sh" | egrep -oe "^[a-zA-Z0-9]+ +[0-9]+" | egrep -oe "[0-9]+")
+#		if [ $quiet ] ; then
+#			.bin/hideIt.sh -N "^Polybar.*$" -d top -S -p 0 > /dev/null &
+#			.bin/hideIt.sh -N "^Polybar tray.*$" -d top -S -p 0 > /dev/null &
+#		else
+#			.bin/hideIt.sh -N "^Polybar.*$" -d top -S -p 0 & 
+#			.bin/hideIt.sh -N "^Polybar tray.*$" -d top -S -p 0 &
+#		fi
+#		;;
+	-*)
+		continue;;
+	*)
+		echo "Unmatched: $arg"
+		continue;;
+esac
+echo "Started $arg"
+done

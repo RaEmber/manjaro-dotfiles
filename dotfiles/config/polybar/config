@@ -1,0 +1,302 @@
+﻿; Polybar
+
+[settings]
+wlaniface	= wlp3s0
+ethiface	= enp2s0f0
+padding		= 2
+
+[colors]
+foreground		= ${xrdb:*foreground}
+background		= ${xrdb:*background}
+cursorColor		= ${xrdb:*cursor}
+black			= ${xrdb:*color0}
+red				= ${xrdb:*color1}
+green			= ${xrdb:*color2}
+yellow			= ${xrdb:*color3}
+blue			= ${xrdb:*color4}
+magenta			= ${xrdb:*color5}
+cyan			= ${xrdb:*color6}
+light_gray		= ${xrdb:*color7}
+dark_gray		= ${xrdb:*color8}
+light_red		= ${xrdb:*color9}
+light_green		= ${xrdb:*color10}
+light_yellow	= ${xrdb:*color11}
+light_blue		= ${xrdb:*color12}
+light_magenta	= ${xrdb:*color13}
+light_cyan		= ${xrdb:*color14}
+white			= ${xrdb:*color15}
+
+bg				= ${self.background}
+fg				= ${self.foreground}
+fg2				= ${self.dark_gray}
+primary			= ${self.light_gray}
+underline		= ${self.dark_gray}
+border			= ${env:border_color}
+transparent		= #00FFFFFF
+
+
+;==============================================
+[template/bar]
+
+
+[global/wm]
+margin-bottom	= 0
+margin-top		= 50
+
+
+[bar/main]
+fixed-center		= true
+height				= 30
+offset-y			= 10
+background			= ${colors.bg}
+foreground			= ${colors.fg}
+overline-size		= 0
+underline-size		= 2
+underline-color		= ${colors.underline}
+border-size			= 5
+border-color		= ${colors.border}
+padding				= 0
+module-margin		= 1
+
+font-0				= TamzenForPowerline:pixelsize=11;2
+font-1				= M+ 1c:style=Regular:pixelsize=10;2
+font-2				= FontAwesome:style=Regular:size=10;2
+font-3				= M+ 1c:style=Bold:pixelsize=12;2
+
+locale				= ja_JP.UTF-8
+wm-restack			= bspwm
+
+width				= 90%
+offset-x			= 5%
+
+modules-left		= bspwm temperature filesystem memory cpu
+modules-center		=
+modules-right		= backlight volume battery date powermenu
+
+tray-position		= center
+tray-detached		= false
+tray-transparent	= false
+#tray-background		= ${colors.bg}
+tray-padding		= 10
+
+
+;==============================================
+[module/bspwm]
+type						= internal/bspwm
+background					= ${colors.bg}
+enable-scroll				= false
+
+label-focused				= %name%
+label-focused-foreground	= ${colors.fg}
+label-focused-background	= ${colors.bg}
+label-focused-underline		= ${colors.underline}
+label-focused-padding		= 1
+label-focused-font			= 4
+
+label-occupied				= %name%
+label-occupied-foreground	= ${colors.fg2}
+label-occupied-background	= ${colors.bg}
+label-occupied-padding		= 1
+label-occupied-font			= 4
+
+label-urgent				= %name%
+label-urgent-foreground		= ${colors.red}
+label-urgent-background		= ${colors.bg}
+label-urgent-padding		= 1
+label-urgent-font			= 4
+
+label-empty					=
+label-empty-padding			= 0
+
+
+[module/temperature]
+type					= internal/temperature
+thermal-zone			= 0
+warn-temperature		= 65
+
+label					= "%{A1:urxvt -e sensors:} %temperature%%{A}"
+format-foreground		= ${colors.yellow}
+format-background		= ${colors.bg}
+format-underline		= ${colors.green}
+format-padding			= ${settings.padding}
+
+label-warn				= "%{A1:urxvt -e sensors:} %temperature%%{A}"
+format-warn-foreground	= ${colors.red}
+format-warn-background	= ${colors.bg}
+format-warn-underline	= ${colors.red}
+format-warn-padding		= ${settings.padding}
+
+
+[module/filesystem]
+type						= internal/fs
+interval					= 25
+mount-0						= /
+format-mounted-underline	= ${colors.underline}
+
+label-mounted				= " %percentage_used%%"
+label-mounted-foreground	= ${colors.blue}
+label-mounted-background	= ${colors.bg}
+label-mounted-padding		= ${settings.padding}
+
+label-unmounted				=
+label-unmounted-padding		= 0
+
+
+[module/memory]
+type				= internal/memory
+interval			= 1
+label				= "%{A1:urxvt -e htop:} %percentage_used%%%{A}"
+format-foreground	= ${colors.magenta}
+format-background	= ${colors.bg}
+format-padding		= ${settings.padding}
+format-underline	= ${colors.underline}
+
+
+[module/cpu]
+type				= internal/cpu
+interval			= 1
+format-prefix		= "%{A1:urxvt -e htop:} %{A}"
+format-foreground	= ${colors.cyan}
+format-background	= ${colors.bg}
+format-underline	= ${colors.underline}
+format-padding		= ${settings.padding}
+label				= %percentage%%
+
+
+;--------------------------------------------
+[module/backlight]
+type				= internal/backlight
+card				= intel_backlight
+enable-scroll		= true
+label				= " %percentage%"
+format-foreground	= ${colors.yellow}
+format-background	= ${colors.bg}
+format-underline	= ${colors.underline}
+format-padding		= ${settings.padding}
+
+
+[module/volume]
+type					= internal/volume
+
+label-volume			= " %percentage%"
+label-volume-foreground	= ${colors.blue}
+label-volume-background	= ${colors.bg}
+label-volume-underline	= ${colors.green}
+label-volume-padding	= ${settings.padding}
+                
+label-muted				= ""
+label-muted-foreground	= ${colors.dark_gray}
+label-muted-background	= ${colors.bg}
+label-muted-underline	= ${colors.red}
+label-muted-padding		= ${settings.padding}
+                
+                
+[module/wlan]
+type							= internal/network
+interface						= ${settings.wlaniface}
+
+interval						= 1.0
+label-connected					= ""
+label-connected-foreground		= ${colors.green}
+label-connected-background		= ${colors.bg}
+label-connected-underline		= ${colors.green}
+label-connected-padding			= ${settings.padding}
+
+label-disconnected				= ""
+label-disconnected-foreground	= ${colors.dark_gray}
+label-disconnected-background	= ${colors.bg}
+label-disconnected-underline	= ${colors.red}
+label-disconnected-padding		= ${settings.padding}
+
+
+[module/eth]
+type				= internal/network
+inherit				= module/wlan
+interface			= ${settings.ethiface}
+label-connected		= ""
+label-disconnected	= ""
+
+
+[module/battery]
+type							= internal/battery
+background						= ${colors.bg}
+full-at							= 100
+battery							= BAT1
+adapter							= ACAD
+poll-interval					= 5
+
+format-charging					= <animation-charging> <label-charging>
+label-charging					= %percentage%
+format-charging-foreground		= ${colors.yellow}
+format-charging-background		= ${colors.bg}
+format-charging-underline		= ${colors.yellow}
+format-charging-padding			= ${settings.padding}
+
+format-discharging				= <ramp-capacity> <label-discharging>
+label-discharging				= %percentage%
+format-discharging-foreground	= ${colors.red}
+format-discharging-background	= ${colors.bg}
+format-discharging-underline	= ${colors.red}
+format-discharging-padding		= ${settings.padding}
+
+format-full						= <ramp-capacity> <label-full>
+label-full						= %percentage%
+format-full-foreground			= ${colors.green}
+format-full-background			= ${colors.bg}
+format-full-underline			= ${colors.green}
+format-full-padding				= ${settings.padding}
+
+ramp-capacity-0					= ""
+ramp-capacity-1					= ""
+ramp-capacity-2					= ""
+ramp-capacity-3					= ""
+ramp-capacity-4					= ""
+
+animation-charging-0			= ""
+animation-charging-1			= ""
+animation-charging-2			= ""
+animation-charging-3			= ""
+animation-charging-4			= ""
+
+animation-charging-framerate	= 750
+
+
+[module/date]
+type				= internal/date
+background			= ${colors.bg}
+date				= "%X"
+date-alt			= "UTC%z %x(%A) %V週 %X"
+interval			= 1
+
+format-underline	= ${colors.underline}
+format-foreground	= ${colors.fg}
+format-background	= ${colors.bg}
+format-padding		= ${settings.padding}
+
+
+[module/powermenu]
+type				= custom/menu
+
+format				= <label-toggle> <menu>
+format-foreground	= ${colors.fg}
+format-background	= ${colors.bg}
+format-underline	= ${colors.underline}
+format-padding		= ${settings.padding}
+
+menu-0-0			= ""
+menu-0-0-exec		= shutdown now
+menu-0-1			= ""
+menu-0-1-exec		= shutdown -r now
+menu-0-2			= " "
+menu-0-2-exec		= systemctl hibernate
+menu-0-3			= ""
+menu-0-3-exec		= systemctl suspend
+menu-0-4			= ""
+menu-0-4-exec		= systemctl hybrid-sleep
+
+label-open			= ""
+label-close			= ""
+label-separator		= "  "
+
+
+; vim:ft=dosini

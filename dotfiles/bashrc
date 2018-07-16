@@ -1,0 +1,2 @@
+export PAGER='vimpager'
+alias less=$PAGER

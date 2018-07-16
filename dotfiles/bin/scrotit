@@ -1,0 +1,15 @@
+#!/bin/bash
+
+FORMAT="%Y.%m.%d_%H:%M:%S_%w_%h.png"
+
+case $1 in
+full)
+	scrot -m $FORMAT -e 'mv $f ~/Bilder/screenshots/$f'
+	;;
+select)
+	scrot -sm $FORMAT -e 'mv $f ~/Bilder/screenshots/$f'
+	;;
+focused)
+	scrot -um $FORMAT -e 'mv $f ~/Bilder/screenshots/$f'
+	;;
+esac

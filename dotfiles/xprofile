@@ -1,0 +1,17 @@
+#!/bin/bash
+
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_CACHE_HOME="$HOME/.cache"
+export BROWSER=/usr/bin/spacefm
+export TERMINAL=/usr/bin/urxvt
+export EDITOR=/usr/bin/vim
+export PATH="$HOME/.bin:$PATH"
+
+# IME IBus, mozq
+export GTK_IM_MODULE=ibus
+export XMODIFIERS=@im=ibus
+export QT_IM_MODULE=ibus
+
+launch xrdb
+. ~/.dmenurc
+
