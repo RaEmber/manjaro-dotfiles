@@ -1,0 +1,9 @@
+#!/bin/bash
+
+IMAGE=~/.color/currentwallpaper
+#SCREENSHOT="scrot $IMAGE"
+#BLURTYPE="1x0.3"
+#$SCREENSHOT
+magick convert $IMAGE /tmp/lock.png
+i3lock -i /tmp/lock.png
+rm /tmp/lock.png

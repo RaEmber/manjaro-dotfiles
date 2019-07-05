@@ -1,0 +1,65 @@
+#!/bin/bash
+
+escape() {
+	old="$IFS"
+	IFS=";"
+	args="$*"
+	IFS=$old
+	printf "\\\\033[${args}m"
+}
+
+fg_default=$(escape 39)
+fg_black=$(escape 30)
+fg_red=$(escape 31)
+fg_green=$(escape 32)
+fg_yellow=$(escape 33)
+fg_blue=$(escape 34)
+fg_magenta=$(escape 35)
+fg_cyan=$(escape 36)
+fg_light_gray=$(escape 37)
+fg_dark_gray=$(escape 90)
+fg_light_red=$(escape 91)
+fg_light_green=$(escape 92)
+fg_light_yellow=$(escape 93)
+fg_light_blue=$(escape 94)
+fg_light_magenta=$(escape 95)
+fg_light_cyan=$(escape 96)
+fg_white=$(escape 97)
+
+bg_default=$(escape 49)
+bg_black=$(escape 40)
+bg_red=$(escape 41)
+bg_green=$(escape 42)
+bg_yellow=$(escape 43)
+bg_blue=$(escape 44)
+bg_magenta=$(escape 45)
+bg_cyan=$(escape 46)
+bg_light_gray=$(escape 47)
+bg_dark_gray=$(escape 100)
+bg_light_red=$(escape 101)
+bg_light_green=$(escape 102)
+bg_light_yellow=$(escape 103)
+bg_light_blue=$(escape 104)
+bg_light_magenta=$(escape 105)
+bg_light_cyan=$(escape 106)
+bg_white=$(escape 107)
+
+font_bold=$(escape 1)
+font_dim=$(escape 2)
+font_underline=$(escape 4)
+font_blink=$(escape 5)
+font_reverse=$(escape 7)
+font_hidden=$(escape 8)
+font_strikethrough=$(escape 9)
+
+font_no_bold=$(escape 21)
+font_no_dim=$(escape 22)
+font_no_underline=$(escape 24)
+font_no_blink=$(escape 25)
+font_no_reverse=$(escape 27)
+font_no_hidden=$(escape 28)
+font_no_strikethrough=$(escape 29)
+
+font_reset=$(escape 0)
+
+echo -e "This is a ${bg_light_red}${font_blink}sexy${font_reset} test"

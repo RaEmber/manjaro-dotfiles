@@ -1,0 +1,49 @@
+#!/bin/bash
+file="/tmp/.minimized"
+touch $file
+# By https://github.com/tatou-tatou
+width=$(wattr w $(lsw -r))
+height=$(wattr h $(lsw -r))
+bar_width=$(( $width / 2 ))
+left_shift=$(( ($width - $bar_width) / 2 ))
+top_shift=$(( $height / 3 ))
+
+case $1 in
+hide)
+    lines=$(wc -l < $file)
+
+    if [[ $lines -ge 10 ]]; then ## Fight against bad practices
+        notify-send "Ten windows are already hidden" "You should consider closing some before hiding even more." -i warning
+    else
+        focusedDesktop=$(xdotool get_desktop)
+        focusedID=$(xdo id)
+        focusedName=$(xdotool getwindowname $focusedID)
+
+        echo "$focusedID $focusedDesktop $focusedName" >> $file && xdo hide $focusedID && notify-send "A window has been hidden (${lines})." "$focusedName" -i warning
+    fi
+    ;;
+dmenu)
+    miniList=$(cat $file)
+
+    # If the list is empty
+    if [ -z "$miniList" ] ; then
+		echo "No hidden windows" | dmenu_start overlay
+		exit 0
+	else
+    	lineNumber=$(echo "$miniList" | cut -d " " -f 3- | nl -w 3 -n rn | sed -r 's/^([ 0-9]+)[ \t]*(.*)$/\1 - \2/' | dmenu_start overlay | cut -d '-' -f -1)
+	fi
+
+    # Show the selected hidden window
+    selectedID=$(sed -n "$lineNumber p" $file | cut -d ' ' -f 1)
+    selectedDesktop=$(sed -n "$lineNumber p" $file | cut -d ' ' -f 2)
+    xdotool set_desktop $selectedDesktop
+    xdo show $selectedID && sed -i "${lineNumber}d" $file
+    ;;
+last)
+    lines=$(wc -l < $file)
+    selectedID=$(tail -n 1 $file | cut -d ' ' -f 1)
+    selectedDesktop=$(sed -n "$lines p" $file | cut -d ' ' -f 2)
+    xdotool set_desktop $selectedDesktop
+    xdo show $selectedID && sed -i "${lines}d" $file
+    ;;
+esac
