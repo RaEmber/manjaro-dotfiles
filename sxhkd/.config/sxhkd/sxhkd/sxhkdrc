@@ -21,8 +21,8 @@ super + alt + x
 # Toggle tiling mode of window
 super + p 
 	bspc node -t {pseudo_tiled,tiled}
-#super + alt + t
-#	{bspc node -t floating && window-placer $(bspc query -T -d | grep -o '"state":"floating"' | wc -l),bspc node -t tiled}
+super + alt + f 
+	{bspc node -t floating && window-placer $(bspc query -T -d | grep -o '"state":"floating"' | wc -l),bspc node -t tiled}
 
 # Force all windows of the desktop to tile
 super + alt + t
@@ -53,11 +53,11 @@ super + shift + h
 #
 
 # Presel window for splitting in certain direction
-alt + ctrl + {a,s,w,d}
+alt + super + {a,s,w,d}
 	bspc node -p \~{west,south,north,east}
-alt + ctrl + {h,j,k,l}
+alt + super + {h,j,k,l}
 	bspc node -p \~{west,south,north,east}
-alt + ctrl + {Left,Down,Up,Right}
+alt + super + {Left,Down,Up,Right}
 	bspc node -p \~{west,south,north,east}
 
 # Presel the desktop for splitting in certain direction

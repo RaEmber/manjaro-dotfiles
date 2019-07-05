@@ -1,15 +1,49 @@
-#
-# ~/.xprofile
-#
-#
+#!/bin/bash
 
-# if which dbus-launch >/dev/null && test -z "$DBUS_SESSION_BUS_ADDRESS"; then
-#     eval "$(dbus-launch --sh-syntax --exit-with-session)"
-# fi
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_CACHE_HOME="$HOME/.cache"
+export BROWSER=/usr/bin/spacefm
+export TERMINAL=/usr/bin/urxvt
+export EDITOR=/usr/bin/vim
+export PATH="$HOME/.bin:$PATH"
 
-# Environment variables
-#
+# IME IBus, mozq
+export GTK_IM_MODULE=ibus
+export XMODIFIERS=@im=ibus
+export QT_IM_MODULE=ibus
 
-[[ -f ~/.extend.xprofile ]] && . ~/.extend.xprofile
+# NUT
+function setproxy() {
+    export HTTP_PROXY=proxy.nagaokaut.ac.jp:8080
+    export HTTPS_PROXY=$HTTP_PROXY
+    export FTP_PROXY=$HTTP_PROXY
+    export RSYNC_PROXY=$HTTP_PROXY
+    export ALL_PROXY=$HTTP_PROXY
+    export NO_PROXY=*.local,127.0.0.1,localhost,192.168.0.0/16,*.nagaokaut.ac.jp,169.254.0.0/16,133.44.0.0/16,10.10.10.10
+    export http_proxy=$HTTP_PROXY
+    export https_proxy=$HTTP_PROXY
+    export ftp_proxy=$HTTP_PROXY
+    export rsync_proxy=$HTTP_PROXY
+    export all_proxy=$HTTP_PROXY
+    export no_proxy=$NO_PROXY
+    git config --global http.proxy $HTTP_PROXY
+    echo 'Set up proxy'
+}
+export setproxy
+function unsetproxy() {
+    if unset HTTP_PROXY HTTPS_PROXY FTP_PROXY RSYNC_PROXY ALL_PROXY NO_PROXY \
+          http_proxy https_proxy ftp_proxy rsync_proxy all_proxy no_proxy && \
+          git config --global --unset http.proxy; then
+        echo 'Disabled proxy'
+    else
+        echo "Couldn't disable proxy" 1&>2
+    fi
+}
+export unsetproxy
 
-TERMINAL=urxvt
+#setproxy
+
+
+launch xrdb
+. ~/.dmenurc
+
