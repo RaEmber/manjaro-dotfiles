@@ -9,6 +9,9 @@ dotfiles:
   d_bspwm:
     dst: ~/.config/bspwm
     src: config/bspwm
+  d_rofi:
+    dst: ~/.config/rofi
+    src: config/rofi
   d_sxhkd:
     dst: ~/.config/sxhkd
     src: config/sxhkd
@@ -29,3 +32,4 @@ profiles:
     - f_xinitrc
     - d_bspwm
     - d_sxhkd
+    - d_rofi
