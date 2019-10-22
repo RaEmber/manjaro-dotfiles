@@ -1,0 +1,7 @@
+#!/bin/bash
+#
+# Aliases to be sourced by shells
+#
+
+alias dotdrop="Dokumente/git/dotfiles/dotdrop.sh --cfg=Dokumente/git/dotfiles/config.yaml"
+

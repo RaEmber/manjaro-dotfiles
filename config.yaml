@@ -6,86 +6,26 @@ config:
   keepdot: false
   longkey: false
 dotfiles:
-  d_archie:
-    dst: ~/.themes/Archie
-    src: themes/Archie
-  d_bin:
-    dst: ~/.bin
-    src: bin
   d_bspwm:
-    dst: ~/.config/bspwm/bspwm
-    src: config/bspwm/bspwm
-  d_polybar:
-    dst: ~/.config/polybar
-    src: config/polybar
-  d_ranger:
-    dst: ~/.config/ranger
-    src: config/ranger
+    dst: ~/.config/bspwm
+    src: config/bspwm
   d_sxhkd:
     dst: ~/.config/sxhkd
     src: config/sxhkd
-  d_user:
-    dst: ~/.color/user
-    src: color/user
-  f_atheister.zsh-theme:
-    dst: ~/.oh-my-zsh/themes/atheister.zsh-theme
-    src: oh-my-zsh/themes/atheister.zsh-theme
-  f_bashrc:
-    dst: ~/.bashrc
-    src: bashrc
-  f_color:
-    dst: ~/.bin/color
-    src: bin/color
-  f_dir_colors:
-    dst: ~/.dir_colors
-    src: dir_colors
-  f_dmenurc:
-    dst: ~/.dmenurc
-    src: dmenurc
-  f_redshift.conf:
-    dst: ~/.config/redshift.conf
-    src: config/redshift.conf
-  f_texmaker.ini:
-    dst: ~/Dokumente/texmaker.ini
-    src: Dokumente/texmaker.ini
-  f_vimrc:
-    dst: ~/.vimrc
-    src: vimrc
-  f_vs.vim:
-    dst: ~/.vim/colors/vs.vim
-    src: vim/colors/vs.vim
+  f_alias:
+    dst: ~/.alias
+    src: alias
   f_xinitrc:
     dst: ~/.xinitrc
     src: xinitrc
-  f_xprofile:
-    dst: ~/.xprofile
-    src: xprofile
-  f_xresources:
-    dst: ~/.Xresources
-    src: Xresources
   f_zshrc:
     dst: ~/.zshrc
     src: zshrc
 profiles:
-  turing:
+  sun:
     dotfiles:
-    - d_bspwm
-    - f_dmenurc
-    - d_user
-    - d_archie
-    - d_bspwm
-    - d_polybar
-    - d_ranger
-    - f_redshift.conf
-    - f_bashrc
+    - f_alias
     - f_zshrc
-    - d_sxhkd
-    - f_vimrc
-    - f_vs.vim
     - f_xinitrc
-    - f_xprofile
-    - f_xresources
-    - f_texmaker.ini
-    - f_atheister.zsh-theme
-    - f_dir_colors
-    - d_bin
+    - d_bspwm
+    - d_sxhkd

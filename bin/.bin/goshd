@@ -1,5 +1,0 @@
-#!/bin/bash
-omg='go/src/github.engineering.zhaw.ch/neut/oh-my-gosh/'
-bin="$(basename "$0") --conf ${omg}configs --auth ${omg}test --cert ${omg}test/certificate.pem --key ${omg}test/key.pem"
-go/bin/$bin $*
-

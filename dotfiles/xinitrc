@@ -1,0 +1,9 @@
+#!/bin/bash
+#
+# Init X
+#
+
+[ -f ".Xresources" ] && xrdb -merge ".Xresources"
+
+exec bspwm
+
