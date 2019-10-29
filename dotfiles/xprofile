@@ -1,0 +1,50 @@
+#!/bin/bash
+#
+# Profile for X11
+#
+
+# Provide the XDG dirs
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_CACHE_HOME="$HOME/.cache"
+. "$XDG_CONFIG_HOME/user-dirs.dirs"
+export XDG_DESKTOP_DIR
+export XDG_DOWNLOAD_DIR
+export XDG_TEMPLATES_DIR
+export XDG_PUBLICSHARE_DIR
+export XDG_DOCUMENTS_DIR
+export XDG_MUSIC_DIR
+export XDG_PICTURES_DIR
+export XDG_VIDEOS_DIR
+
+# Set other env vars
+export BROWSER="/usr/bin/brave"
+export TERMINAL="/usr/bin/urxvt"
+export EDITOR="/usr/bin/vim"
+export VISUAL="/usr/bin/vim"
+export PAGER="/usr/bin/vimpager"
+export MANPAGER="/usr/bin/vimpager"
+export PATH="$HOME/bin:$HOME/.local/bin:$PATH"
+export _JAVA_AWT_WM_NONREPARENTING=1
+export GTK_IM_MODULE=ibus
+export XMODIFIERS=@im=ibus
+export QT_IM_MODULE=ibus
+
+# https://facebook.github.io/react-native/docs/getting-started.html#android-development-environment
+export ANDROID_HOME=$HOME/Android/Sdk
+export PATH="$PATH:$ANDROID_HOME/emulator"
+export PATH="$PATH:$ANDROID_HOME/tools"
+export PATH="$PATH:$ANDROID_HOME/tools/bin"
+export PATH="$PATH:$ANDROID_HOME/platform-tools"
+
+# Set X keymap because reasons
+setxkbmap ch
+
+# Start applications
+ibus-daemon -drx
+exec bspwm &
+launch sxhkd color xrdb polybar compton hp
+nm-applet
+/usr/bin/polkit-kde-authentication-agent-1
+start_jack &
+sleep 1
+launch color bspwm

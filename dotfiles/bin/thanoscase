@@ -1,0 +1,97 @@
+#!/bin/env python3
+#
+# Changes text into various formats
+#
+from subprocess import Popen, PIPE
+import argparse
+
+def get_clipboard(primary: bool) -> str:
+    flag = 'p' if primary else 'b'
+    p = Popen(['xsel', f'-o{flag}'], stdout=PIPE, stderr=PIPE)
+    out, err = p.communicate()
+    if len(err) > 0:
+        print(f"Failed to get clipboard: {err}")
+    return out.decode('utf-8')
+
+def set_clipboard(primary: bool, data: str):
+    flag = 'p' if primary else 'b'
+    p = Popen(['xsel', f'-i{flag}'], stdin=PIPE, stdout=PIPE, stderr=PIPE)
+    out, err = p.communicate(data.encode('utf-8'))
+    if len(err) > 0:
+        print(f"Failed to set clipboard: {err}")
+
+
+# Changes text into tHiS wEiRd FoRmAt
+def thanosify(data: str) -> str:
+    buf = ''
+    n = 0
+    for char in data:
+        if char.isalpha():
+            if (n % 2):
+                buf += char.upper()
+            else:
+                buf += char.lower()
+            n += 1
+        else:
+            buf += char
+    return buf
+
+
+# ʇɐɯɹoɟ uʍop ǝpᴉsdn oʇuᴉ ʇxǝʇ sǝƃuɐɥƆ
+from_az_low = 'abcdefghijklmnopqrstuvwxyz'
+to_az_low = 'zʎxʍʌnʇsɹbdouɯlʞɾᴉɥƃɟǝpɔqɐ'
+from_az_high = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+to_az_high = 'Z⅄XMΛ∩┴SɹQԀONW˥ʞſIHפℲƎpƆq∀'
+from_sym = '!?.,-_/:;()[]{}\'"'
+to_sym = ',,{}[]();:/‾-\'˙¿¡'
+from_text = from_az_low + from_az_high + from_sym
+to_text = to_az_low[::-1] + to_az_high[::-1] + to_sym[::-1]
+def make_upside_down(text: str) -> str:
+    out = ''
+    for char in text:
+        if char in from_text:
+            out = to_text[from_text.index(char)] + out
+        else:
+            out = char + out
+    return out
+
+
+# Spaces out text
+def space(text: str) -> str:
+    out = ''
+    for char in text:
+        out += f" {char}"
+    return out[1:]
+
+p = argparse.ArgumentParser(description='Modify text')
+p.add_argument('--mode', default='t', choices=['t', 'u', 's'],
+                help="Turns text into tHaNoScAsE (t), uʍop ǝpᴉsdn (u) or s p a c e d   o u t (s).")
+p.add_argument('-i', default=1, type=int, choices=range(0, 3),
+                help="Transforms text from the stdin (0), the primary (1) or secondary (2) clipboard.")
+p.add_argument('-o', default=1, type=int, choices=range(0, 3),
+                help="Saves the result to stdout (0), the primary (1) or secondary (2) clipboard.")
+args = p.parse_args()
+print(args)
+
+if args.i == 0 or args.o == 0:
+    print("Not supported yet")
+    exit(1)
+
+if args.i == 1:
+    in_primary = True
+elif args.i == 2:
+    in_primary = False
+
+if args.o == 1:
+    out_primary = True
+elif args.o == 2:
+    out_primary = False
+
+if args.mode == 't':
+    f = thanosify
+elif args.mode == 'u':
+    f = make_upside_down
+else:
+    f = space
+
+set_clipboard(out_primary, f(get_clipboard(in_primary)))

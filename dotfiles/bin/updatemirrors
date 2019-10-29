@@ -1,0 +1,191 @@
+#!/bin/bash
+#
+# Updates mirror list using reflector
+#
+
+### Optional arguments:
+#con_timeout=5  # The number of seconds to wait before a connection
+                # times out. Default: 5
+#cache_timeout=300  # The cache timeout in seconds for the data retrieved
+                    # from the Arch Linux Mirror Status API. The default is
+                    # 300.
+save='/etc/pacman.d/mirrorlist' # Save the mirrorlist to the given path.
+sort='age'  # Sort the mirrorlist.
+            # "age": last server synchronization
+            # "rate": download rate
+            # "country": server's location
+            # "score": MirrorStatus score
+            # "delay": MirrorStatus delay
+#threads=5  # The maximum number of threads to use when rating
+            # mirrors. Default: 5
+verbose=1   # Print extra information to STDERR. Only works with
+            # some options.
+
+
+### Filters:
+# The following filters are inclusive, i.e. the returned list will only
+# contain mirrors for which all of the given conditions are met.
+age=24      # Only return mirrors that have synchronized in the last
+            # n hours. n may be an integer or a decimal number.
+countries=( # Match one of the given countries:
+    #AU     # Australia
+    AT      # Austria
+    #BD     # Bangladesh
+    BY      # Belarus
+    BE      # Belgium
+    BA      # Bosnia and Herzegovina
+    BR      # Brazil
+    BG      # Bulgaria
+    CA      # Canada
+    #CL     # Chile
+    #CN     # China
+    #CO     # Colombia
+    HR      # Croatia
+    CZ      # Czechia
+    DK      # Denmark
+    #EC     # Ecuador
+    FI      # Finland
+    FR      # France
+    GE      # Georgia
+    DE      # Germany
+    GR      # Greece
+    #HK     # Hong Kong
+    HU      # Hungary
+    IS      # Iceland
+    #IN     # India
+    #ID     # Indonesia
+    #IR     # Iran
+    IE      # Ireland
+    #IL     # Israel
+    IT      # Italy
+    #JP     # Japan
+    #KZ     # Kazakhstan
+    #KE     # Kenya
+    LV      # Latvia
+    LT      # Lithuania
+    LU      # Luxembourg
+    #MK     # Macedonia
+    #MX     # Mexico
+    NL      # Netherlands
+    #NC     # New Caledonia
+    #NZ     # New Zealand
+    NO      # Norway
+    #PY     # Paraguay
+    #PH     # Philippines
+    PL      # Poland
+    PT      # Portugal
+    #QA     # Qatar
+    RO      # Romania
+    #RU     # Russia
+    RS      # Serbia
+    #SG     # Singapore
+    SK      # Slovakia
+    SI      # Slovenia
+    #ZA     # South Africa
+    #KR     # South Korea
+    ES      # Spain
+    SE      # Sweden
+    CH      # Switzerland
+    #TW     # Taiwan
+    #TH     # Thailand
+    #TR     # Turkey
+    UA      # Ukraine
+    GB      # United Kingdom
+    #US     # United States
+    #VN     # Vietnam
+)
+fastest=64  # Return the n fastest mirrors that meet the other
+            # criteria. Do not use this option without other
+            # filtering options.
+#include='' # Include servers that match <regex>, where <regex> is a
+            # Python regular express.
+#exclude='' # Exclude servers that match <regex>, where <regex> is a
+            # Python regular express.
+latest=64   # Limit the list to the n most recently synchronized
+            # servers.
+score=64    # Limit the list to the n servers with the highest
+            # score.
+#n=100      # Return at most n mirrors.
+protocols=( # Match one of the given protocols, e.g. "http", "ftp".
+    #http
+    https
+    rsync
+    #ftp
+)
+#completion=100.0   # Set the minimum completion percent for the returned
+                    # mirrors. Check the mirrorstatus webpage for the
+                    # meaning of this parameter. Default value: 100.0.
+#isos=1     # Only return mirrors that host ISOs.
+#ipv4=1     # Only return mirrors that support IPv4.
+#ipv6=1     # Only return mirrors that support IPv6.
+
+
+###############################
+cmd=('reflector')
+# Optional arguments
+if ! [ -z ${con_timeout} ]; then
+    cmd+=" --connection-timeout ${con_timeout}"
+fi
+if ! [ -z ${cache_timeout} ]; then
+    cmd+=" --cache-timeout ${cache_timeout}"
+fi
+if ! [ -z ${save} ]; then
+    cmd+=" --save ${save}"
+fi
+if ! [ -z ${sort} ]; then
+    cmd+=" --sort ${sort}"
+fi
+if ! [ -z ${threads} ]; then
+    cmd+=" --threads ${threads}"
+fi
+if ! [ -z ${verbose} ]; then
+    cmd+=" --verbose"
+fi
+
+# Filters
+if ! [ -z ${age} ]; then
+    cmd+=" -a ${age}"
+fi
+if ! [ -z ${countries} ]; then
+    for c in "${countries[@]}"; do
+        cmd+=" -c ${c}"
+    done
+fi
+if ! [ -z ${fastest} ]; then
+    cmd+=" -f ${fastest}"
+fi
+if ! [ -z ${include} ]; then
+    cmd+=" -i ${include}"
+fi
+if ! [ -z ${exclude} ]; then
+    cmd+=" -x ${exclude}"
+fi
+if ! [ -z ${latest} ]; then
+    cmd+=" -l ${latest}"
+fi
+if ! [ -z ${score} ]; then
+    cmd+=" --score ${score}"
+fi
+if ! [ -z ${n} ]; then
+    cmd+=" --n ${n}"
+fi
+if ! [ -z ${protocols} ]; then
+    for p in "${protocols[@]}"; do
+        cmd+=" -p ${p}"
+    done
+fi
+if ! [ -z ${completion} ]; then
+    cmd+=" --completion-percent ${completion}"
+fi
+if ! [ -z ${isos} ]; then
+    cmd+=" --isos"
+fi
+if ! [ -z ${ipv4} ]; then
+    cmd+=" --ipv4"
+fi
+if ! [ -z ${ipv6} ]; then
+    cmd+=" --ipv6"
+fi
+
+echo ${cmd[*]}
+#${cmd[*]}

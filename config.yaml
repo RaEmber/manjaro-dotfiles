@@ -6,6 +6,9 @@ config:
   keepdot: false
   longkey: false
 dotfiles:
+  d_bin:
+    dst: ~/bin
+    src: bin
   d_bspwm:
     dst: ~/.config/bspwm
     src: config/bspwm
@@ -18,9 +21,18 @@ dotfiles:
   f_alias:
     dst: ~/.alias
     src: alias
+  f_profile:
+    dst: ~/.profile
+    src: profile
   f_xinitrc:
     dst: ~/.xinitrc
     src: xinitrc
+  f_xprofile:
+    dst: ~/.xprofile
+    src: xprofile
+  f_xresources:
+    dst: ~/.Xresources
+    src: Xresources
   f_zshrc:
     dst: ~/.zshrc
     src: zshrc
@@ -33,3 +45,18 @@ profiles:
     - d_bspwm
     - d_sxhkd
     - d_rofi
+    - f_xresources
+    - f_xprofile
+    - f_profile
+    - d_bin
+  teegardenb:
+    dotfiles:
+    - f_alias
+    - f_zshrc
+    - f_xinitrc
+    - d_bspwm
+    - d_sxhkd
+    - d_rofi
+    - f_xresources
+    - f_xprofile
+    - f_profile
