@@ -60,3 +60,4 @@ profiles:
     - f_xresources
     - f_xprofile
     - f_profile
+    - d_bin
