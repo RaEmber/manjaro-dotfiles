@@ -39,6 +39,9 @@ dotfiles:
   f_zshrc:
     dst: ~/.zshrc
     src: zshrc
+  d_polybar:
+    src: config/polybar
+    dst: ~/.config/polybar
 profiles:
   sun:
     dotfiles:
@@ -65,3 +68,4 @@ profiles:
     - f_profile
     - d_bin
     - d_environment.d
+    - d_polybar
