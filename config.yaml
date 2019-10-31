@@ -12,6 +12,9 @@ dotfiles:
   d_bspwm:
     dst: ~/.config/bspwm
     src: config/bspwm
+  d_environment.d:
+    dst: ~/.config/environment.d
+    src: config/environment.d
   d_rofi:
     dst: ~/.config/rofi
     src: config/rofi
@@ -61,3 +64,4 @@ profiles:
     - f_xprofile
     - f_profile
     - d_bin
+    - d_environment.d
