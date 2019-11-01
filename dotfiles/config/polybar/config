@@ -31,7 +31,8 @@ fg				= ${self.foreground}
 fg2				= ${self.dark_gray}
 primary			= ${self.light_gray}
 overline		= ${self.dark_gray}
-border			= ${env:border_color}
+border			= #50484242
+;${env:border_color}
 transparent		= #00FFFFFF
 traybg          = ${env:traybg}
 
@@ -226,7 +227,7 @@ label-disconnected	= ""
 type							= internal/battery
 background						= ${colors.bg}
 full-at							= 100
-battery							= BAT1
+battery							= BAT0
 adapter							= ACAD
 poll-interval					= 5
 
