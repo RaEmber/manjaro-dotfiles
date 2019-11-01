@@ -15,6 +15,9 @@ dotfiles:
   d_environment.d:
     dst: ~/.config/environment.d
     src: config/environment.d
+  d_polybar:
+    dst: ~/.config/polybar
+    src: config/polybar
   d_rofi:
     dst: ~/.config/rofi
     src: config/rofi
@@ -39,9 +42,6 @@ dotfiles:
   f_zshrc:
     dst: ~/.zshrc
     src: zshrc
-  d_polybar:
-    src: config/polybar
-    dst: ~/.config/polybar
 profiles:
   sun:
     dotfiles:
@@ -55,6 +55,7 @@ profiles:
     - f_xprofile
     - f_profile
     - d_bin
+    - d_polybar
   teegardenb:
     dotfiles:
     - f_alias
