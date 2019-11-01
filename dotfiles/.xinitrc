@@ -1,7 +1,7 @@
 #!/bin/bash
 #
 # Init X
-#
+# Gets run by startx/Xorg
 
 xrandr --auto  # Prevents black screen on nvidia card
 

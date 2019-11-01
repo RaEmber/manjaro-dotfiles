@@ -1,6 +1,13 @@
+actions:
+  bspwm: ~/.config/bspwm/bspwmrc
+  envd_link: rm ~/.config/environment.d/10-xdg-user-dirs.conf; ln -s ~/.config/user-dirs.dirs
+    ~/.config/environment.d/10-xdg-user-dirs.conf
+  polybar: ~/.config/polybar/launch.sh &> /dev/null &
+  sxhkd: pkill -USR1 -x sxhkd
+  xres: xrdb -merge ~/.Xresources
 config:
-  backup: true
-  banner: true
+  backup: false
+  banner: false
   create: true
   dotpath: dotfiles
   keepdot: false
@@ -10,63 +17,68 @@ dotfiles:
     dst: ~/bin
     src: bin
   d_bspwm:
+    actions:
+    - bspwm
     dst: ~/.config/bspwm
-    src: config/bspwm
+    src: .config/bspwm
   d_environment.d:
+    actions:
+    - envd_link
     dst: ~/.config/environment.d
-    src: config/environment.d
+    src: .config/environment.d
   d_polybar:
+    actions:
+    - polybar
     dst: ~/.config/polybar
-    src: config/polybar
+    src: .config/polybar
   d_rofi:
     dst: ~/.config/rofi
-    src: config/rofi
+    src: .config/rofi
   d_sxhkd:
+    actions:
+    - sxhkd
     dst: ~/.config/sxhkd
-    src: config/sxhkd
+    src: .config/sxhkd
   f_alias:
     dst: ~/.alias
-    src: alias
+    src: .alias
   f_profile:
     dst: ~/.profile
-    src: profile
+    src: .profile
   f_xinitrc:
     dst: ~/.xinitrc
-    src: xinitrc
+    src: .xinitrc
   f_xprofile:
     dst: ~/.xprofile
-    src: xprofile
+    src: .xprofile
   f_xresources:
+    actions:
+    - xres
     dst: ~/.Xresources
-    src: Xresources
+    src: .Xresources
   f_zshrc:
     dst: ~/.zshrc
-    src: zshrc
+    src: .zshrc
 profiles:
-  sun:
+  common:
     dotfiles:
-    - f_alias
-    - f_zshrc
     - f_xinitrc
-    - d_bspwm
-    - d_sxhkd
-    - d_rofi
-    - f_xresources
     - f_xprofile
+    - f_xresources
     - f_profile
-    - d_bin
-    - d_polybar
-  teegardenb:
-    dotfiles:
     - f_alias
-    - f_zshrc
-    - f_xinitrc
-    - d_bspwm
-    - d_sxhkd
-    - d_rofi
-    - f_xresources
-    - f_xprofile
-    - f_profile
     - d_bin
     - d_environment.d
+    - f_zshrc
+    - d_bspwm
+    - d_sxhkd
     - d_polybar
+    - d_rofi
+  sun:
+    dotfiles: []
+    include:
+    - common
+  teegardenb:
+    dotfiles: []
+    include:
+    - common
