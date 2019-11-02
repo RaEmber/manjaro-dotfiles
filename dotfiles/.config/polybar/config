@@ -220,7 +220,7 @@ label-volume-background	= ${colors.bg}
 label-volume-overline	= ${colors.green}
 label-volume-padding	= ${settings.padding}
                 
-label-muted				= ""
+label-muted				= ""
 label-muted-foreground	= ${colors.dark_gray}
 label-muted-background	= ${colors.bg}
 label-muted-overline	= ${colors.red}
