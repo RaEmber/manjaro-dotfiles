@@ -10,7 +10,7 @@ config:
   banner: false
   create: true
   dotpath: dotfiles
-  keepdot: false
+  keepdot: true
   longkey: false
 dotfiles:
   d_bin:

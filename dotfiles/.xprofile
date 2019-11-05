@@ -6,20 +6,10 @@
 # Set X keymap because reasons
 setxkbmap ch
 
-# Merge X resources for urxvt
-userresources=$HOME/.Xresources
-usermodmap=$HOME/.Xmodmap
-sysresources=/etc/X11/xinit/.Xresources
-sysmodmap=/etc/X11/xinit/.Xmodmap
-[ -f $sysresources ] && xrdb -merge $sysresources
-[ -f $sysmodmap ] && xmodmap $sysmodmap
-[ -f "$userresources" ] && xrdb -merge "$userresources"
-[ -f "$usermodmap" ] && xmodmap "$usermodmap"
-
-
-## Start applications
+# Start applications
+polybar main &
+sxhkd & 
 #ibus-daemon -drx
-#exec bspwm &
 #launch sxhkd color xrdb polybar compton hp
 #nm-applet
 #/usr/bin/polkit-kde-authentication-agent-1
