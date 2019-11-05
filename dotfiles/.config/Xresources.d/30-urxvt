@@ -1,0 +1,60 @@
+! http://pod.tst.eu/http://cvs.schmorp.de/rxvt-unicode/doc/rxvt.1.pod#RESOURCES
+URxvt.buffered:				true
+URxvt.colorUL:				yellow
+URxvt.underlineColor:		yellow
+URxvt.skipScroll:			true
+URxvt.scrollColor:			#525258
+! https://wiki.archlinux.org/index.php/Rxvt-unicode#Font_declaration_methods
+URxvt.font:					tamzenPowerAwesome
+URxvt.mapAlert:				true
+URxvt.urgentOnBell:			true
+URxvt.visualBell:			true
+!URxvt.loginShell:			true
+! https://wiki.archlinux.org/index.php/Rxvt-unicode#Printing
+URxvt.print-pipe:			cat > $HOME/$(echo urxvt.dump.$(date +'%Y%M%d%H%m%S'))
+URxvt.scrollBar:			true
+URxvt.scrollstyle:			plain
+URxvt.scrollBar_right:		true
+! https://wiki.archlinux.org/index.php/Rxvt-unicode#Scrollback_position
+URxvt.scrollTtyOutput:		true
+URxvt.scrollWithBuffer:		true
+URxvt.scrollTtyKeypress:	true
+URxvt.saveLines:			8192
+URxvt.internalBorder:		1
+URxvt.skipBuiltinGlyphs:	true
+URxvt.termName:				rxvt-256color
+URxvt.cursorBlink:			true
+URxvt.cursorUnderline:		true
+!URxvt.pointerColor:			
+!URxvt.pointerColor2:		
+! https://wiki.archlinux.org/index.php/Rxvt-unicode#Scrollback_buffer_in_secondary_screen
+URxvt.secondaryScreen:		true
+URxvt.secondaryScroll:		true
+URxvt.hold:					false
+! https://wiki.archlinux.org/index.php/Rxvt-unicode#Cut_and_paste
+! https://wiki.archlinux.org/index.php/Rxvt-unicode#Changing_font_size_on_the_fly
+URxvt.perl-ext-common:		default,clipboard,matcher,tabbed,resize-font
+URxvt.clipboard.autocopy:	true
+!URxvt.keysym.M-c:			perl:clipboard:copy
+!URxvt.keysym.M-v:			perl:clipboard:paste
+URxvt.keysym.C-M-c:			builtin-string:
+URxvt.keysym.C-M-v:			builtin-string:
+URxvt.keysym.C-S-0x43:		eval:selection_to_clipboard
+URxvt.keysym.C-S-0x56:		eval:paste_clipboard
+URxvt.keysym.C-Down:		resize-font:smaller
+URxvt.keysym.C-Up:			resize-font:bigger
+URxvt.keysym.C-0:			resize-font:reset
+URxvt.keysym.C-S-question:	resize-font:show
+! Disable default setting to allow Ctrl-Shift keymaps
+URxvt.iso14755:				false
+URxvt.iso14755_52:			false
+! https://wiki.archlinux.org/index.php/Rxvt-unicode#Clickable_URLs
+URxvt.url-launcher:			/usr/bin/xdg-open
+URxvt.matcher.button:		true
+! https://wiki.archlinux.org/index.php/Rxvt-unicode#Simple_tabs
+URxvt.tabbed.tabbar-fg:		2
+URxvt.tabbed.tabbar-bg:		0
+URxvt.tabbed.tab-fg:		3
+URxvt.tabbed.tab-bg:		0
+! https://wiki.archlinux.org/index.php/Rxvt-unicode#Disabling_Perl_extensions
+URxvt.perl-ext:

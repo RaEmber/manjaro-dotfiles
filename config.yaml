@@ -56,6 +56,11 @@ dotfiles:
     - xres
     dst: ~/.Xresources
     src: .Xresources
+  f_xresources.d:
+    actions:
+    - xres
+    dst: ~/.config/Xresources.d
+    src: .config/Xresources.d
   f_zshrc:
     dst: ~/.zshrc
     src: .zshrc
@@ -65,6 +70,7 @@ profiles:
     - f_xinitrc
     - f_xprofile
     - f_xresources
+    - f_xresources.d
     - f_profile
     - f_alias
     - d_bin
