@@ -1,0 +1,243 @@
+#!/bin/bash
+
+WALL_DIR="$XDG_PICTURES_DIR/wallpaper"
+CONFIG_DIR="$XDG_CONFIG_HOME/color"
+SPECIAL_DIR="$CONFIG_DIR/special"
+USER_COL_DIR="$CONFIG_DIR/user"
+mkdir -p $WALL_DIR
+mkdir -p $SPECIAL_DIR
+mkdir -p $USER_COL_DIR
+
+print_help() {
+	echo -e "Usage:"
+
+	echo -e "$(basename $0) \e[0;90m{\e[m-n, -w \e[0;90mfile\e[m, -s\e[0;90m}\e[m \e[0;90m[\e[m-m, -x \e[0;90mname\e[m, -q, -c\e[0;90m]\e[m\t\tGenerate colorscheme out of a wallpaper"
+	echo -e "$(basename $0) -u \e[0;90mname [\e[m-q, -c\e[0;90m]\e[m\t\t\t\t\tLoad user specified colorscheme"
+	echo -e "$(basename $0) \e[0;90m[\e[m-m, -x \e[0;90mname\e[m, -l, -d \e[0;90mname\e[m, -r, -h, -q, -c\e[0;90m]\e[m\tOther actions"
+
+	echo -e "\npywal wrapper"
+	echo -e "Options:"
+
+	echo -e " -n \t\tGenerate colorscheme out of a random wallpaper"
+	echo -e " -w \e[0;90mfile\e[m\tGenerate colorscheme out of specific wallpaper"
+	echo -e " -m \t\tMark (toggle) current wallpaper as special"
+	echo -e " -s \t\tChoose wallpaper out of the ones marked as special"
+
+	echo -e " -x \e[0;90mname\e[m\tExport current colorscheme to the user colorschemes"
+	echo -e " -l \t\tList the user specified colorschemes"
+	echo -e " -u \e[0;90mname\e[m\tLoad user specified colorscheme"
+	echo -e " -d \e[0;90mname\e[m\tDelete user colorscheme"
+
+	echo -e " -r\t\tReload last config"
+	echo -e " -q\t\tQuiet mode"
+	echo -e " -c\t\tPrint color table"
+	echo -e " -h\t\tShow this help text and exit"
+}
+
+n=
+w=
+wfile=
+m=
+s=
+x=
+xname=
+l=
+u=
+uname=
+d=
+dname=
+r=
+q=
+c=
+
+if (( $#==0 )) ; then
+	echo "No arguments provided"
+	print_help
+	exit 0
+fi
+
+while getopts "nw:msx:ld:u:rqch" arg; do
+	case $arg in
+		n) # Load random wallpaper
+			n=1
+			w=
+			s=
+			u=
+			;;
+		w) # Load specific wallpaper
+			w=1
+			wfile=$OPTARG
+			n=
+			s=
+			u=
+			;;
+		m) # Toggle current wallpaper as special
+			m=1;;
+		s) # Load wallpaper of special folder
+			s=1
+			n=
+			w=
+			u=
+			;;
+		x) # Export current colorscheme to a user colorscheme
+			x=1
+			xname=$OPTARG;;
+		l) # List user specified colorschemes
+			l=1;;
+		u) # Load user specific colorscheme
+			u=1
+			uname=$OPTARG
+			n=
+			w=
+			s=
+			;;
+		d) # Delete user colorscheme
+			d=1
+			dname=$OPTARG;;
+		r) # Reload config
+			r=1;;
+		q) # Quiet mode
+			q=1;;
+		c) # Print color table
+			c=1;;
+		h) # Help
+			print_help
+			exit 0;;
+		?) # Invalid option
+			print_help
+			exit 1;;
+	esac
+done
+
+################################################################################
+
+function reload_env() {
+	file="$(cat $XDG_CACHE_HOME/wal/wal)"
+	mkdir -p "$XDG_CACHE_HOME/wal/schemes"
+	ln -sf "$file" "$CONFIG_DIR/currentwallpaper"
+	source "$XDG_CACHE_HOME/wal/colors.sh"
+	bspc config focused_border_color "$color4"
+	bspc config normal_border_color "$color7"
+	bspc config presel_feedback_color "$color0"
+}
+
+function wal_execute() { # 1: folder/file
+	if [[ $q ]] ; then
+		wal -i "$1" -a 50 1>&/dev/null
+	else
+		wal -i "$1" -a 50
+	fi
+	reload_env
+}
+
+function gtk_install() {
+	[[ $q ]] || echo "Generating gtk theme..."
+	if [[ ! -a $gtktheme/$gtkinstall ]] ; then
+		echo "There is no installation script"
+		exit 1
+	fi
+	ln -sf "$XDG_CACHE_HOME/wal/colors.scss $gtktheme/colors.scss"
+	ln -sf "$XDG_CACHE_HOME/wal/colors.css $gtktheme/colors.css"
+	ln -sf "$XDG_CACHE_HOME/wal/colors-gtk2.rc $gtktheme/colors-gtk2.rc"
+	ln -sf "$XDG_CACHE_HOME/wal/colors.sh $gtktheme/colors.sh"
+	cd $gtktheme
+	if [[ $q ]] ; then
+		./$gtkinstall 1>&/dev/null
+	else
+		./$gtkinstall
+	fi
+	exit
+}
+
+function toggle_special() {
+	file="$(cat $XDG_CACHE_HOME/wal/wal)"
+	base=$(basename "$file")
+	path="$SPECIAL_DIR/$base"
+	if [[ -h $path ]] ; then
+		[[ $q ]] || echo -e "Removing \"\e[32m$base\e[m\" from \e[33mspecials\e[m"
+		rm "$path"
+	else
+		[[ $q ]] || echo -e "Adding \"\e[32m$base\e[m\" to \e[33mspecials\e[m"
+		ln -s "$file" "$path"
+	fi
+}
+
+function add_to_user_colorschemes() {
+	if [[ -a "$USER_COL_DIR/$xname.json" ]] ; then
+		[[ $q ]] || echo "A colorscheme with this name already exists"
+		exit 1
+	fi
+	[[ $q ]] || echo -e "Saving current colorscheme as \"\e[1;34m$xname\e[m\""
+	filename="$(cat $XDG_CACHE_HOME/wal/wal | sed -E 's/\.|\//_/g')"
+	file="$XDG_CACHE_HOME/wal/schemes/${filename}_dark_None_None_1.1.0.json"
+	cp -T "$file" "$USER_COL_DIR/$xname.json"
+}
+
+function print_color_table() {
+	[[ $q ]] || echo " black   red   green yellow  blue  magenta cyan   white "
+	for (( i=0;i<8;i++ )) ; do
+		tput setab $i
+		printf "       "
+	done
+	tput sgr0
+	echo
+	for (( i=8;i<16;i++ )) ; do
+		tput setab $i
+		printf "       "
+	done
+	tput sgr0
+	echo
+}
+
+################################################################################
+
+if [[ $n ]] || [[ $w ]] || [[ $s ]]; then # Load random wallpaper
+	if [[ $n ]]; then
+		[[ $q ]] || echo -e "Loading from \e[35mrandom\e[m wallpaper"
+		wal_execute "$WALL_DIR"
+	elif [[ $w ]]; then
+		[[ $q ]] || echo -e "Loading from \e[36mspecific\e[m wallpaper '$wfile'"
+		wal_execute "$wfile"
+	elif [[ $s ]]; then
+		[[ $q ]] || echo -e "Loading \e[33mspecial\e[m wallpaper"
+		wal_execute "$SPECIAL_DIR"
+	fi
+	[[ $m ]] && toggle_special
+	[[ $x ]] && add_to_user_colorschemes
+	[[ $c ]] && print_color_table
+elif [[ $u ]]; then
+	if [[ ! $q ]] ; then
+		echo -e "Loading user colorscheme \"\e[1;34m$uname\e[m\""
+		wal -f "$USER_COL_DIR/$uname.json" -a 50
+	else
+		wal -f "$USER_COL_DIR/$uname.json" -a 50 1>&/dev/null
+	fi
+	[[ $c ]] && print_color_table
+	reload_env
+else
+	[[ $m ]] && toggle_special
+	[[ $x ]] && add_to_user_colorschemes
+	if [[ $l ]] ; then
+		[[ $q ]] || echo "Applicable colorschemes:"
+		cd $USER_COL_DIR
+		for line in $(ls *.json | sed "s/\.json//g") ; do
+			tput setaf 4
+			tput bold
+			printf "$line"
+			tput sgr0
+			echo
+		done
+	fi
+	if [[ $d ]] ; then
+		file="$USER_COL_DIR/$dname.json"
+		if [[ -a $file ]] ; then
+			[[ $q ]] || echo -e "\e[31mDeleting\e[m colorscheme \"\e[1;34m$dname\e[m\""
+			rm "$file"
+		else
+			[[ $q ]] || echo -e "No user colorscheme \"\e[1;34m$dname\e[m\" found"
+			exit 1
+		fi
+	fi
+	[[ $r ]] && reload_env
+	[[ $c ]] && print_color_table
+fi

@@ -42,6 +42,9 @@ dotfiles:
   f_alias:
     dst: ~/.alias
     src: .alias
+  f_atheister.zsh-theme:
+    dst: ~/.oh-my-zsh/custom/themes/atheister.zsh-theme
+    src: .oh-my-zsh/custom/themes/atheister.zsh-theme
   f_profile:
     dst: ~/.profile
     src: .profile
@@ -76,6 +79,7 @@ profiles:
     - d_bin
     - d_environment.d
     - f_zshrc
+    - f_atheister.zsh-theme
     - d_bspwm
     - d_sxhkd
     - d_polybar
