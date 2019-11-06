@@ -88,3 +88,7 @@ profiles:
     dotfiles: []
     include:
     - common
+  kepler22b:
+    dotfiles: []
+    include:
+    - common
