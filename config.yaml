@@ -45,6 +45,9 @@ dotfiles:
   f_atheister.zsh-theme:
     dst: ~/.oh-my-zsh/custom/themes/atheister.zsh-theme
     src: .oh-my-zsh/custom/themes/atheister.zsh-theme
+  f_fonts.conf:
+    dst: ~/.config/fontconfig/fonts.conf
+    src: .config/fontconfig/fonts.conf
   f_profile:
     dst: ~/.profile
     src: .profile
@@ -84,15 +87,16 @@ profiles:
     - d_sxhkd
     - d_polybar
     - d_rofi
+    - f_fonts.conf
+  kepler22b:
+    dotfiles: []
+    include:
+    - common
   sun:
     dotfiles: []
     include:
     - common
   teegardenb:
-    dotfiles: []
-    include:
-    - common
-  kepler22b:
     dotfiles: []
     include:
     - common
