@@ -16,7 +16,7 @@ URxvt.scrollBar:			true
 URxvt.scrollstyle:			plain
 URxvt.scrollBar_right:		true
 ! https://wiki.archlinux.org/index.php/Rxvt-unicode#Scrollback_position
-URxvt.scrollTtyOutput:		true
+URxvt.scrollTtyOutput:		false
 URxvt.scrollWithBuffer:		true
 URxvt.scrollTtyKeypress:	true
 URxvt.saveLines:			8192

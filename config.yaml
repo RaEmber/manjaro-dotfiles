@@ -45,15 +45,12 @@ dotfiles:
   f_atheister.zsh-theme:
     dst: ~/.oh-my-zsh/custom/themes/atheister.zsh-theme
     src: .oh-my-zsh/custom/themes/atheister.zsh-theme
-<<<<<<< HEAD
   f_compton.conf:
     dst: ~/.config/compton.conf
     src: .config/compton.conf
-=======
   f_fonts.conf:
     dst: ~/.config/fontconfig/fonts.conf
     src: .config/fontconfig/fonts.conf
->>>>>>> f0e1addb6ebef7c5c23a5be3c5eb7054b7745b22
   f_profile:
     dst: ~/.profile
     src: .profile
