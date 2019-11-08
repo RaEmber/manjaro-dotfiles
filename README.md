@@ -1,12 +1,3 @@
-# Manjaro bpswm dotfiles
+# Arch dotfiles of a mortal
 
-My dotfiles for my new Manjaro installation.
-
-## System Specifications
-
-- *OS*: Manjaro x64 (Architect)
-- *Shell*: Zsh (including OhMyZsh)
-- *WM*: bspwm
-- *Terminal*: Urxvt
-
-Using [wal](https://github.com/dylanaraps/pywal/) for changing color schemes.
+Dotfiles manaaged with [DotDrop](https://github.com/deadc0de6/dotdrop).
