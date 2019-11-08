@@ -5,6 +5,7 @@ actions:
   polybar: ~/.config/polybar/launch.sh &> /dev/null &
   sxhkd: pkill -USR1 -x sxhkd
   xres: xrdb -merge ~/.Xresources
+  compton: killall compton; compton -b
 config:
   backup: false
   banner: false
@@ -48,6 +49,8 @@ dotfiles:
   f_compton.conf:
     dst: ~/.config/compton.conf
     src: .config/compton.conf
+    actions:
+    - compton
   f_fonts.conf:
     dst: ~/.config/fontconfig/fonts.conf
     src: .config/fontconfig/fonts.conf
