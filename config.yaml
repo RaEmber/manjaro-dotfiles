@@ -45,6 +45,9 @@ dotfiles:
   f_atheister.zsh-theme:
     dst: ~/.oh-my-zsh/custom/themes/atheister.zsh-theme
     src: .oh-my-zsh/custom/themes/atheister.zsh-theme
+  f_compton.conf:
+    dst: ~/.config/compton.conf
+    src: .config/compton.conf
   f_profile:
     dst: ~/.profile
     src: .profile
@@ -81,18 +84,19 @@ profiles:
     - f_zshrc
     - f_atheister.zsh-theme
     - d_bspwm
+    - f_compton.conf
     - d_sxhkd
     - d_polybar
     - d_rofi
+  kepler22b:
+    dotfiles: []
+    include:
+    - common
   sun:
     dotfiles: []
     include:
     - common
   teegardenb:
-    dotfiles: []
-    include:
-    - common
-  kepler22b:
     dotfiles: []
     include:
     - common
