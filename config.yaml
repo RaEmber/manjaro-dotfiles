@@ -1,11 +1,11 @@
 actions:
   bspwm: ~/.config/bspwm/bspwmrc
+  compton: killall compton; compton -b
   envd_link: rm ~/.config/environment.d/10-xdg-user-dirs.conf; ln -s ~/.config/user-dirs.dirs
     ~/.config/environment.d/10-xdg-user-dirs.conf
   polybar: ~/.config/polybar/launch.sh &> /dev/null &
   sxhkd: pkill -USR1 -x sxhkd
   xres: xrdb -merge ~/.Xresources
-  compton: killall compton; compton -b
 config:
   backup: false
   banner: false
@@ -47,10 +47,10 @@ dotfiles:
     dst: ~/.oh-my-zsh/custom/themes/atheister.zsh-theme
     src: .oh-my-zsh/custom/themes/atheister.zsh-theme
   f_compton.conf:
-    dst: ~/.config/compton.conf
-    src: .config/compton.conf
     actions:
     - compton
+    dst: ~/.config/compton.conf
+    src: .config/compton.conf
   f_fonts.conf:
     dst: ~/.config/fontconfig/fonts.conf
     src: .config/fontconfig/fonts.conf

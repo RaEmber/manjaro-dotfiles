@@ -188,4 +188,4 @@ if ! [ -z ${ipv6} ]; then
 fi
 
 echo ${cmd[*]}
-#${cmd[*]}
+${cmd[*]}
