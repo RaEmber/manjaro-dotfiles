@@ -13,6 +13,12 @@ config:
   dotpath: dotfiles
   keepdot: true
   longkey: false
+  cmpignore:
+  - README.md
+  upignore:
+  - README.md
+  instignore:
+  - README.md
 dotfiles:
   d_bin:
     dst: ~/bin
