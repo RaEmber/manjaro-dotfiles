@@ -3,9 +3,9 @@
 # Aliases to be sourced by shells
 #
 
-alias dotdrop="~/dotfiles/dotdrop.sh --cfg=~/dotfiles/config.yaml"
-alias pacman="pacman --color=always"
-alias yay="yay --color=always"
+alias dotdrop="dotdrop --cfg=~/dotfiles/config.yaml"
+alias pacman="pacman --color=auto"
+alias yay="yay --color=auto"
 alias sudo="sudo "
 alias ll="ls -lAh"
 

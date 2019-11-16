@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# Gets the hex color or the current X theme
+# Gets the hex color of the current X theme
 #
 
 function get_col() {
