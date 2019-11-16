@@ -14,11 +14,11 @@ config:
   keepdot: true
   longkey: false
   cmpignore:
-  - README.md
+  - "**/README.md"
   upignore:
-  - README.md
+  - "**/README.md"
   instignore:
-  - README.md
+  - "**/README.md"
 dotfiles:
   d_bin:
     dst: ~/bin
