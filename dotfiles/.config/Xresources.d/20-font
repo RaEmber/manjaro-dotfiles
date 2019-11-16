@@ -8,3 +8,4 @@ Xft.lcdfilter:	lcddefault
 
 #define tamzenPowerAwesome	xft:TamzenForPowerline:pixelsize=11:style=Normal,\
 							xft:FontAwesome:style=Regular:size=12
+! vi:syn=xdefaults

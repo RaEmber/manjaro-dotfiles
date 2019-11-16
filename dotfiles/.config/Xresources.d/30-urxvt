@@ -58,3 +58,4 @@ URxvt.tabbed.tab-fg:		6
 URxvt.tabbed.tab-bg:		#585252
 ! https://wiki.archlinux.org/index.php/Rxvt-unicode#Disabling_Perl_extensions
 URxvt.perl-ext:
+! vi:syn=xdefaults
