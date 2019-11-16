@@ -61,17 +61,19 @@ Uses [`xrdb`](https://www.archlinux.org/packages/extra/x86_64/xorg-xrdb/) for co
 
 ### `launch`
 Script to (re-)start applications.
-Depends on [`xrdb`](https://www.archlinux.org/packages/extra/x86_64/xorg-xrdb/).
-Depends on `compton-tryone-git`([AUR](https://aur.archlinux.org/packages/compton-tryone-git/)).
-Depends on [`bspwm`](https://www.archlinux.org/packages/community/x86_64/bspwm/).
-Depends on [`sxhkd`](https://www.archlinux.org/packages/community/x86_64/sxhkd/).
-Depends on `polybar`([AUR](https://aur.archlinux.org/packages/polybar/)).
-Depends on `enpass-bin`([AUR](https://aur.archlinux.org/packages/enpass-bin/)).
-Depends on [`udiskie`](https://www.archlinux.org/packages/community/any/udiskie/).
-Depends on [`python-pywal`](https://www.archlinux.org/packages/community/any/python-pywal/).
-Depends on [`redshift`](https://www.archlinux.org/packages/community/x86_64/redshift/).
-Depends on `ibus-mozc`([AUR](https://aur.archlinux.org/packages/ibus-mozc/)).
-Depends on [`hplip`](https://www.archlinux.org/packages/extra/x86_64/hplip/).
+Depends on
+[`xrdb`](https://www.archlinux.org/packages/extra/x86_64/xorg-xrdb/),
+`compton-tryone-git`([AUR](https://aur.archlinux.org/packages/compton-tryone-git/)),
+[`bspwm`](https://www.archlinux.org/packages/community/x86_64/bspwm/),
+[`sxhkd`](https://www.archlinux.org/packages/community/x86_64/sxhkd/),
+`polybar`([AUR](https://aur.archlinux.org/packages/polybar/)),
+`enpass-bin`([AUR](https://aur.archlinux.org/packages/enpass-bin/)),
+[`udiskie`](https://www.archlinux.org/packages/community/any/udiskie/),
+[`python-pywal`](https://www.archlinux.org/packages/community/any/python-pywal/),
+[`redshift`](https://www.archlinux.org/packages/community/x86_64/redshift/),
+`ibus-mozc`([AUR](https://aur.archlinux.org/packages/ibus-mozc/)) and
+[`hplip`](https://www.archlinux.org/packages/extra/x86_64/hplip/).
+TODO: Autostart apps from their desktop files in `.config/autostart`.
 
 ### `jack`
 Script to start [JACK](https://wiki.archlinux.org/index.php/JACK_Audio_Connection_Kit).
