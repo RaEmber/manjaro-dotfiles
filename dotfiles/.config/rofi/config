@@ -284,5 +284,5 @@
 ! rofi.me-accept-entry:                MouseDPrimary
 ! "Accept hovered row with custom action" Set from: Default
 ! rofi.me-accept-custom:               Control+MouseDPrimary
-rofi.theme: /usr/share/rofi/themes/Pop-Dark.rasi
+rofi.theme: ~/.cache/wal/colors-rofi-dark.rasi
 ! vi:syn=xdefaults
