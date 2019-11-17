@@ -14,11 +14,11 @@ config:
   keepdot: true
   longkey: false
   cmpignore:
-  - "**/README.md"
+  - '**/README.md'
   upignore:
-  - "**/README.md"
+  - '**/README.md'
   instignore:
-  - "**/README.md"
+  - '**/README.md'
 dotfiles:
   d_bin:
     dst: ~/bin
@@ -82,6 +82,9 @@ dotfiles:
   f_zshrc:
     dst: ~/.zshrc
     src: .zshrc
+  f_launch:
+    src: bin/launch
+    dst: ~/bin/launch
 profiles:
   common:
     dotfiles:
@@ -102,14 +105,13 @@ profiles:
     - d_rofi
     - f_fonts.conf
   kepler22b:
-    dotfiles: []
     include:
     - common
   sun:
-    dotfiles: []
+    dotfiles:
+    - f_launch
     include:
     - common
   teegardenb:
-    dotfiles: []
     include:
     - common

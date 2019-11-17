@@ -102,7 +102,7 @@ case $arg in
 		ibus-daemon -drx
 		;;
 	hp)
-		hp-systray
+		hp-systray &
 		;;
 	-*)
 		continue;;

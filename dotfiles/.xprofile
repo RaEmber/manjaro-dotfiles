@@ -8,11 +8,12 @@ setxkbmap ch
 
 # Start applications
 {%@@ if profile == "sun" @@%}
-launch xrdb compton bspwm sxhkd polybar enpass udiskie color ibus hp
+~/bin/launch xrdb compton bspwm sxhkd polybar enpass udiskie color ibus hp
 {%@@ elif profile == "teegardenb" or profile == "kepler22b" @@%}
-launch xrdb compton bspwm sxhkd polybar enpass udiskie color ibus
+~/bin/launch xrdb compton bspwm sxhkd polybar enpass udiskie color ibus
 {%@@ endif @@%}
 nm-applet &
 #/usr/bin/polkit-kde-authentication-agent-1
 #start_jack &
 #sleep 1
+
