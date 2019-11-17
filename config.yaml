@@ -79,12 +79,12 @@ dotfiles:
     - xres
     dst: ~/.config/Xresources.d
     src: .config/Xresources.d
+  d_wal:
+    src: .config/wal
+    dst: ~/.config/wal
   f_zshrc:
     dst: ~/.zshrc
     src: .zshrc
-  f_launch:
-    src: bin/launch
-    dst: ~/bin/launch
 profiles:
   common:
     dotfiles:
@@ -92,6 +92,7 @@ profiles:
     - f_xprofile
     - f_xresources
     - f_xresources.d
+    - d_wal
     - f_profile
     - f_alias
     - d_bin
@@ -104,14 +105,12 @@ profiles:
     - d_polybar
     - d_rofi
     - f_fonts.conf
-  kepler22b:
-    include:
-    - common
   sun:
-    dotfiles:
-    - f_launch
     include:
     - common
   teegardenb:
+    include:
+    - common
+  kepler22b:
     include:
     - common
