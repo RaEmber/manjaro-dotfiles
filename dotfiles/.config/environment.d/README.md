@@ -1,4 +1,4 @@
-# Environment variables
+# [Environment variables](https://wiki.archlinux.org/index.php/Environment_variables)
 Loading environment variables using [systemd](https://wiki.archlinux.org/index.php/Systemd/User#Environment_variables).
 
 ## 00-xdg.conf
@@ -17,4 +17,4 @@ Sets up [ibus](https://wiki.archlinux.org/index.php/IBus).
 Fixes [Java Gui problem](https://wiki.archlinux.org/index.php/Java#Gray_window,_applications_not_resizing_with_WM,_menus_immediately_closing).
 
 ## 50-path.conf
-Extends `PATH` to include [`bin`](../../../../../#bin).
+Extends `PATH` to include [`bin`](../../bin#bin).

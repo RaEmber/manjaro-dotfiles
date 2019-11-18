@@ -16,10 +16,13 @@ config:
   longkey: false
   cmpignore:
   - '**/README.md'
+  - '**/.gitkeep'
   upignore:
   - '**/README.md'
+  - '**/.gitkeep'
   instignore:
   - '**/README.md'
+  - '**/.gitkeep'
 dotfiles:
   d_bin:
     dst: ~/bin
