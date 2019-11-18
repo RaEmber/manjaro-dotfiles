@@ -3,10 +3,6 @@
 Script to wrap around `wal`.
 Depends on [`python-pywal`](https://www.archlinux.org/packages/community/any/python-pywal/).
 
-## `getcolhex`
-Script to get the hex values of the predefined colors.
-Uses [`xrdb`](https://www.archlinux.org/packages/extra/x86_64/xorg-xrdb/) for colors (see also [Xresources](../#Xresources)).
-
 ## `launch`
 Script to (re-)start applications.
 Depends on

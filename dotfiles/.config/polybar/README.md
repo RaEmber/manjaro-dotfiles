@@ -1,4 +1,6 @@
-# [`Polybar`](https://aur.archlinux.org/packages/polybar/)
+# [Polybar](https://wiki.archlinux.org/index.php/Polybar)
+[`polybar`](https://aur.archlinux.org/packages/polybar/)
+
 Uses templates.
 Depends on [environment variables](../environment.d#environment-variables) for paths(XDG).
 Depends on [`tamzen-font`](https://aur.archlinux.org/packages/tamzen-font/), [`ttf-font-awesome-4`](https://aur.archlinux.org/packages/ttf-font-awesome-4/) and [`ttf-mplus`](https://aur.archlinux.org/packages/ttf-mplus/) for fonts.

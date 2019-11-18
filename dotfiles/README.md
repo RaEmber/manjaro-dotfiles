@@ -1,7 +1,7 @@
 # Alias
 Aliases to be used in shells.
-Depends on `dotdrop`([AUR](https://aur.archlinux.org/packages/dotdrop/)).
-Depends on `yay`([AUR](https://aur.archlinux.org/packages/yay/)).
+Depends on [`dotdrop`](https://aur.archlinux.org/packages/dotdrop/).
+Depends on [`yay`](https://aur.archlinux.org/packages/yay/).
 
 # Zshrc
 Using [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh) with [custom theme](.oh-my-zsh/custom/themes#Zsh-theme).
