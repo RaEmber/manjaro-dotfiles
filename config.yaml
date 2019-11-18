@@ -3,6 +3,7 @@ actions:
   compton: killall compton; compton -b
   envd_link: rm ~/.config/environment.d/10-xdg-user-dirs.conf; ln -s ~/.config/user-dirs.dirs
     ~/.config/environment.d/10-xdg-user-dirs.conf
+  systemctl_import_env: systemctl --user import-environment
   polybar: ~/.config/polybar/launch.sh &> /dev/null &
   sxhkd: pkill -USR1 -x sxhkd
   xres: xrdb -merge ~/.Xresources
@@ -31,6 +32,7 @@ dotfiles:
   d_environment.d:
     actions:
     - envd_link
+    - systemctl_import_env
     dst: ~/.config/environment.d
     src: .config/environment.d
   d_polybar:
