@@ -15,14 +15,14 @@ config:
   keepdot: true
   longkey: false
   cmpignore:
-  - '**/README.md'
-  - '**/.gitkeep'
+  - '*/README.md'
+  - '*/.gitkeep'
   upignore:
-  - '**/README.md'
-  - '**/.gitkeep'
+  - '*/README.md'
+  - '*/.gitkeep'
   instignore:
-  - '**/README.md'
-  - '**/.gitkeep'
+  - '*/README.md'
+  - '*/.gitkeep'
 dotfiles:
   d_bin:
     dst: ~/bin
