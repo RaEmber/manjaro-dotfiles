@@ -2,6 +2,7 @@
 URxvt.buffered:				true
 URxvt.colorUL:				yellow
 URxvt.underlineColor:		yellow
+URxvt.depth:                32
 URxvt.skipScroll:			true
 URxvt.scrollColor:			#525258
 ! https://wiki.archlinux.org/index.php/Rxvt-unicode#Font_declaration_methods
