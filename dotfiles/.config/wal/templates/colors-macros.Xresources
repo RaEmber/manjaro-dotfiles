@@ -20,3 +20,5 @@
 #define light_magenta {color13}
 #define light_cyan {color14}
 #define white {color15}
+
+! vi:syn=xdefaults
