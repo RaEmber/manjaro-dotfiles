@@ -1,0 +1,2 @@
+# Discord theme
+Depends on [`sassc`](https://www.archlinux.org/packages/community/x86_64/sassc/) and on [`beautifuldiscord`](https://aur.archlinux.org/packages/beautiful-discord/) to theme [`discord`](https://www.archlinux.org/packages/community/x86_64/discord/) using [`python-pywal`](https://www.archlinux.org/packages/community/any/python-pywal/) (see also [`bdiscord`](../../bin#bdiscord)).

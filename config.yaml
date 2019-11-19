@@ -8,6 +8,7 @@ actions:
   sxhkd: pkill -USR1 -x sxhkd
   xres: xrdb -merge ~/.Xresources
   spicetify: spicetify update
+  discord_sass: sassc ~/.config/discord/user.scss > ~/.config/discord/user.css
 config:
   backup: false
   banner: false
@@ -93,14 +94,22 @@ dotfiles:
     src: .zshrc
   f_config.ini:
     actions:
-      - spicetify
+    - spicetify
     src: .config/spicetify/config.ini
     dst: ~/.config/spicetify/config.ini
   d_themes:
     actions:
-      - spicetify
+    - spicetify
     src: .config/spicetify/Themes
     dst: ~/.config/spicetify/Themes
+  f_bdiscord:
+    src: bin/bdiscord
+    dst: ~/bin/bdiscord
+  f_user.scss:
+    actions:
+      - discord_sass
+    src: .config/discord/user.scss
+    dst: ~/.config/discord/user.scss
 profiles:
   common:
     dotfiles:
@@ -121,15 +130,19 @@ profiles:
     - d_polybar
     - d_rofi
     - f_fonts.conf
-  sun:
-    dotfiles:
     - f_config.ini
     - d_themes
+    - f_bdiscord
+    - f_user.scss
+  sun:
+    dotfiles: []
     include:
     - common
   teegardenb:
+    dotfiles: []
     include:
     - common
   kepler22b:
+    dotfiles: []
     include:
     - common

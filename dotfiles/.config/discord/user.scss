@@ -1,0 +1,141 @@
+@import '../../.cache/wal/colors.scss';
+
+.theme-dark {
+	--header-primary: #{$foreground};                           /* #fff "unread" dot */
+	--header-secondary: #{darken($foreground, 4%)};             /* #b9bbbe code block white text */
+	--text-normal: #{darken($foreground, 2%)};                  /* #dcddde discord icon, server notification (channel bar), quoted text */
+	--text-muted: #{darken($foreground, 20%)};                  /* #72767d channel symbol, datetime */
+	--text-link: #{$color4};                                    /* #1ab2ee links */
+	--channels-default: #{darken($foreground, 10%)};            /* #8e9297 channel text */
+	--interactive-normal: #{darken($foreground, 4%)};           /* #b9bbbe control button icons (bell, member list, add file, settings, etc.) */
+	--interactive-hover: #{darken($foreground, 2%)};            /* #dcddde idk */
+	--interactive-active: #{$foreground};                       /* #fff active icon button, channel text, channel unread dot */
+	--interactive-muted: #{lighten($background, 10%)};          /* #4f545c quote side bar */
+	--background-primary: #{lighten($background, 4%)};          /* #36393f Server icon background, main text area background */
+	--background-secondary: #{lighten($background, 2%)};        /* #2f3136 channel bar, code area background */
+	--background-tertiary: #{$background};                      /* #202225 search bar, server bar */
+	--background-accent: #{lighten($background, 10%)};          /* #4f545c idk */
+	--background-floating: #{darken($background, 2%)};          /* #18191c idk */
+	--background-mobile-header: #{lighten($background, 2%)};    /* #2f3136 idk */
+	--background-modifier-hover: rgba(#{red($background)},
+        #{green($background)}, #{blue($background)}, 0.16);     /* #4f545c/rgba(79, 84, 92, 0.16) hover */
+	--background-modifier-active: rgba(#{red($background)},
+        #{green($background)}, #{blue($background)}, 0.24);     /* #4f545c/rgba(79, 84, 92, 0.24) active */
+    --background-modifier-selected: rgba(#{red($background)},
+        #{green($background)}, #{blue($background)}, 0.32);     /* #4f545c/rgba(79, 84, 92, 0.32)selected */
+	--background-modifier-accent: rgba(#{red($background)},
+        #{green($background)}, #{blue($background)}, 0.06);     /* #fff/hsla(0, 0%, 100%, 0.06)accent */
+    --elevation-low: 0 1px 0 rgba(4, 4, 5, 0.2),              /* #040405/rgba(4, 4, 5, 0.2) */
+        0 1.5px 0 rgba(6, 6, 7, 0.05),                        /* #040405/rgba(6, 6, 7, 0.05) */
+        0 2px 0 rgba(4, 4, 5, 0.05);                          /* #040405/rgba(4, 4, 5, 0.05) shadow */
+	--elevation-high: 0 8px 16px rgba(0, 0, 0, 0.856);        /* #000/rgba(0, 0, 0, 0.856) shadow */
+	--logo-primary: #{$foreground};                             /* #fff logo */
+	--guild-header-text-shadow: 0 1px 1px rgba(0, 0, 0, 0.4); /* #000/rgba(0, 0, 0, 0.4) shadow */
+	--channeltextarea-background: #{lighten($background, 6%)};  /* #40444b message text field */
+	--activity-card-background: #{$background};                 /* #202225 idk */
+	--deprecated-panel-background: #{lighten($background, 1%)}; /* #292b2f User panel */
+    --deprecated-card-bg: rgba(#{red($background)},
+        #{green($background)}, #{blue($background)}, 0.6);      /* #202225/rgba(32, 34, 37, 0.6) my account background */
+	--deprecated-card-editable-bg: rgba(#{red($background)},
+        #{green($background)}, #{blue($background)}, 0.3);      /* #202225/rgba(32, 34, 37, 0.3) my account background edit mode */
+	--deprecated-store-bg: #{lighten($background, 4%)};         /* #36393f idk */
+	--deprecated-quickswitcher-input-background: #{darken($foreground, 20%)}; /* #72767d quick switcher (Ctrl+K) text field */
+	--deprecated-quickswitcher-input-placeholder: rgba(#{red($background)},
+        #{green($background)}, #{blue($background)}, 0.3);      /* #fff/hsla(0, 0%, 100%, 0.3) quick switcher placeholder text */
+	--deprecated-text-input-bg: rgba(0, 0, 0, 0.1); /* idk */
+	--deprecated-text-input-border: rgba(0, 0, 0, 0.3); /* idk */
+	--deprecated-text-input-border-hover: #040405; /* idk */
+	--deprecated-text-input-border-disabled: #{$background};    /* #202225 idk */
+    --deprecated-text-input-prefix: #{darken($foreground, 2%)}; /* #dcddde idk */
+}
+
+/* tip button channel bar */
+.lookFilled-1Gx00P.colorBrand-3pXr91 {
+	color: $foreground;
+	background-color: $color4;
+}
+/* new messages, mark as read bar */
+.newMessagesBar-mujexs {
+	background-color: $color4;
+}
+/* radio buttons */
+.themeDefault-24hCdX.valueChecked-m-4IJZ {
+	background-color: $color4;
+}
+/* member in server settings' "members" page */
+.theme-dark .member-1q7VfX .tag-1YGWN9 {
+	color: darken($foreground, 20%)
+}
+/* role selector in server settings' "members" page */
+.theme-dark .quickSelect-3BxO0K {
+	color: darken($foreground, 1%)
+}
+
+/* bar ruler */
+.barFill-23-gu- {
+	background: $color4;
+}
+
+/* idk, seems interesting */
+.theme-dark .keybind-KpFkfr {
+	color: darken($foreground, 20%)
+}
+.theme-dark .closeButton-1tv5uR {
+	border-color: darken($foreground, 20%)
+}
+.theme-dark .closeButton-1tv5uR:hover {
+	background-color: rgba(114, 118, 125, .3)
+}
+.theme-dark .keybindBold-1942Wp {
+	color: darken($foreground, 4%)
+}
+.theme-dark .closeButtonBold-8kKURP {
+	border-color: darken($foreground, 4%)
+}
+.theme-dark .closeButtonBold-8kKURP:hover {
+	background-color: rgba(185, 187, 190, .3)
+}
+.theme-dark .unlocked-251xRB, .theme-light .unlocked-251xRB {
+	color: #43b581
+}
+.theme-dark .emoji-14TyAm, .theme-light .emoji-14TyAm {
+	color: #fed648
+}
+.theme-dark .animated-XlVkOl, .theme-light .animated-XlVkOl {
+	color: #b0c8fd
+}
+.theme-dark .audio-PN_OoN, .theme-light .audio-PN_OoN {
+	color: #4173da
+}
+.theme-dark .customization-1Iu5cE, .theme-light .customization-1Iu5cE {
+	color: #86dcc5
+}
+.theme-dark .upload-2-2ZMI, .theme-light .upload-2-2ZMI {
+	color: #ff80f4
+}
+.theme-dark .vanity-284TLk, .theme-light .vanity-284TLk {
+	color: #fc964b
+}
+.theme-dark .stream-3mNTxK, .theme-light .stream-3mNTxK {
+	color: #80a5fe
+}
+
+
+/* Banned user listing in server settings */
+.theme-dark .bannedUser-1IalTM .username-1b3MVI {
+	color: $foreground
+}
+.theme-dark .bannedUser-1IalTM .username-1b3MVI .discrim-oGb-FO, .theme-dark .bannedUserModal-3RJCOV .reason-YbfGC6, .theme-dark .bannedUserModal-3RJCOV .userDiscrim-1D2NlF {
+	color: darken($foreground, 20%)
+}
+.theme-dark .bannedUserModal-3RJCOV .reasonHeader-2etdjy {
+	color: darken($foreground, 4%)
+}
+
+/* Spoiler tags */
+.theme-dark .spoilerText-3p6IlD.hidden-HHr2R9 {
+	background-color: #{$background}
+}
+.theme-dark .spoilerText-3p6IlD.hidden-HHr2R9:hover {
+	background-color: rgba(red($background), green($background), blue($background), .8)
+}

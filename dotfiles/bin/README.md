@@ -32,3 +32,6 @@ Depends on [`python`](https://www.archlinux.org/packages/extra/x86_64/python/).
 Script to wrap around `reflector`.
 Depends on [`reflector`](https://www.archlinux.org/packages/community/any/reflector/).
 TODO: Change to config file instead.
+
+## `bdiscord`
+Script to wrap [`beautifuldiscord`](https://aur.archlinux.org/packages/beautiful-discord/), used for [Discord theme](../.config/discord#Discord_theme).

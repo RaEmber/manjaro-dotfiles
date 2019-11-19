@@ -1,0 +1,6 @@
+#!/usr/bin/bash
+#
+# Wrapper script for beautiful discord
+#
+
+beautifuldiscord --css ${XDG_CONFIG_HOME:=.config}/discord/user.css
