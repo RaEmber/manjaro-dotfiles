@@ -7,6 +7,7 @@ actions:
   polybar: ~/.config/polybar/launch.sh &> /dev/null &
   sxhkd: pkill -USR1 -x sxhkd
   xres: xrdb -merge ~/.Xresources
+  spicetify: spicetify update
 config:
   backup: false
   banner: false
@@ -90,6 +91,16 @@ dotfiles:
   f_zshrc:
     dst: ~/.zshrc
     src: .zshrc
+  f_config.ini:
+    actions:
+      - spicetify
+    src: .config/spicetify/config.ini
+    dst: ~/.config/spicetify/config.ini
+  d_themes:
+    actions:
+      - spicetify
+    src: .config/spicetify/Themes
+    dst: ~/.config/spicetify/Themes
 profiles:
   common:
     dotfiles:
@@ -111,6 +122,9 @@ profiles:
     - d_rofi
     - f_fonts.conf
   sun:
+    dotfiles:
+    - f_config.ini
+    - d_themes
     include:
     - common
   teegardenb:
