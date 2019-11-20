@@ -107,7 +107,7 @@ dotfiles:
     dst: ~/bin/bdiscord
   f_user.scss:
     actions:
-      - discord_sass
+    - discord_sass
     src: .config/discord/user.scss
     dst: ~/.config/discord/user.scss
 profiles:

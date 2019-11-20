@@ -17,14 +17,15 @@
 	--background-accent: #{lighten($background, 10%)};          /* #4f545c idk */
 	--background-floating: #{darken($background, 2%)};          /* #18191c idk */
 	--background-mobile-header: #{lighten($background, 2%)};    /* #2f3136 idk */
-	--background-modifier-hover: rgba(#{red($background)},
-        #{green($background)}, #{blue($background)}, 0.16);     /* #4f545c/rgba(79, 84, 92, 0.16) hover */
-	--background-modifier-active: rgba(#{red($background)},
-        #{green($background)}, #{blue($background)}, 0.24);     /* #4f545c/rgba(79, 84, 92, 0.24) active */
+	--background-modifier-hover: rgba(#{red(lighten($background, 10%))},
+        #{green(lighten($background, 10%))},
+        #{blue(lighten($background, 10%))}, 0.16);              /* #4f545c/rgba(79, 84, 92, 0.16) hover */
+	--background-modifier-active: rgba(#{red(lighten($background, 10%))},
+        #{green(lighten($background, 10%))}, #{blue(lighten($background, 10%))}, 0.24);     /* #4f545c/rgba(79, 84, 92, 0.24) active */
     --background-modifier-selected: rgba(#{red($background)},
-        #{green($background)}, #{blue($background)}, 0.32);     /* #4f545c/rgba(79, 84, 92, 0.32)selected */
-	--background-modifier-accent: rgba(#{red($background)},
-        #{green($background)}, #{blue($background)}, 0.06);     /* #fff/hsla(0, 0%, 100%, 0.06)accent */
+        #{green(lighten($background, 10%))}, #{blue(lighten($background, 10%))}, 0.32);     /* #4f545c/rgba(79, 84, 92, 0.32)selected */
+	--background-modifier-accent: rgba(#{red($foreground)},
+        #{green($foreground)}, #{blue($foreground)}, 0.06);     /* #fff/hsla(0, 0%, 100%, 0.06)accent */
     --elevation-low: 0 1px 0 rgba(4, 4, 5, 0.2),              /* #040405/rgba(4, 4, 5, 0.2) */
         0 1.5px 0 rgba(6, 6, 7, 0.05),                        /* #040405/rgba(6, 6, 7, 0.05) */
         0 2px 0 rgba(4, 4, 5, 0.05);                          /* #040405/rgba(4, 4, 5, 0.05) shadow */
