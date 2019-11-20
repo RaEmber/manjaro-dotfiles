@@ -266,3 +266,12 @@
 .theme-light .scrollerThemed-2oenus.themedWithTrack-q8E3vB .scrollbar-2rkZSL .thumb-2JwNFC {
 	background-color: $color4
 }
+
+
+/* Channel header modal */
+
+.theme-dark .modal-yWgWj- {
+	background-color: lighten($background, 4%);
+	-webkit-box-shadow: 0 0 0 1px rgba(red($background), green(lighten($background, 10%)), blue(lighten($background, 10%)), 0.6), 0 2px 10px 0 rgba(0, 0, 0, .2);
+	box-shadow: 0 0 0 1px rgba(red($background), green(lighten($background, 10%)), blue(lighten($background, 10%)), 0.6), 0 2px 10px 0 rgba(0, 0, 0, .2)
+}
