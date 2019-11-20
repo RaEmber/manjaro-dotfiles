@@ -588,3 +588,8 @@
 .theme-dark .placeholderWrapper-3FaLtZ {
     background: lighten($background, 2%)
 }
+
+.theme-dark .wrapper-3UweLa {
+    color: darken($foreground, 6%);
+    background: $background
+}
