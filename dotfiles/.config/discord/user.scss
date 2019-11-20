@@ -2,13 +2,13 @@
 
 .theme-dark {
 	--header-primary: #{$foreground};                           /* #fff "unread" dot */
-	--header-secondary: #{darken($foreground, 4%)};             /* #b9bbbe code block white text */
-	--text-normal: #{darken($foreground, 2%)};                  /* #dcddde discord icon, server notification (channel bar), quoted text */
+	--header-secondary: #{darken($foreground, 6%)};             /* #b9bbbe code block white text */
+	--text-normal: #{darken($foreground, 3%)};                  /* #dcddde discord icon, server notification (channel bar), quoted text */
 	--text-muted: #{darken($foreground, 20%)};                  /* #72767d channel symbol, datetime */
 	--text-link: #{$color4};                                    /* #1ab2ee links */
 	--channels-default: #{darken($foreground, 10%)};            /* #8e9297 channel text */
-	--interactive-normal: #{darken($foreground, 4%)};           /* #b9bbbe control button icons (bell, member list, add file, settings, etc.) */
-	--interactive-hover: #{darken($foreground, 2%)};            /* #dcddde idk */
+	--interactive-normal: #{darken($foreground, 6%)};           /* #b9bbbe control button icons (bell, member list, add file, settings, etc.) */
+	--interactive-hover: #{darken($foreground, 3%)};            /* #dcddde idk */
 	--interactive-active: #{$foreground};                       /* #fff active icon button, channel text, channel unread dot */
 	--interactive-muted: #{lighten($background, 10%)};          /* #4f545c quote side bar */
 	--background-primary: #{lighten($background, 4%)};          /* #36393f Server icon background, main text area background */
@@ -47,7 +47,7 @@
 	--deprecated-text-input-border: rgba(0, 0, 0, 0.3); /* idk */
 	--deprecated-text-input-border-hover: #040405; /* idk */
 	--deprecated-text-input-border-disabled: #{$background};    /* #202225 idk */
-    --deprecated-text-input-prefix: #{darken($foreground, 2%)}; /* #dcddde idk */
+    --deprecated-text-input-prefix: #{darken($foreground, 3%)}; /* #dcddde idk */
 }
 
 /* tip button channel bar */
@@ -88,10 +88,10 @@
 	background-color: rgba(114, 118, 125, .3)
 }
 .theme-dark .keybindBold-1942Wp {
-	color: darken($foreground, 4%)
+	color: darken($foreground, 6%)
 }
 .theme-dark .closeButtonBold-8kKURP {
-	border-color: darken($foreground, 4%)
+	border-color: darken($foreground, 6%)
 }
 .theme-dark .closeButtonBold-8kKURP:hover {
 	background-color: rgba(185, 187, 190, .3)
@@ -130,7 +130,7 @@
 	color: darken($foreground, 20%)
 }
 .theme-dark .bannedUserModal-3RJCOV .reasonHeader-2etdjy {
-	color: darken($foreground, 4%)
+	color: darken($foreground, 6%)
 }
 
 /* Spoiler tags */
@@ -139,4 +139,130 @@
 }
 .theme-dark .spoilerText-3p6IlD.hidden-HHr2R9:hover {
 	background-color: rgba(red($background), green($background), blue($background), .8)
+}
+
+
+/* Search result tab */
+.theme-dark .searchResultsWrap-2DKFzt {
+	background-color: lighten($background, 2%)
+}
+.theme-dark .searchHeader-1l-wpR {
+	background-color: lighten($background, 2%);
+}
+.theme-dark .searchHeader-1l-wpR a {
+	color: $foreground
+}
+.theme-dark .searchHeader-1l-wpR .border-QGt7cC {
+	background-color: rgba(red($background), green($background), blue($background), 0.3)
+}
+.theme-dark .searchHeader-1l-wpR .tab-2Ixsn0, .theme-dark .searchHeader-1l-wpR .totalResults-gxvzgw {
+	color: $foreground
+}
+.theme-dark .searchHeader-1l-wpR .tab-2Ixsn0.selected-16te-P, .theme-dark .searchHeader-1l-wpR .tab-2Ixsn0:hover {
+	border-bottom: 2px solid $foreground
+}
+.theme-dark .searchHeader-1l-wpR .spinner-3_ktSp .spinnerPath-31nVuk {
+	stroke: $color7 /* #99aab5 */
+}
+.theme-dark .channelSeparator-1X1FuH:before {
+	border-color: rgba(red($background), green($background), blue($background), 0.1)
+}
+.theme-dark .channelSeparator-1X1FuH .channelName-1QajIf {
+	color: $foreground;
+	background-color: lighten($background, 2%)
+}
+.theme-dark .searchResult-3pzFAB:before {
+    background-image: -webkit-gradient(linear, left bottom, left top,
+    from(rgba(red(lighten($background, 2%)), green(lighten($background, 2%)), blue(lighten($background, 2%)), 0)),
+    to(lighten($background, 2%))); /* #2f3136 */
+	background-image: linear-gradient(0deg, rgba(
+        red(lighten($background, 2%)),
+        green(lighten($background, 2%)),
+        blue(lighten($background, 2%)), 0), lighten($background, 2%))
+}
+.theme-dark .searchResult-3pzFAB:after {
+    background-image: -webkit-gradient(linear, left top, left bottom,
+    from(rgba(red(lighten($background, 2%)), green(lighten($background, 2%)), blue(lighten($background, 2%)), 0)),
+    to(lighten($background, 2%)));
+	background-image: linear-gradient(180deg, rgba(
+        red(lighten($background, 2%)),
+        green(lighten($background, 2%)),
+        blue(lighten($background, 2%)), 0), lighten($background, 2%))
+}
+.theme-dark .searchResult-3pzFAB .searchResultMessage-2VxO12.hit-NLlWXA {
+	border: 2px solid rgba(red(darken($background, 5%)), green(darken($background, 5%)), blue(darken($background, 5%)), .6) /* #1c242b */
+}
+.theme-dark .searchResult-3pzFAB .hit-NLlWXA {
+	background-color: lighten($background, 4%);
+	-webkit-box-shadow: 0 0 10px 6px lighten($background, 2%);
+	box-shadow: 0 0 10px 6px lighten($background, 2%)
+}
+.theme-dark .searchResult-3pzFAB.expanded-v2Szsz {
+	border: 2px solid rgba(red(darken($background, 5%)), green(darken($background, 5%)), blue(darken($background, 5%)), .6)
+}
+.theme-dark .searchResult-3pzFAB.expanded-v2Szsz .searchResultMessage-2VxO12.hit-NLlWXA {
+	border-top: 2px solid rgba(red(darken($background, 5%)), green(darken($background, 5%)), blue(darken($background, 5%)), .6);
+	border-bottom: 2px solid rgba(red(darken($background, 5%)), green(darken($background, 5%)), blue(darken($background, 5%)), .6);
+	background-color: lighten($background, 4%)
+}
+
+
+
+/* Scroller */
+.scrollerThemed-2oenus.themeGhostHairlineChannels-3G0x9_ .scroller-2FKFPG::-webkit-scrollbar-thumb {
+	background-color: rgba(red($background), green($background), blue($background), 0.6)
+}
+.scrollerThemed-2oenus.themeGhostHairlineChannels-3G0x9_ .scrollbar-2rkZSL .thumb-2JwNFC {
+	background-color: rgba(red($background), green($background), blue($background), 0.6)
+}
+.theme-dark .scrollerThemed-2oenus.themeGhostHairline-DBD-2d .scroller-2FKFPG::-webkit-scrollbar-thumb {
+	background-color: rgba(red($background), green($background), blue($background), 0.6)
+}
+.theme-dark .scrollerThemed-2oenus.themeGhostHairline-DBD-2d .scrollbar-2rkZSL .thumb-2JwNFC {
+	background-color: rgba(red($background), green($background), blue($background), 0.6)
+}
+.theme-dark .scrollerThemed-2oenus.themedWithTrack-q8E3vB .scroller-2FKFPG::-webkit-scrollbar-thumb {
+	background-color: $background;
+	border-color: lighten($background, 4%)
+}
+.theme-dark .scrollerThemed-2oenus.themedWithTrack-q8E3vB .scroller-2FKFPG::-webkit-scrollbar-track-piece {
+	background-color: lighten($background, 2%);
+	border: 3px solid lighten($background, 4%)
+}
+.theme-dark .scrollerThemed-2oenus.themedWithTrack-q8E3vB .scrollbar-2rkZSL {
+	background-color: lighten($background, 4%)
+}
+.theme-dark .scrollerThemed-2oenus.themedWithTrack-q8E3vB .scrollbar-2rkZSL .track-1JN30G {
+	background-color: lighten($background, 2%);
+	border: 3px solid lighten($background, 4%)
+}
+.theme-dark .scrollerThemed-2oenus.themedWithTrack-q8E3vB .scrollbar-2rkZSL .thumb-2JwNFC {
+	background-color: $background;
+	border: 3px solid lighten($background, 4%)
+}
+.theme-dark .scrollerThemed-2oenus.themedWithTrack-q8E3vB .scrollbar-2rkZSL .thumb-2JwNFC:after {
+	background-color: $background
+}
+.theme-light .scrollerThemed-2oenus.themeGhostHairline-DBD-2d .scroller-2FKFPG::-webkit-scrollbar-thumb {
+	background-color: rgba(red($background), green(lighten($background, 10%)), blue(lighten($background, 10%)), 0.3)
+}
+.theme-light .scrollerThemed-2oenus.themeGhostHairline-DBD-2d .scrollbar-2rkZSL .thumb-2JwNFC {
+	background-color: rgba(red($background), green(lighten($background, 10%)), blue(lighten($background, 10%)), 0.3)
+}
+.theme-light .scrollerThemed-2oenus.themedWithTrack-q8E3vB .scroller-2FKFPG::-webkit-scrollbar-thumb {
+	background-color: darken($foreground, 2%); /* #e3e5e8 */
+	border-color: $foreground
+}
+.theme-light .scrollerThemed-2oenus.themedWithTrack-q8E3vB .scroller-2FKFPG::-webkit-scrollbar-track-piece {
+	background-color: darken($foreground, 1%); /* #f6f6f7 */
+	border: 3px solid $foreground
+}
+.theme-light .scrollerThemed-2oenus.themedWithTrack-q8E3vB .scrollbar-2rkZSL {
+	background-color: $foreground
+}
+.theme-light .scrollerThemed-2oenus.themedWithTrack-q8E3vB .scrollbar-2rkZSL .track-1JN30G {
+	background-color: darken($foreground, 1%)
+}
+.theme-light .scrollerThemed-2oenus.themedWithTrack-q8E3vB .scrollbar-2rkZSL .thumb-2JwNFC {
+	background-color: $color4
 }
