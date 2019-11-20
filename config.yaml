@@ -135,14 +135,11 @@ profiles:
     - f_bdiscord
     - f_user.scss
   sun:
-    dotfiles: []
     include:
     - common
   teegardenb:
-    dotfiles: []
     include:
     - common
   kepler22b:
-    dotfiles: []
     include:
     - common

@@ -85,7 +85,7 @@
 	border-color: darken($foreground, 20%)
 }
 .theme-dark .closeButton-1tv5uR:hover {
-	background-color: rgba(114, 118, 125, .3)
+    background-color: rgba(red(darken($foreground, 20%)), green(darken($foreground, 20%)), blue(darken($foreground, 20%)), .3)
 }
 .theme-dark .keybindBold-1942Wp {
 	color: darken($foreground, 6%)
@@ -94,7 +94,7 @@
 	border-color: darken($foreground, 6%)
 }
 .theme-dark .closeButtonBold-8kKURP:hover {
-	background-color: rgba(185, 187, 190, .3)
+	background-color: rgba(red(darken($foreground, 6%)), green(darken($foreground, 6%)), blue(darken($foreground, 6%)), .3)
 }
 .theme-dark .unlocked-251xRB, .theme-light .unlocked-251xRB {
 	color: #43b581
@@ -139,6 +139,74 @@
 }
 .theme-dark .spoilerText-3p6IlD.hidden-HHr2R9:hover {
 	background-color: rgba(red($background), green($background), blue($background), .8)
+}
+
+
+/* Search */
+.theme-dark .search-MFQ5bU {
+	border: 1px solid darken($foreground, 3%)
+}
+.theme-dark .searchInput-wFaj8i::-webkit-input-placeholder {
+	color: darken($color7, 2%)/* #9099a4 */
+}
+.theme-dark .searchInput-wFaj8i::-moz-placeholder {
+	color: darken($color7, 2%)
+}
+.theme-dark .searchInput-wFaj8i:-ms-input-placeholder {
+	color: darken($color7, 2%)
+}
+.theme-dark .searchInput-wFaj8i::placeholder {
+	color: darken($color7, 2%)
+}
+.theme-dark .searchAnswer-3Dz2-q, .theme-dark .searchFilter-2ESiM3 {
+	background-color: lighten($background, 3%)
+}
+.theme-dark .option-96V44q .answer-1n6g43, .theme-dark .option-96V44q .nonText-3CRkO0, .theme-dark .option-96V44q strong {
+	color: darken($foreground, 10%) /* #caccce */
+}
+.theme-dark .option-96V44q .filter-3Y_im- {
+	color: darken($foreground, 20%)
+}
+.theme-dark .option-96V44q.user-O3Czj0 .displayedNick-3xxvzU {
+	color: darken($foreground, 10%)
+}
+.theme-dark .option-96V44q.user-O3Czj0 .displayUsername-Qekxml {
+	color: lighten($background, 15%)
+}
+.theme-dark .searchOption-zQ-1l6 .filter-3Y_im- { /* Search option filter name */
+	color: darken($foreground, 10%)
+}
+.theme-dark .searchOption-zQ-1l6 .answer-1n6g43 { /* Search option filter placeholder */
+	color: darken($foreground, 20%)
+}
+/* Search options */
+.theme-dark .option-96V44q:after {
+    background: -webkit-gradient(linear, left top, right top,
+    from(rgba(red(lighten($background, 4%)), green(lighten($background, 4%)), blue(lighten($background, 4%)), 0)), color-stop(80%, lighten($background, 4%)));
+	background: linear-gradient(90deg, rgba(red(lighten($background, 4%)), green(lighten($background, 4%)), blue(lighten($background, 4%)), 0), lighten($background, 4%) 80%)
+}
+.theme-dark .option-96V44q.selected-rZcOL- { /* selection */
+	background-color: #23262a /* #23262a */
+}
+.theme-dark .option-96V44q.selected-rZcOL-:after {
+    background: -webkit-gradient(linear, left top, right top,
+    from(rgba(red(lighten($background, 1%)), green(lighten($background, 1%)), blue(lighten($background, 1%)), 0)), color-stop(50%, lighten($background, 1%))); /* #23262a */
+	background: linear-gradient(90deg, rgba(red(lighten($background, 1%)), green(lighten($background, 1%)), blue(lighten($background, 1%)), 0), lighten($background, 1%) 50%)
+}
+
+/* Search dropdown menu */
+.theme-dark .container-3ayLPN {
+	background-color: lighten($background, 4%)
+}
+.theme-dark .queryContainer-RKFJW- {
+	color: darken($foreground, 6%);
+	border-bottom-color: rgba(red(lighten($background, 1%)), green(lighten($background, 1%)), blue(lighten($background, 1%)), .3)
+}
+.theme-dark .queryContainer-RKFJW- strong {
+	color: $foreground
+}
+.theme-dark .focused-2bY0OD {
+	background-color: lighten($background, 1%)
 }
 
 
@@ -275,3 +343,85 @@
 	-webkit-box-shadow: 0 0 0 1px rgba(red($background), green(lighten($background, 10%)), blue(lighten($background, 10%)), 0.6), 0 2px 10px 0 rgba(0, 0, 0, .2);
 	box-shadow: 0 0 0 1px rgba(red($background), green(lighten($background, 10%)), blue(lighten($background, 10%)), 0.6), 0 2px 10px 0 rgba(0, 0, 0, .2)
 }
+
+
+
+
+
+
+
+
+/* Message completion (channel names/pings) */
+.theme-light .contentTitle-2tG_sM {
+	color: darken($foreground, 20%)
+}
+.theme-light .contentTitle-2tG_sM strong {
+	color: lighten($background, 10%)
+}
+.theme-light .content-Qb0rXO {
+	color: lighten($background, 4%)
+}
+.theme-light .iconForeground-1w5n7R {
+	fill: darken($foreground, 20%)
+}
+.theme-light .description-11DmNu, .theme-light .descriptionUsername-J_75O8 {
+	color: darken($foreground, 20%)
+}
+.theme-light .descriptionDiscriminator-3vUOCc {
+	color: rgba(red(darken($foreground, 20%)), green(darken($foreground, 20%)), blue(darken($foreground, 20%)), .6)
+}
+.theme-dark .autocomplete-1vrmpx {
+	background-color: lighten($background, 2%)
+}
+.theme-dark .selectorSelected-1_M1WV {
+	background-color: lighten($background, 4%)
+}
+.theme-dark .divider-23swzi {
+	background-color: rgba(red(darken($foreground, 20%)), green(darken($foreground, 20%)), blue(darken($foreground, 20%)), .6)
+}
+.theme-dark .contentTitle-2tG_sM {
+	color: darken($foreground, 20%)
+}
+.theme-dark .contentTitle-2tG_sM strong {
+	color: $foreground
+}
+.theme-dark .content-Qb0rXO {
+	color: darken($foreground, 1%)
+}
+.theme-dark .iconForeground-1w5n7R {
+	fill: darken($foreground, 20%)
+}
+.theme-dark .description-11DmNu, .theme-dark .descriptionUsername-J_75O8 {
+	color: darken($foreground, 20%)
+}
+.theme-dark .descriptionDiscriminator-3vUOCc {
+	color: rgba(red(darken($foreground, 20%)), green(darken($foreground, 20%)), blue(darken($foreground, 20%)), .6)
+}
+.theme-brand .autocomplete-1vrmpx {
+	background-color: darken($foreground, 1%)
+}
+.theme-brand .selectorSelected-1_M1WV {
+	background-color: lighten($color4, 20%) /* #c7d0f0/rgba(199, 208, 240, .6) */
+}
+.theme-brand .divider-23swzi {
+	background-color: darken($foreground, 3%) /* #dcddde/rgba(220, 221, 222, .6) */
+}
+.theme-brand .contentTitle-2tG_sM {
+	color: darken($foreground, 20%)
+}
+.theme-brand .contentTitle-2tG_sM strong {
+	color: lighten($background, 10%)
+}
+.theme-brand .content-Qb0rXO {
+	color: lighten($background, 4%)
+}
+.theme-brand .iconForeground-1w5n7R {
+	fill: darken($foreground, 20%)
+}
+.theme-brand .description-11DmNu, .theme-brand .descriptionUsername-J_75O8 {
+	color: darken($foreground, 20%)
+}
+.theme-brand .descriptionDiscriminator-3vUOCc {
+	color: rgba(red(darken($foreground, 20%)), green(darken($foreground, 20%)), blue(darken($foreground, 20%)), .6)
+}
+
