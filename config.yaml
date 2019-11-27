@@ -110,6 +110,9 @@ dotfiles:
     - discord_sass
     src: .config/discord/user.scss
     dst: ~/.config/discord/user.scss
+  f_redshift.conf:
+    src: .config/redshift/redshift.conf
+    dst: ~/.config/redshift/redshift.conf
 profiles:
   common:
     dotfiles:
@@ -134,6 +137,7 @@ profiles:
     - d_themes
     - f_bdiscord
     - f_user.scss
+    - f_redshift.conf
   sun:
     include:
     - common
