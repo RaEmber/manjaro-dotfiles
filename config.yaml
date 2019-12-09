@@ -9,6 +9,7 @@ actions:
   xres: xrdb -merge ~/.Xresources
   spicetify: spicetify update
   discord_sass: sassc ~/.config/discord/user.scss > ~/.config/discord/user.css
+  firefox: ~/.mozilla/firefox/link_firefox_profiles
 config:
   backup: false
   banner: false
@@ -113,6 +114,11 @@ dotfiles:
   f_redshift.conf:
     src: .config/redshift/redshift.conf
     dst: ~/.config/redshift/redshift.conf
+  d_firefox:
+    actions:
+    - firefox
+    src: .mozilla/firefox
+    dst: ~/.mozilla/firefox
 profiles:
   common:
     dotfiles:
@@ -138,6 +144,7 @@ profiles:
     - f_bdiscord
     - f_user.scss
     - f_redshift.conf
+    - d_firefox
   sun:
     include:
     - common

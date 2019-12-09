@@ -1,0 +1,19 @@
+#!/bin/bash
+
+cd $(dirname $0)
+files=("user.js")
+profiles=()
+for f in ./*.*; do
+    if [ -d "$f" ]; then
+        profiles+=("${f/.\//}")
+    fi
+done
+for profile in "${profiles[@]}"; do
+    echo "Profile $profile:"
+    cd "$profile"
+    for file in "${files[@]}"; do
+        echo "    Linking to $file"
+        ln -sf "../$file" "$file"
+    done
+    cd ..
+done
