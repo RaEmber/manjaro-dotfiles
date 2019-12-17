@@ -117,7 +117,11 @@ label-empty-padding			= 0
 
 [module/temperature]
 type					= internal/temperature
+{%@@ if profile == "sun" @@%}
 thermal-zone			= 0
+{%@@ elif profile == "teegardenb" @@%}
+thermal-zone			= 6
+{%@@ endif @@%}
 warn-temperature		= 65
 
 label					= "%{A1:urxvt -e sensors:} %temperature-c%%{A}"
