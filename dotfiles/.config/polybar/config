@@ -41,7 +41,7 @@ traybg          = ${env:traybg}
 
 [global/wm]
 margin-bottom	= 0
-margin-top		= 30
+margin-top		= 0
 
 
 [bar/main]
@@ -68,6 +68,8 @@ font-3				= M+ 1c:style=Bold:pixelsize=12;2
 
 locale				= ja_JP.UTF-8
 wm-restack			= bspwm
+
+override-redirect   = true
 
 #width				= 90%
 #offset-x			= 5%

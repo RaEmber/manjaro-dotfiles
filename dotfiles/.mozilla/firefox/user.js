@@ -72,7 +72,7 @@ user_pref("dom.network.enabled", false);
 
 // PREF: Disable WebRTC entirely to prevent leaking internal IP addresses (Firefox < 42)
 // NOTICE: Disabling WebRTC breaks peer-to-peer file sharing tools (reep.io ...)
-//user_pref("media.peerconnection.enabled", false);
+user_pref("media.peerconnection.enabled", false);
 
 // PREF: Don't reveal your internal IP when WebRTC is enabled (Firefox >= 42)
 // https://wiki.mozilla.org/Media/WebRTC/Privacy
@@ -170,7 +170,7 @@ user_pref("dom.archivereader.enabled", false);
 // PREF: Disable webGL
 // https://en.wikipedia.org/wiki/WebGL
 // https://www.contextis.com/resources/blog/webgl-new-dimension-browser-exploitation/
-//user_pref("webgl.disabled", true);
+user_pref("webgl.disabled", true);
 // PREF: When webGL is enabled, use the minimum capability mode
 user_pref("webgl.min_capability_mode", true);
 // PREF: When webGL is enabled, disable webGL extensions
@@ -312,8 +312,8 @@ user_pref("media.video_stats.enabled", false);
 // PREF: Don't reveal build ID
 // Value taken from Tor Browser
 // https://bugzilla.mozilla.org/show_bug.cgi?id=583181
-user_pref("general.buildID.override", "20100101");
-user_pref("browser.startup.homepage_override.buildID", "20100101");
+user_pref("general.buildID.override", "20181001000000");
+user_pref("browser.startup.homepage_override.buildID", "20181001000000");
 
 // PREF: Prevent font fingerprinting
 // https://browserleaks.com/fonts
@@ -1168,3 +1168,18 @@ user_pref("security.ssl3.dhe_dss_camellia_256_sha", false);
 // PREF: Fallbacks due compatibility reasons
 user_pref("security.ssl3.rsa_aes_256_sha", true); // 0x35
 user_pref("security.ssl3.rsa_aes_128_sha", true); // 0x2f
+
+
+
+
+// Additional settings
+// https://www.privacytools.io/browsers/#webrtc
+user_pref("media.peerconnection.turn.disable", true);
+user_pref("media.peerconnection.use_document_iceservers", false);
+user_pref("media.peerconnection.video.enabled", false);
+user_pref("media.peerconnection.identity.timeout", 1);
+// https://www.privacytools.io/browsers/#about_config
+user_pref("browser.urlbar.speculativeConnect.enabled", false);
+user_pref("dom.event.clipboardevents.enabled", false);
+user_pref("media.gmp-widevinecdm.enabled", false);
+user_pref("network.http.referer.XOriginTrimmingPolicy", 2);
