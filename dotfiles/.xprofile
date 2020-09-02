@@ -14,6 +14,7 @@ setxkbmap ch
 {%@@ endif @@%}
 nm-applet &
 /usr/bin/polkit-kde-authentication-agent-1 &
+xautolock -time 10 -locker "i3lock -i ~/.cache/wal/lockscreen.png" -detectsleep &
 #start_jack &
 #sleep 1
 

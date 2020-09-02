@@ -13,6 +13,8 @@ super + shift + u
     thanoscase --mode u     # uʍop ǝpᴉsdn ʇxǝʇ sdᴉlℲ
 super + shift + s
     thanoscase --mode s     # S p a c e s   o u t   t e x t
+super + l
+    i3lock -i ~/.cache/wal/lockscreen.png    # Lock screen
 
 # bspwm hotkeys
 super + ctrl + {Left,Right}

@@ -22,6 +22,8 @@ print_help() {
 	echo -e " -w \e[0;90mfile\e[m\tGenerate colorscheme out of specific wallpaper"
 	echo -e " -m \t\tMark (toggle) current wallpaper as special"
 	echo -e " -s \t\tChoose wallpaper out of the ones marked as special"
+	echo -e " -p \t\tFetch a random image from picsum lorem"
+	echo -e " -i \e[0;90m[id]\e[m\tFetch a specific image from picsum lorem using the given id"
 
 	echo -e " -x \e[0;90mname\e[m\tExport current colorscheme to the user colorschemes"
 	echo -e " -l \t\tList the user specified colorschemes"
@@ -39,6 +41,9 @@ w=
 wfile=
 m=
 s=
+p=
+i=
+id=
 x=
 xname=
 l=
@@ -56,12 +61,14 @@ if (( $#==0 )) ; then
 	exit 0
 fi
 
-while getopts "nw:msx:ld:u:rqch" arg; do
+while getopts "nw:mspi:x:ld:u:rqch" arg; do
 	case $arg in
 		n) # Load random wallpaper
 			n=1
 			w=
 			s=
+			p=
+			i=
 			u=
 			;;
 		w) # Load specific wallpaper
@@ -69,15 +76,25 @@ while getopts "nw:msx:ld:u:rqch" arg; do
 			wfile=$OPTARG
 			n=
 			s=
+			p=
+			i=
 			u=
 			;;
 		m) # Toggle current wallpaper as special
 			m=1;;
 		s) # Load wallpaper of special folder
 			s=1
-			n=
-			w=
+			p=
+			i=
 			u=
+			;;
+		p) # Fetch random image from picsum lorem
+			p=1
+			i=
+			;;
+		i) # Fetch specific image from picsum lorem
+			i=1
+			id=$OPTARG
 			;;
 		x) # Export current colorscheme to a user colorscheme
 			x=1
@@ -119,6 +136,8 @@ function reload_env() {
 	bspc config focused_border_color "$color4"
 	bspc config normal_border_color "$color7"
 	bspc config presel_feedback_color "$color0"
+	# convert and scale wallpaper for lockscreen
+	convert -resize $(xdpyinfo | grep dimensions | cut -d\  -f7 | cut -dx -f1) $(cat ~/.cache/wal/wal) ~/.cache/wal/lockscreen.png
 }
 
 function wal_execute() { # 1: folder/file
@@ -147,6 +166,18 @@ function gtk_install() {
 		./$gtkinstall
 	fi
 	exit
+}
+
+function fetch_picsum() { # dir [id] -> id
+	picsum_file="$1/picsum.jpg"
+	url="https://picsum.photos"
+	if [[ $2 ]]; then
+		url="$url/id/$2"
+	fi
+	url="$url/$(xdpyinfo | grep -oP "(?<=dimensions:\s{4})\d+x\d+(?= pixels)" | sed "s/x/\//g")"
+	id=$(LANG=C wget "$url" -SO $picsum_file 2>&1 | grep -oP '(?<=filename=")\d+(?=-\d+x\d+\.jpg")')
+	cp "$picsum_file" "$1/$id.jpg"
+	echo "$id"
 }
 
 function toggle_special() {
@@ -191,7 +222,7 @@ function print_color_table() {
 
 ################################################################################
 
-if [[ $n ]] || [[ $w ]] || [[ $s ]]; then # Load random wallpaper
+if [[ $n ]] || [[ $w ]] || [[ $s ]] || [[ $p ]] || [[ $i ]]; then # Load random wallpaper
 	if [[ $n ]]; then
 		[[ $q ]] || echo -e "Loading from \e[35mrandom\e[m wallpaper"
 		wal_execute "$WALL_DIR"
@@ -201,6 +232,15 @@ if [[ $n ]] || [[ $w ]] || [[ $s ]]; then # Load random wallpaper
 	elif [[ $s ]]; then
 		[[ $q ]] || echo -e "Loading \e[33mspecial\e[m wallpaper"
 		wal_execute "$SPECIAL_DIR"
+	elif [[ $p ]]; then
+		[[ $q ]] || echo -e "Loading from \e[33mpicsum lorem\e[m"
+		id=$(fetch_picsum "$WALL_DIR")
+		[[ $q ]] || echo -e "Fetched id \e[33m$id\e[m"
+		wal_execute "$WALL_DIR/$id.jpg"
+	elif [[ $i ]]; then
+		[[ $q ]] || echo -e "Loading id \e[33m$id\e[m from \e[33mpicsum lorem\e[m"
+		fetch_picsum "$WALL_DIR" "$id" > /dev/null
+		wal_execute "$WALL_DIR/$id.jpg"
 	fi
 	[[ $m ]] && toggle_special
 	[[ $x ]] && add_to_user_colorschemes
