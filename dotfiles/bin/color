@@ -11,9 +11,9 @@ mkdir -p $USER_COL_DIR
 print_help() {
 	echo -e "Usage:"
 
-	echo -e "$(basename $0) \e[0;90m{\e[m-n, -w \e[0;90mfile\e[m, -s\e[0;90m}\e[m \e[0;90m[\e[m-m, -x \e[0;90mname\e[m, -q, -c\e[0;90m]\e[m\t\tGenerate colorscheme out of a wallpaper"
-	echo -e "$(basename $0) -u \e[0;90mname [\e[m-q, -c\e[0;90m]\e[m\t\t\t\t\tLoad user specified colorscheme"
-	echo -e "$(basename $0) \e[0;90m[\e[m-m, -x \e[0;90mname\e[m, -l, -d \e[0;90mname\e[m, -r, -h, -q, -c\e[0;90m]\e[m\tOther actions"
+	echo -e "$(basename $0) \e[0;90m{\e[m-n, -w \e[0;90mfile\e[m, -s, -p, -i \e[0;90mfile}\e[m \e[0;90m[\e[m-m, -x \e[0;90mname\e[m, -q, -c\e[0;90m]\e[m\tGenerate colorscheme out of a wallpaper"
+	echo -e "$(basename $0) -u \e[0;90mname [\e[m-q, -c\e[0;90m]\e[m\t\t\t\t\t\tLoad user specified colorscheme"
+	echo -e "$(basename $0) \e[0;90m[\e[m-m, -x \e[0;90mname\e[m, -l, -d \e[0;90mname\e[m, -r, -h, -q, -c\e[0;90m]\e[m\t\tOther actions"
 
 	echo -e "\npywal wrapper"
 	echo -e "Options:"

@@ -34,7 +34,7 @@ URxvt.secondaryScroll:		true
 URxvt.hold:					false
 ! https://wiki.archlinux.org/index.php/Rxvt-unicode#Cut_and_paste
 ! https://wiki.archlinux.org/index.php/Rxvt-unicode#Changing_font_size_on_the_fly
-URxvt.perl-ext-common:		default,clipboard,matcher,tabbed,resize-font
+URxvt.perl-ext-common:		default,clipboard,matcher,resize-font
 URxvt.clipboard.autocopy:	true
 !URxvt.keysym.M-c:			perl:clipboard:copy
 !URxvt.keysym.M-v:			perl:clipboard:paste
@@ -51,12 +51,12 @@ URxvt.iso14755:				false
 URxvt.iso14755_52:			false
 ! https://wiki.archlinux.org/index.php/Rxvt-unicode#Clickable_URLs
 URxvt.url-launcher:			/usr/bin/xdg-open
-URxvt.matcher.button:		true
-! https://wiki.archlinux.org/index.php/Rxvt-unicode#Simple_tabs
-URxvt.tabbed.tabbar-fg:		4
-URxvt.tabbed.tabbar-bg:		#484242
-URxvt.tabbed.tab-fg:		6
-URxvt.tabbed.tab-bg:		#585252
+URxvt.matcher.button:		1
+!! https://wiki.archlinux.org/index.php/Rxvt-unicode#Simple_tabs
+!URxvt.tabbed.tabbar-fg:		4
+!URxvt.tabbed.tabbar-bg:		#484242
+!URxvt.tabbed.tab-fg:		6
+!URxvt.tabbed.tab-bg:		#585252
 ! https://wiki.archlinux.org/index.php/Rxvt-unicode#Disabling_Perl_extensions
 URxvt.perl-ext:
 ! vi:syn=xdefaults
