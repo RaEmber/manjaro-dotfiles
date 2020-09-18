@@ -129,7 +129,7 @@ warn-temperature		= 65
 label					= "%{A1:urxvt -e sensors:} %temperature-c%%{A}"
 format-foreground		= ${colors.yellow}
 format-background		= ${colors.bg}
-format-overline		    = ${colors.green}
+format-overline		    = ${colors.yellow}
 format-padding			= ${settings.padding}
 
 label-warn				= "%{A1:urxvt -e sensors:} %temperature-c%%{A}"
@@ -143,7 +143,7 @@ format-warn-padding		= ${settings.padding}
 type						= internal/fs
 interval					= 25
 mount-0						= /
-format-mounted-overline	= ${colors.overline}
+format-mounted-overline		= ${colors.blue}
 
 label-mounted				= " %percentage_used%%"
 label-mounted-foreground	= ${colors.blue}
@@ -158,7 +158,7 @@ label-unmounted-padding		= 0
 type						= internal/fs
 interval					= 25
 mount-0						= /home
-format-mounted-overline	= ${colors.overline}
+format-mounted-overline		= ${colors.blue}
 
 label-mounted				= " %percentage_used%%"
 label-mounted-foreground	= ${colors.blue}
@@ -177,7 +177,7 @@ label-font          = 5
 format-foreground	= ${colors.magenta}
 format-background	= ${colors.bg}
 format-padding		= ${settings.padding}
-format-overline	    = ${colors.overline}
+format-overline	    = ${colors.magenta}
 
 
 [module/cpu]
@@ -186,7 +186,7 @@ interval			= 1
 format-prefix		= "%{A1:urxvt -e htop &:} %{A}"
 format-foreground	= ${colors.cyan}
 format-background	= ${colors.bg}
-format-overline	    = ${colors.overline}
+format-overline	    = ${colors.cyan}
 format-padding		= ${settings.padding}
 label				= %percentage%%
 
@@ -198,8 +198,8 @@ interval            = 5
 click-left          = nordvpn c ch140
 click-middle        = nordvpn d
 click-right         = urxvt -e nordvpn status &
-format-overline	    = ${colors.overline}
-format-foreground	= ${colors.fg}
+format-overline	    = ${colors.blue}
+format-foreground	= ${colors.blue}
 format-background	= ${colors.bg}
 format-padding		= ${settings.padding}
 
@@ -212,7 +212,7 @@ enable-scroll		= true
 label				= " %percentage%"
 format-foreground	= ${colors.yellow}
 format-background	= ${colors.bg}
-format-overline	    = ${colors.overline}
+format-overline	    = ${colors.yellow}
 format-padding		= ${settings.padding}
 
 
@@ -223,7 +223,7 @@ type					= internal/alsa
 label-volume			= " %percentage%"
 label-volume-foreground	= ${colors.blue}
 label-volume-background	= ${colors.bg}
-label-volume-overline	= ${colors.green}
+label-volume-overline	= ${colors.blue}
 label-volume-padding	= ${settings.padding}
                 
 label-muted				= ""
