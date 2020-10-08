@@ -13,6 +13,14 @@ super + shift + u
     thanoscase --mode u     # uʍop ǝpᴉsdn ʇxǝʇ sdᴉlℲ
 super + shift + s
     thanoscase --mode s     # S p a c e s   o u t   t e x t
+super + shift + w
+    thanoscase --mode w     # ᵀᶦᵑʸ ʷʰᶦˢᵖᵉʳ
+super + shift + f
+    thanoscase --mode f     # Fraktur (𝕱𝖗𝖆𝖐𝖙𝖚𝖗)
+super + shift + c
+    thanoscase --mode c     # ℂ𝕒𝕝𝕝𝕚𝕘𝕣𝕒𝕡𝕙𝕪
+super + shift + l
+    thanoscase --mode l     # ꜱᴜʙꜱᴄʀɪᴘᴛ
 super + l
     i3lock -i ~/.cache/wal/lockscreen.png    # Lock screen
 

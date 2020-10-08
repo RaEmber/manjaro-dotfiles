@@ -2,43 +2,71 @@
 .theme-dark {
     --header-primary: #{$foreground};
     /* #fff "unread" dot */
-    --header-secondary: #{darken($foreground, 6%)};
+    --header-secondary: #{darken($foreground, 27%)};
+
     /* #b9bbbe code block white text */
-    --text-normal: #{darken($foreground, 3%)};
+    --text-normal: #{darken($foreground, 13%)};
     /* #dcddde discord icon, server notification (channel bar), quoted text */
-    --text-muted: #{darken($foreground, 20%)};
+    --text-muted: #{darken($foreground, 35%)};
     /* #72767d channel symbol, datetime */
     --text-link: #{$color4};
+
     /* #1ab2ee links */
-    --channels-default: #{darken($foreground, 10%)};
+    --channels-default: #{darken($foreground, 44%)};
+
     /* #8e9297 channel text */
-    --interactive-normal: #{darken($foreground, 6%)};
+    --interactive-normal: #{darken($foreground, 13%)};
     /* #b9bbbe control button icons (bell, member list, add file, settings, etc.) */
-    --interactive-hover: #{darken($foreground, 3%)};
+    --interactive-hover: #{darken($foreground, 55%)};
     /* #dcddde idk */
     --interactive-active: #{$foreground};
     /* #fff active icon button, channel text, channel unread dot */
-    --interactive-muted: #{lighten($background, 10%)};
+    --interactive-muted: #{lighten($background, 17%)};
+
     /* #4f545c quote side bar */
-    --background-primary: #{lighten($background, 4%)};
+    --background-primary: #{lighten($background, 10%)};
     /* #36393f Server icon background, main text area background */
-    --background-secondary: #{lighten($background, 2%)};
+    --background-secondary: #{lighten($background, 7%)};
+    /* #292b2f idk */
+    --background-secondary-alt: #{lighten($background, 6%)};
     /* #2f3136 channel bar, code area background */
     --background-tertiary: #{$background};
     /* #202225 search bar, server bar */
     --background-accent: #{lighten($background, 10%)};
     /* #4f545c idk */
     --background-floating: #{darken($background, 2%)};
+
     /* #18191c idk */
     --background-mobile-header: #{lighten($background, 2%)};
+    /* #36393f idk */
+    --background-mobile-primary: #{lighten($background, 10%)};
+
     /* #2f3136 idk */
-    --background-modifier-hover: rgba(#{red(lighten($background, 10%))}, #{green(lighten($background, 10%))}, #{blue(lighten($background, 10%))}, 0.16);
+    --background-mobile-secondary: #{lighten($background, 7%)};
+    /* #4f545c idk */
+    --background-modifier-hover: rgba(#{red(lighten($background, 17%))}, #{green(lighten($background, 17%))}, #{blue(lighten($background, 17%))}, 0.16);
+    /* #4f545c idk */
+    --background-modifier-active: rgba(#{red(lighten($background, 17%))}, #{green(lighten($background, 17%))}, #{blue(lighten($background, 17%))}, 0.24);
+    /* #4f545c idk */
+    --background-modifier-selected: rgba(#{red(lighten($background, 17%))}, #{green(lighten($background, 17%))}, #{blue(lighten($background, 17%))}, 0.32);
+    /* #2f3136 idk */
+    --background-modifier-hover: rgba(#{red(lighten($background, 7%))}, #{green(lighten($background, 7%))}, #{blue(lighten($background, 7%))}, 0.16);
     /* #4f545c/rgba(79, 84, 92, 0.16) hover */
-    --background-modifier-active: rgba(#{red(lighten($background, 10%))}, #{green(lighten($background, 10%))}, #{blue(lighten($background, 10%))}, 0.24);
+    --background-modifier-active: rgba(#{red(lighten($background, 7%))}, #{green(lighten($background, 7%))}, #{blue(lighten($background, 7%))}, 0.24);
     /* #4f545c/rgba(79, 84, 92, 0.24) active */
-    --background-modifier-selected: rgba(#{red($background)}, #{green(lighten($background, 10%))}, #{blue(lighten($background, 10%))}, 0.32);
+    --background-modifier-selected: rgba(#{red($background)}, #{green(lighten($background, 7%))}, #{blue(lighten($background, 7%))}, 0.32);
     /* #4f545c/rgba(79, 84, 92, 0.32)selected */
     --background-modifier-accent: rgba(#{red($foreground)}, #{green($foreground)}, #{blue($foreground)}, 0.06);
+
+    /* #faa61a mentioning bar */
+    --background-mentioned: rgba(#{red($color3)}, #{green($color3)}, #{blue($color3)}, 0.05);
+    /* #faa61a mentioning bar hover */
+    --background-mentioned-hover: rgba(#{red($color3)}, #{green($color3)}, #{blue($color3)}, 0.08);
+    --background-message-hover: rgba(4,4,5,0.07);
+    /* #faa61a help warning */
+    --background-help-warning: rgba(#{red($color3)}, #{green($color3)}, #{blue($color3)}, 0.1);
+    --background-help-info: rgba(0,176,244,0.1);
+
     /* #fff/hsla(0, 0%, 100%, 0.06)accent */
     --elevation-low: 0 1px 0 rgba(4, 4, 5, 0.2), /* #040405/rgba(4, 4, 5, 0.2) */
     0 1.5px 0 rgba(6, 6, 7, 0.05), /* #040405/rgba(6, 6, 7, 0.05) */
@@ -315,11 +343,11 @@
 /* Search result tab */
 
 .theme-dark .searchResultsWrap-2DKFzt {
-    background-color: lighten($background, 2%)
+    background-color: lighten($background, 10%)
 }
 
 .theme-dark .searchHeader-1l-wpR {
-    background-color: lighten($background, 2%);
+    background-color: lighten($background, 10%);
 }
 
 .theme-dark .searchHeader-1l-wpR a {
@@ -350,18 +378,18 @@
 
 .theme-dark .channelSeparator-1X1FuH .channelName-1QajIf {
     color: $foreground;
-    background-color: lighten($background, 2%)
+    background-color: lighten($background, 10%)
 }
 
 .theme-dark .searchResult-3pzFAB:before {
-    background-image: -webkit-gradient(linear, left bottom, left top, from(rgba(red(lighten($background, 2%)), green(lighten($background, 2%)), blue(lighten($background, 2%)), 0)), to(lighten($background, 2%)));
+    background-image: -webkit-gradient(linear, left bottom, left top, from(rgba(red(lighten($background, 10%)), green(lighten($background, 10%)), blue(lighten($background, 10%)), 0)), to(lighten($background, 10%)));
     /* #2f3136 */
-    background-image: linear-gradient(0deg, rgba( red(lighten($background, 2%)), green(lighten($background, 2%)), blue(lighten($background, 2%)), 0), lighten($background, 2%))
+    background-image: linear-gradient(0deg, rgba(red(lighten($background, 10%)), green(lighten($background, 10%)), blue(lighten($background, 10%)), 0), lighten($background, 10%))
 }
 
 .theme-dark .searchResult-3pzFAB:after {
-    background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(red(lighten($background, 2%)), green(lighten($background, 2%)), blue(lighten($background, 2%)), 0)), to(lighten($background, 2%)));
-    background-image: linear-gradient(180deg, rgba( red(lighten($background, 2%)), green(lighten($background, 2%)), blue(lighten($background, 2%)), 0), lighten($background, 2%))
+    background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(red(lighten($background, 10%)), green(lighten($background, 10%)), blue(lighten($background, 10%)), 0)), to(lighten($background, 10%)));
+    background-image: linear-gradient(180deg, rgba( red(lighten($background, 10%)), green(lighten($background, 10%)), blue(lighten($background, 10%)), 0), lighten($background, 10%))
 }
 
 .theme-dark .searchResult-3pzFAB .searchResultMessage-2VxO12.hit-NLlWXA {
@@ -370,8 +398,8 @@
 
 .theme-dark .searchResult-3pzFAB .hit-NLlWXA {
     background-color: lighten($background, 4%);
-    -webkit-box-shadow: 0 0 10px 6px lighten($background, 2%);
-    box-shadow: 0 0 10px 6px lighten($background, 2%)
+    -webkit-box-shadow: 0 0 10px 6px lighten($background, 10%);
+    box-shadow: 0 0 10px 6px lighten($background, 10%)
 }
 
 .theme-dark .searchResult-3pzFAB.expanded-v2Szsz {
@@ -409,7 +437,7 @@
 }
 
 .theme-dark .scrollerThemed-2oenus.themedWithTrack-q8E3vB .scroller-2FKFPG::-webkit-scrollbar-track-piece {
-    background-color: lighten($background, 2%);
+    background-color: lighten($background, 10%);
     border: 3px solid lighten($background, 4%)
 }
 
@@ -418,7 +446,7 @@
 }
 
 .theme-dark .scrollerThemed-2oenus.themedWithTrack-q8E3vB .scrollbar-2rkZSL .track-1JN30G {
-    background-color: lighten($background, 2%);
+    background-color: lighten($background, 10%);
     border: 3px solid lighten($background, 4%)
 }
 
@@ -440,7 +468,7 @@
 }
 
 .theme-light .scrollerThemed-2oenus.themedWithTrack-q8E3vB .scroller-2FKFPG::-webkit-scrollbar-thumb {
-    background-color: darken($foreground, 2%);
+    background-color: darken($foreground, 10%);
     /* #e3e5e8 */
     border-color: $foreground
 }
@@ -461,6 +489,18 @@
 
 .theme-light .scrollerThemed-2oenus.themedWithTrack-q8E3vB .scrollbar-2rkZSL .thumb-2JwNFC {
     background-color: $color4
+}
+
+/* #2f3136 */
+.theme-dark .scroller-1-nKid {
+    background: #{$background};
+}
+/* #36393f */
+.theme-dark .inGameActive-36BUM7 .messages-3lF2UY .scroller-3t2qeU::-webkit-scrollbar-thumb {
+    background-color: #{lighten($background, 7%)};
+}
+.theme-dark .inGameActive-36BUM7 .messages-3lF2UY .scroller-3t2qeU::-webkit-scrollbar-track-piece {
+  background-color: rgba(red($background), green($background), blue($background), .3);
 }
 
 
@@ -501,7 +541,7 @@
 }
 
 .theme-dark .autocomplete-1vrmpx {
-    background-color: lighten($background, 2%)
+    background-color: lighten($background, 10%)
 }
 
 .theme-dark .selectorSelected-1_M1WV {
@@ -582,14 +622,26 @@
 }
 
 .theme-dark .footer-3rDWdC {
-    background-color: lighten($background, 2%)
+    background-color: lighten($background, 10%)
 }
 
 .theme-dark .placeholderWrapper-3FaLtZ {
-    background: lighten($background, 2%)
+    background: lighten($background, 10%)
 }
 
 .theme-dark .wrapper-3UweLa {
     color: darken($foreground, 6%);
     background: $background
 }
+
+
+/* #36393F Who's online tab (general background) */
+.theme-dark .container-1D34oG {
+    background-color: #{lighten($background, 7%)};
+}
+
+/* #2f3136 Active now preview */
+.theme-dark .inset-3sAvek {
+    background-color: #{lighten($background, 7%)};
+}
+

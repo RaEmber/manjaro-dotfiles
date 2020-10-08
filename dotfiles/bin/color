@@ -7,6 +7,11 @@ WALL_DIR="$XDG_PICTURES_DIR/wallpaper"
 CONFIG_DIR="$XDG_CONFIG_HOME/color"
 SPECIAL_DIR="$CONFIG_DIR/special"
 USER_COL_DIR="$CONFIG_DIR/user"
+JETBRAINSPYWAL="$HOME/Documents/git/intellijPywal"
+JETBRAINS_APPS=(
+	".PyCharm2019.3"
+	".IntelliJIdea2019.2"
+)
 mkdir -p $WALL_DIR
 mkdir -p $SPECIAL_DIR
 mkdir -p $USER_COL_DIR
@@ -150,10 +155,33 @@ function reload_env() {
 	bspc config presel_feedback_color "$color0"
 
 	# convert and scale wallpaper for lockscreen
-	convert -resize $(xdpyinfo | grep dimensions | cut -d\  -f7 | cut -dx -f1) "$file" ~/.cache/wal/lockscreen.png
+	wxh=$(identify -format "%wx%h" "$file")
+	w=${wxh%%x*}
+	h=${wxh##*x}
+	res=$(xdpyinfo | grep dimensions | cut -d\  -f7)
+	x=${res%%x*}
+	y=${res##*x}
+	if (( w > x )); then
+			# crop sides
+			width=$((x*h/y))
+			crop=$(((w-width)/2))
+			convert -crop "${width}x${h}+${crop#-}+0" -resize $x "$file" ~/.cache/wal/lockscreen.png
+	else
+			# crop height
+			height=$((w*y/x))
+			crop=$(((h-height)/2))
+			convert -crop "${w}x${height}+0+${crop#-}" -resize $x "$file" ~/.cache/wal/lockscreen.png
+	fi
+
+	# convert -resize $(xdpyinfo | grep dimensions | cut -d\  -f7 | cut -dx -f1) "$file" ~/.cache/wal/lockscreen.png
 
 	# Update beautiful-discord's user.css:
 	sassc ~/.config/discord/user.scss > ~/.config/discord/user.css
+
+	# Update JetBrains color schemes
+	for jetbrains_app in ${JETBRAINS_APPS[@]}; do
+		$JETBRAINSPYWAL/intellijPywalGen.sh "$HOME/$jetbrains_app/config"
+	done
 }
 
 function wal_execute() { # 1: folder/file
@@ -306,7 +334,6 @@ else
 	fi
 	if [[ $r ]]; then
 		wal_execute "$(cat ~/.cache/wal/wal)" 
-		reload_env
 	fi
 	[[ $c ]] && print_color_table
 fi

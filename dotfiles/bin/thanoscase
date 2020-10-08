@@ -21,11 +21,24 @@ def set_clipboard(primary: bool, data: str):
         print(f"Failed to set clipboard: {err}")
 
 
-# Changes text into tHiS wEiRd FoRmAt
-def thanosify(data: str) -> str:
+# !"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~
+ASCII = "!\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~"
+
+def map_chars(text: str, ascii_map: str) -> str:
+    out = ''
+    for char in text:
+        if char in ASCII:
+            out += ascii_map[ASCII.index(char)]
+        else:
+            out += char
+    return out
+        
+
+# uPpEr AnD lOwEr CaSe PeRfEcTlY bAlAnCeD - aS aLl ThInGs ShOuLd Be
+def thanosify(text: str) -> str:
     buf = ''
     n = 0
-    for char in data:
+    for char in text:
         if char.isalpha():
             if (n % 2):
                 buf += char.upper()
@@ -37,61 +50,100 @@ def thanosify(data: str) -> str:
     return buf
 
 
-# ʇɐɯɹoɟ uʍop ǝpᴉsdn oʇuᴉ ʇxǝʇ sǝƃuɐɥƆ
-from_az_low = 'abcdefghijklmnopqrstuvwxyz'
-to_az_low = 'zʎxʍʌnʇsɹbdouɯlʞɾᴉɥƃɟǝpɔqɐ'
-from_az_high = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
-to_az_high = 'Z⅄XMΛ∩┴SɹQԀONW˥ʞſIHפℲƎpƆq∀'
-from_sym = '!?.,-_/:;()[]{}\'"'
-to_sym = ',,{}[]();:/‾-\'˙¿¡'
-from_text = from_az_low + from_az_high + from_sym
-to_text = to_az_low[::-1] + to_az_high[::-1] + to_sym[::-1]
+# ʇɐɯɹoɟ uʍop-ǝpᴉsdn oʇuᴉ ʇxǝʇ sǝɓuɐɥƆ
+ASCII_UPSIDE_DOWN = "¡\"#$%⅋,)(*+,-˙/0⇂ᘔƐㄣϛ9ㄥ86:;>=<¿@∀ᙠƆᗡƎℲפHIſʞ⅂WNOԁÓᴚS┴∩ΛMX⅄Z]\\[v‾,ɐqɔpǝɟɓɥᴉɾʞlɯuodbɹsʇnʌʍxʎz}|{~"
 def make_upside_down(text: str) -> str:
-    out = ''
-    for char in text:
-        if char in from_text:
-            out = to_text[from_text.index(char)] + out
-        else:
-            out = char + out
-    return out
+    return map_chars(text, ASCII_UPSIDE_DOWN)[::-1]
 
 
-# Spaces out text
+# S p a c e s   o u t   t e x t
 def space(text: str) -> str:
     out = ''
     for char in text:
         out += f" {char}"
     return out[1:]
 
-p = argparse.ArgumentParser(description='Modify text')
-p.add_argument('--mode', default='t', choices=['t', 'u', 's'],
-                help="Turns text into tHaNoScAsE (t), uʍop ǝpᴉsdn (u) or s p a c e d   o u t (s).")
-p.add_argument('-i', default=1, type=int, choices=range(0, 3),
-                help="Transforms text from the stdin (0), the primary (1) or secondary (2) clipboard.")
-p.add_argument('-o', default=1, type=int, choices=range(0, 3),
-                help="Saves the result to stdout (0), the primary (1) or secondary (2) clipboard.")
-args = p.parse_args()
-print(args)
 
-if args.i == 0 or args.o == 0:
-    print("Not supported yet")
-    exit(1)
+# ᵀᶦᵑʸ ʷʰᶦˢᵖᵉʳ
+ASCII_WHISPER = "ᵎ\"#$%&'⁽⁾*⁺,⁻./⁰¹²³⁴⁵⁶⁷⁸⁹:;<⁼>ˀ@ᴬᴮᶜᴰᴱᶠᴳᴴᴵᴶᴷᴸᴹᴺᴼᴾᵠᴿˢᵀᵁⱽᵂˣʸᶻ[\\]^_`ᵃᵇᶜᵈᵉᶠᵍʰᶦʲᵏˡᵐᵑᵒᵖᵠʳˢᵗᵘᵛʷˣʸᶻ{|}~"
+def whisper(text: str) -> str:
+    return map_chars(text, ASCII_WHISPER)
 
-if args.i == 1:
-    in_primary = True
-elif args.i == 2:
-    in_primary = False
 
-if args.o == 1:
-    out_primary = True
-elif args.o == 2:
-    out_primary = False
+# 𝕱𝖗𝖆𝖐𝖙𝖚𝖗
+ASCII_FRAKTUR = "!\"#$%&'()*+,-./0123456789:;<=>?@𝔄𝔅ℭ𝔇𝔈𝔉𝔊ℌℑ𝔍𝔎𝔏𝔐𝔑𝔒𝔓𝔔ℜ𝔖𝔗𝔘𝔙𝔚𝔛𝔜ℨ[\\]^_`𝔞𝔟𝔠𝔡𝔢𝔣𝔤𝔥𝔦𝔧𝔨𝔩𝔪𝔫𝔬𝔭𝔮𝔯𝔰𝔱𝔲𝔳𝔴𝔵𝔶𝔷{|}~"
+def fraktur(text: str) -> str:
+    return map_chars(text, ASCII_FRAKTUR)
 
-if args.mode == 't':
-    f = thanosify
-elif args.mode == 'u':
-    f = make_upside_down
-else:
-    f = space
 
-set_clipboard(out_primary, f(get_clipboard(in_primary)))
+# ℂ𝕒𝕝𝕝𝕚𝕘𝕣𝕒𝕡𝕙𝕪
+ASCII_CALLIGRAPHY = "!\"#$%&'()*+,-./𝟘𝟙𝟚𝟛𝟜𝟝𝟞𝟟𝟠𝟡:;<=>?@𝔸𝔹ℂ𝔻𝔼𝔽𝔾ℍ𝕀𝕁𝕂𝕃𝕄ℕ𝕆ℙℚℝ𝕊𝕋𝕌𝕍𝕎𝕏𝕐ℤ[\\]^_`𝕒𝕓𝕔𝕕𝕖𝕗𝕘𝕙𝕚𝕛𝕜𝕝𝕞𝕟𝕠𝕡𝕢𝕣𝕤𝕥𝕦𝕧𝕨𝕩𝕪𝕫{|}~"
+def calligraphy(text: str) -> str:
+    return map_chars(text, ASCII_CALLIGRAPHY)
+
+
+# ꜱᴜʙꜱᴄʀɪᴘᴛ
+# ₀₁₂₃₄₅₆₇₈₉
+ASCII_SUBSCRIPT = "!\"#$%&'()*+,-./₀₁₂₃₄₅₆₇₈₉0123456789:;<=>?@ᴀʙᴄᴅᴇꜰɢʜɪᴊᴋʟᴍɴᴏᴘQʀꜱᴛᴜᴠᴡxʏᴢ[\\]^_`ᴀʙᴄᴅᴇꜰɢʜɪᴊᴋʟᴍɴᴏᴘQʀꜱᴛᴜᴠᴡxʏᴢ{|}~"
+def subscript(text: str) -> str:
+    return map_chars(text, ASCII_SUBSCRIPT)
+
+# Superscript
+# ꜝ"#$%&'⁽⁾*⁺,⁻./⁰¹²³⁴⁵⁶⁷⁸⁹:;<⁼>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`ᵃᵇᶜᵈᵉᶠᵍʰ ͥ ʲᵏˡᵐⁿᵒᵖᵒ̴ʳˢᵗᵘᵛʷˣʸᶻ{|}~
+ASCII_SUPERSCRIPT = "ꜝ\"#$%&'⁽⁾*⁺,⁻./⁰¹²³⁴⁵⁶⁷⁸⁹:;<⁼>ˀ@ᴬᴮᴰᴱᶜᴳᴴᴵᴶᴷᴸᴹᴺᴼᴾᵠᴿˢᵀᵁⱽᵂˣʸᶻ[\\]^-`ᵃᵇᶜᵈᵉᶠᵍʰᶦʲᵏˡᵐᵑᵒᵖᵠʳˢᵗᵘᵛʷˣʸᶻ{|}~"
+
+# Subscript
+# 
+ASCII_SUBSCRIPT = "!\"#$%&'₍₎*₊,₋./₀₁₂₃₄₅₆₇₈₉:;<₌>?@ᴀʙᴄᴅᴇꜰɢʜɪᴊᴋʟᴍɴᴏᴘQʀꜱᴛᴜᴠᴡxʏᴢ[\\]^_`ₐʙᴄᴅₑꜰɢʜᵢⱼᴋʟᴍɴₒᴘQᵣꜱᴛᵤᵥᴡₓʏᴢ{|}~"
+
+
+if __name__ == '__main__':
+    p = argparse.ArgumentParser(description='Modify text')
+    p.add_argument('--mode', default='t', choices=['t', 'u', 's', 'w', 'f', 'c', 'l'],
+                    help="Turns text into tHaNoScAsE (t), uʍop ǝpᴉsdn (u), s p a c e d   o u t (s), ʷʰᶦˢᵖᵉʳ (w), 𝕱𝖗𝖆𝖐𝖙𝖚𝖗 (f), ℂ𝕒𝕝𝕝𝕚𝕘𝕣𝕒𝕡𝕙𝕪 (c), Subscript (l).")
+    p.add_argument('-i', default=1, type=int, choices=range(0, 3),
+                    help="Transforms text from the stdin (0), the primary (1) or secondary (2) clipboard.")
+    p.add_argument('-o', default=1, type=int, choices=range(0, 3),
+                    help="Saves the result to stdout (0), the primary (1) or secondary (2) clipboard.")
+    args = p.parse_args()
+    print(args)
+
+    if args.i == 0 or args.o == 0:
+        print("Not supported yet")
+        exit(1)
+
+    if args.i == 1:
+        in_primary = True
+    elif args.i == 2:
+        in_primary = False
+    else:
+        print(f"Unknown in: {args.i}")
+        exit(1)
+
+    if args.o == 1:
+        out_primary = True
+    elif args.o == 2:
+        out_primary = False
+    else:
+        print(f"Unknown out: {args.o}")
+        exit(1)
+
+    if args.mode == 't':
+        f = thanosify
+    elif args.mode == 'u':
+        f = make_upside_down
+    elif args.mode == 's':
+        f = space
+    elif args.mode == 'w':
+        f = whisper
+    elif args.mode == 'f':
+        f = fraktur
+    elif args.mode == 'c':
+        f = calligraphy
+    elif args.mode == 'l':
+        f = subscript
+    else:
+        print(f"Unknown mode: {args.mode}")
+        exit(1)
+
+    set_clipboard(out_primary, f(get_clipboard(in_primary)))
