@@ -30,9 +30,9 @@ case $arg in
 	xrdb)
 		xrdb -merge ~/.Xresources
 		;;
-	compton)
-		killall compton &> /dev/null
-		compton -b
+	picom)
+		killall picom &> /dev/null
+		picom -b --experimental-backends
 		;;
 	bspwm)
 		if [ $quiet ] ; then
