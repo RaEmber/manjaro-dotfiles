@@ -72,7 +72,7 @@ user_pref("dom.network.enabled", false);
 
 // PREF: Disable WebRTC entirely to prevent leaking internal IP addresses (Firefox < 42)
 // NOTICE: Disabling WebRTC breaks peer-to-peer file sharing tools (reep.io ...)
-user_pref("media.peerconnection.enabled", false);
+//user_pref("media.peerconnection.enabled", false);
 
 // PREF: Don't reveal your internal IP when WebRTC is enabled (Firefox >= 42)
 // https://wiki.mozilla.org/Media/WebRTC/Privacy
@@ -267,7 +267,7 @@ user_pref("security.mixed_content.block_display_content", true);
 
 // PREF: Disable JAR from opening Unsafe File Types
 // http://kb.mozillazine.org/Network.jar.open-unsafe-types
-// CIS Mozilla Firefox 24 ESR v1.0.0 - 3.7 
+// CIS Mozilla Firefox 24 ESR v1.0.0 - 3.7
 user_pref("network.jar.open-unsafe-types", false);
 
 // CIS 2.7.4 Disable Scripting of Plugins by JavaScript
@@ -281,7 +281,7 @@ user_pref("security.fileuri.strict_origin_policy", true);
 
 // PREF: Disable Displaying Javascript in History URLs
 // http://kb.mozillazine.org/Browser.urlbar.filter.javascript
-// CIS 2.3.6 
+// CIS 2.3.6
 user_pref("browser.urlbar.filter.javascript", true);
 
 // PREF: Disable asm.js
@@ -318,7 +318,7 @@ user_pref("browser.startup.homepage_override.buildID", "20181001000000");
 // PREF: Prevent font fingerprinting
 // https://browserleaks.com/fonts
 // https://github.com/pyllyukko/user.js/issues/120
-user_pref("browser.display.use_document_fonts", 0);
+//user_pref("browser.display.use_document_fonts", 0);
 
 // PREF: Enable only whitelisted URL protocol handlers
 // http://kb.mozillazine.org/Network.protocol-handler.external-default

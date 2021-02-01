@@ -13,6 +13,7 @@ setxkbmap ch
 ~/bin/launch xrdb picom bspwm sxhkd polybar enpass udiskie color ibus
 {%@@ endif @@%}
 nm-applet &
+flameshot &
 /usr/lib/polkit-kde-authentication-agent-1 &
 xautolock -time 10 -locker "i3lock -i ~/.cache/wal/lockscreen.png" -detectsleep &
 #start_jack &

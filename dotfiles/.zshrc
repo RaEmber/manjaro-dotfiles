@@ -102,3 +102,5 @@ export LC_COLLATE='C'
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+. /etc/profile.d/fzf.zsh
+

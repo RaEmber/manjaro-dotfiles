@@ -1,4 +1,4 @@
-﻿; Polybar
+; Polybar
 
 [settings]
 padding		= 2
@@ -37,14 +37,6 @@ traybg          = ${env:traybg}
 
 ;==============================================
 [template/bar]
-
-
-[global/wm]
-margin-bottom	= 0
-margin-top		= 0
-
-
-[bar/main]
 fixed-center		= true
 height				= 30
 # 10
@@ -74,6 +66,16 @@ override-redirect   = true
 #width				= 90%
 #offset-x			= 5%
 
+
+[global/wm]
+margin-bottom	    = 0
+margin-top	        = 0
+
+
+[bar/main]
+inherit             = template/bar
+monitor             = DVI-I-2
+
 modules-left		= bspwm temperature ssd hdd memory cpu
 {%@@ if profile == "sun" @@%}
 modules-right		= nordvpn alsa date powermenu
@@ -86,6 +88,13 @@ tray-detached		= false
 tray-background		= ${colors.bg}
 #tray-background     = ${colors.transparent}
 tray-padding		= 10
+
+[bar/secondary]
+inherit             = template/bar
+monitor             = DVI-I-3
+
+modules-left        = bspwm
+modules-right       = date
 
 
 ;==============================================
@@ -120,7 +129,7 @@ label-empty-padding			= 0
 [module/temperature]
 type					= internal/temperature
 {%@@ if profile == "sun" @@%}
-thermal-zone			= 0
+thermal-zone			= 2
 {%@@ elif profile == "teegardenb" @@%}
 thermal-zone			= 6
 {%@@ endif @@%}
@@ -195,7 +204,7 @@ label				= %percentage%%
 type                = custom/script
 exec                = $XDG_CONFIG_HOME/polybar/vpn-nordvpn-status.sh
 interval            = 5
-click-left          = nordvpn c ch140
+click-left          = nordvpn c CH
 click-middle        = nordvpn d
 click-right         = urxvt -e nordvpn status &
 format-overline	    = ${colors.blue}

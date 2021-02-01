@@ -60,7 +60,7 @@ super + {o,i}
 	bspc node {older,newer} -f; \
 	bspc wm -h on
 super + {_,shift + }{1-9,0}
-	bspc {desktop -f,node -d} '^{1-9,10}'       # focus or send to the given desktop
+	bspc {desktop -f,node focused -d} '^{1-9,10}'       # focus or send to the given desktop
 
 # preselect
 super + ctrl + {h,j,k,l}

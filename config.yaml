@@ -1,6 +1,5 @@
 actions:
   bspwm: ~/.config/bspwm/bspwmrc
-  picom: killall picom; picom -b --experimnetal-backends
   envd_link: rm ~/.config/environment.d/10-xdg-user-dirs.conf; ln -s ~/.config/user-dirs.dirs
     ~/.config/environment.d/10-xdg-user-dirs.conf
   systemctl_import_env: systemctl --user import-environment
@@ -61,8 +60,6 @@ dotfiles:
     dst: ~/.oh-my-zsh/custom/themes/atheister.zsh-theme
     src: .oh-my-zsh/custom/themes/atheister.zsh-theme
   f_picom.conf:
-    actions:
-    - picom
     dst: ~/.config/picom.conf
     src: .config/picom.conf
   f_fonts.conf:
@@ -114,11 +111,11 @@ dotfiles:
   f_redshift.conf:
     src: .config/redshift/redshift.conf
     dst: ~/.config/redshift/redshift.conf
-  d_firefox:
+  f_userjs:
     actions:
     - firefox
-    src: .mozilla/firefox
-    dst: ~/.mozilla/firefox
+    src: .mozilla/firefox/user.js
+    dst: ~/.mozilla/firefox/user.js
 profiles:
   common:
     dotfiles:
@@ -144,13 +141,11 @@ profiles:
     - f_bdiscord
     - f_user.scss
     - f_redshift.conf
-    - d_firefox
+    - f_userjs
   sun:
     include:
     - common
   teegardenb:
     include:
     - common
-  kepler22b:
-    include:
-    - common
+
