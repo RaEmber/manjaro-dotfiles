@@ -54,10 +54,12 @@ case $arg in
         killall polybar &> /dev/null
 		if [ $quiet ] ; then
 			polybar main &> /dev/null &
-			polybar seconday &> /dev/null &
+			polybar secondary &> /dev/null &
+			polybar tertiary &> /dev/null &
 		else
 			polybar main &
 			polybar secondary &
+			polybar tertiary &
 		fi
 		disown
 		;;
