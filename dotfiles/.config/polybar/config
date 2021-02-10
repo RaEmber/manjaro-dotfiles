@@ -74,12 +74,7 @@ margin-top	        = 0
 
 [bar/main]
 inherit             = template/bar
-{%@@ if profile == "sun" @@%}
 monitor             = DVI-I-2
-{%@@ elif profile == "teegardenb" @@%}
-monitor             = DP-2
-{%@@ endif @@%}
-
 
 modules-left		= bspwm temperature ssd hdd memory cpu
 {%@@ if profile == "sun" @@%}
@@ -96,24 +91,12 @@ tray-padding		= 10
 
 [bar/secondary]
 inherit             = template/bar
-{%@@ if profile == "sun" @@%}
-monitor				= DVI-I-3
-{%@@ elif profile == "teegardenb" @@%}
-monitor				= HDMI-0
-{%@@ endif @@%}
+monitor             = DVI-I-3
 
 modules-left        = bspwm
 modules-right       = date
 
-{%@@ if profile == "teegardenb" @@%}
-[bar/tertiary]
-inherit             = template/bar
-monitor				= DP-4
 
-modules-left        = bspwm
-modules-right       = date
-
-{%@@ endif @@%}
 ;==============================================
 [module/bspwm]
 type						= internal/bspwm
