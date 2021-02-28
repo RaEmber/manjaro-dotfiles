@@ -1,13 +1,13 @@
 #!/bin/bash
 # Script to manage wallpaper-dependent colorschemes
 
-WAL_OPTIONS="-a 50"
+WAL_OPTIONS="-a 70"
 
 WALL_DIR="$XDG_PICTURES_DIR/wallpaper"
 CONFIG_DIR="$XDG_CONFIG_HOME/color"
 SPECIAL_DIR="$CONFIG_DIR/special"
 USER_COL_DIR="$CONFIG_DIR/user"
-JETBRAINSPYWAL="$HOME/Documents/git/intellijPywal"
+JETBRAINSPYWAL="$HOME/Documents/Git/intellijPywal"
 JETBRAINS_APPS=(
 	".PyCharm2019.3"
 	".IntelliJIdea2019.2"
@@ -254,7 +254,7 @@ function add_to_user_colorschemes() {
 	fi
 	[[ $q ]] || echo -e "Saving current colorscheme as \"\e[1;34m$xname\e[m\""
 	filename="$(cat $XDG_CACHE_HOME/wal/wal | sed -E 's/\.|\//_/g')"
-	file="$XDG_CACHE_HOME/wal/schemes/${filename}_dark_None_None_1.1.0.json"
+	file="$XDG_CACHE_HOME/wal/schemes/${filename}_*.json"
 	cp -T "$file" "$USER_COL_DIR/$xname.json"
 }
 
