@@ -104,3 +104,4 @@ export LC_COLLATE='C'
 
 . /etc/profile.d/fzf.zsh
 
+[ -f /opt/miniconda3/etc/profile.d/conda.sh ] && source /opt/miniconda3/etc/profile.d/conda.sh

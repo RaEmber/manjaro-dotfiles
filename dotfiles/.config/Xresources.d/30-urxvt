@@ -30,7 +30,8 @@ URxvt.scrollTtyKeypress:	true
 URxvt.saveLines:			8192
 URxvt.internalBorder:		15
 URxvt.skipBuiltinGlyphs:	true
-URxvt.termName:				rxvt-256color
+URxvt.termName:				rxvt-unicode
+!URxvt.termName:				rxvt-256color
 URxvt.cursorBlink:			true
 URxvt.cursorUnderline:		true
 URxvt.pointerBlank:         true
@@ -57,6 +58,13 @@ URxvt.keysym.C-Down:		resize-font:smaller
 URxvt.keysym.C-Up:			resize-font:bigger
 URxvt.keysym.C-0:			resize-font:reset
 URxvt.keysym.C-S-question:	resize-font:show
+
+!! Cursor word movement
+URxvt*altSendsEscape:       true
+!URxvt.keysym.C-Up:    \033[1;5A
+!URxvt.keysym.C-Down:  \033[1;5B
+URxvt.keysym.C-Left:  \033[1;5D
+URxvt.keysym.C-Right: \033[1;5C
 
 ! Disable default setting to allow Ctrl-Shift keymaps
 URxvt.iso14755:				false
